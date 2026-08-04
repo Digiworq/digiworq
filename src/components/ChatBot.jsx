@@ -1,247 +1,189 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User, ChevronRight, Sparkles, RefreshCw, AlertCircle } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, ChevronRight, Sparkles, RefreshCw } from 'lucide-react';
 
-// ─── OpenRouter API Config ────────────────────────────────────────────────────
-const OR_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || '';
-const OR_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-// Models to try in priority order
-const OR_MODELS = [
-  'google/gemini-2.0-flash-lite-001',
-  'google/gemini-flash-1.5',
-  'meta-llama/llama-3.1-8b-instruct:free',
-  'mistralai/mistral-7b-instruct:free',
-];
+// ─── Knowledge Base ──────────────────────────────────────────────────────────
+const KB = {
+  greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'howdy', 'namaste'],
+  services: {
+    creative: {
+      keywords: ['branding', 'logo', 'graphic', 'design', 'package', 'ui', 'ux', 'ppt', 'presentation', 'infographic', 'illustration', 'social media design', 'creative', 'rebranding'],
+      answer: `🎨 *Creative Services* — We offer:\n• Branding Solutions & Logo Design\n• Graphic & Package Designing\n• UI/UX Design for Web & Apps\n• Social Media Content Creation\n• Infographic & Illustration Design\n• PPT & Presentation Design\n• Rebranding & Brand Consultation\n\nWant a free consultation for your brand?`,
+      cta: 'Get Free Branding Consultation',
+    },
+    digital: {
+      keywords: ['seo', 'digital marketing', 'social media marketing', 'ppc', 'google ads', 'facebook ads', 'email marketing', 'content marketing', 'influencer', 'marketing', 'campaign', 'online presence', 'leads', 'traffic'],
+      answer: `📈 *Digital Marketing Services* — We specialise in:\n• Search Engine Optimisation (SEO)\n• Social Media Marketing (SMM)\n• Google & Facebook Ads (PPC)\n• Content & Email Marketing\n• Influencer Marketing\n• Brand Campaigns & Strategy\n\nWe've delivered 500+ successful campaigns!`,
+      cta: 'Start My Marketing Campaign',
+    },
+    technology: {
+      keywords: ['website', 'web design', 'app', 'mobile app', 'development', 'e-commerce', 'shopify', 'wordpress', 'react', 'software', 'coding', 'tech', 'technology', 'flutter', 'android', 'ios'],
+      answer: `💻 *Technology Services* — We build:\n• Custom Website Design & Development\n• Mobile App Development (Android & iOS)\n• E-Commerce Solutions (Shopify, WooCommerce)\n• WordPress & CMS Websites\n• Web Application Development\n• Landing Pages & Microsites\n\nAll our sites are mobile-friendly & SEO-ready!`,
+      cta: 'Discuss My Web Project',
+    },
+    video: {
+      keywords: ['video', 'video production', 'corporate video', 'product video', 'explainer', 'testimonial video', 'reel', 'shoot', 'film'],
+      answer: `🎬 *Video Production Services* — We create:\n• Corporate & Brand Videos\n• Product Demo & Explainer Videos\n• Customer Testimonial Videos\n• Social Media Reels & Shorts\n• Event Coverage Videos\n• YouTube Video Production\n\nHigh-quality videos that convert viewers into customers!`,
+      cta: 'Plan My Video Project',
+    },
+    animation: {
+      keywords: ['animation', '2d animation', '3d animation', 'motion graphics', 'animated', 'explainer animation', 'whiteboard'],
+      answer: `✨ *Animation Services* — We specialise in:\n• 2D Character & Story Animations\n• 3D Product & Brand Animations\n• Motion Graphics & Visual Effects\n• Animated Explainer Videos\n• Whiteboard Animations\n• Logo Animation & Intros\n\nAnimations that bring your brand to life!`,
+      cta: 'Animate My Brand',
+    },
+    photography: {
+      keywords: ['photography', 'photoshoot', 'product photography', 'corporate photo', 'headshot', 'photo'],
+      answer: `📸 *Photography Services* — We offer:\n• Product Photography (E-commerce & Catalogue)\n• Corporate Headshots & Team Photos\n• Event & Conference Photography\n• Brand Lifestyle Photography\n• Food & Hospitality Photography\n\nProfessional photos that speak for your brand!`,
+      cta: 'Book a Photo Session',
+    },
+    printing: {
+      keywords: ['printing', 'print', 'brochure', 'flyer', 'banner', 'business card', 'hoarding', 'poster', 'catalogue'],
+      answer: `🖨️ *Printing Solutions* — We print:\n• Business Cards, Brochures & Flyers\n• Banners, Hoardings & Standees\n• Product Catalogues & Booklets\n• Packaging & Label Printing\n• Poster & Invitation Printing\n\nPremium print quality delivered to your doorstep!`,
+      cta: 'Get Printing Quote',
+    },
+  },
+  pricing: {
+    keywords: ['price', 'cost', 'how much', 'charges', 'fee', 'budget', 'affordable', 'pricing', 'rate', 'package', 'plan', 'expensive', 'cheap'],
+    answer: `💰 *Pricing at Digiworq*\n\nOur pricing is custom-tailored to your project needs. We offer:\n• Flexible packages for startups to enterprises\n• Transparent pricing — no hidden costs\n• Free initial consultation\n• Competitive rates with premium quality\n\nFor an exact quote, share your requirements and our team will get back to you within 24 hours!`,
+    cta: 'Get Custom Quote',
+  },
+  contact: {
+    keywords: ['contact', 'reach', 'call', 'phone', 'email', 'office', 'address', 'location', 'bangalore', 'where', 'visit', 'appointment'],
+    answer: `📞 *Contact Digiworq*\n\n📱 Phone: +91 96114 89001\n📧 Email: hello@digiworq.com\n📍 Location: Bangalore, Karnataka, India\n\n🕐 Working Hours:\nMon–Sat: 9:00 AM – 7:00 PM\n\nYou can also use the Contact form on our website for quick enquiries!`,
+    cta: 'Open Contact Form',
+  },
+  about: {
+    keywords: ['about', 'who are you', 'company', 'digiworq', 'team', 'founded', 'experience', 'years', 'agency', 'history'],
+    answer: `🏢 *About Digiworq*\n\nDigiworq is Bangalore's #1 Digital Marketing & Creative Agency. We are a team of passionate creatives, developers, and strategists who help brands grow online.\n\n🏆 Our Stats:\n• 500+ Successful Projects\n• 99%+ Client Satisfaction Rate\n• 15+ Years of Combined Experience\n• 24/7 Dedicated Support\n\nWe specialise in Branding, Digital Marketing, Web & App Development, Video Production, and more!`,
+    cta: 'Learn More About Us',
+  },
+  portfolio: {
+    keywords: ['portfolio', 'work', 'projects', 'case study', 'clients', 'examples', 'samples', 'previous work', 'showcase'],
+    answer: `🖼️ *Our Portfolio*\n\nWe've worked with 500+ brands across industries including:\n• Healthcare & Wellness\n• Real Estate & Construction\n• Food & Hospitality\n• Fashion & Retail\n• Education & EdTech\n• IT & Software\n\nSome of our clients: BPL, Revlon, Sreenathji, NIECCE, Oaklyt, InnoView, and many more!\n\nWant to see work relevant to your industry?`,
+    cta: 'View Our Portfolio',
+  },
+  seo: {
+    keywords: ['seo result', 'rank', 'google ranking', 'search engine', 'keyword', 'backlink', 'organic'],
+    answer: `🔍 *SEO Results & Timeline*\n\nSEO is a long-term strategy. Typically:\n• Initial improvements: 1–3 months\n• Significant ranking gains: 3–6 months\n• Strong organic presence: 6–12 months\n\nFactors that affect results:\n• Website age & authority\n• Competition level in your niche\n• Quality of content & backlinks\n• Technical SEO health\n\nOur SEO team does monthly audits and transparent reporting!`,
+    cta: 'Start My SEO Journey',
+  },
+  process: {
+    keywords: ['process', 'how do you work', 'steps', 'timeline', 'workflow', 'approach', 'methodology', 'onboarding', 'start'],
+    answer: `⚙️ *How Digiworq Works*\n\n**Step 1:** Free Consultation — Understand your goals\n**Step 2:** Strategy & Proposal — Custom plan + pricing\n**Step 3:** Onboarding — Sign agreement, share access\n**Step 4:** Execution — Design, develop, market\n**Step 5:** Review & Iterate — Your feedback loop\n**Step 6:** Launch & Support — Go live + ongoing help\n\nMost projects kick off within 48 hours of agreement!`,
+    cta: 'Start My Project',
+  },
+  support: {
+    keywords: ['support', 'help', 'issue', 'problem', 'complaint', 'maintenance', 'update', 'after service', 'post delivery'],
+    answer: `🛠️ *Support at Digiworq*\n\nWe offer 24/7 dedicated support:\n• Post-delivery bug fixes\n• Website maintenance packages\n• Monthly social media management\n• Regular performance reports\n• Dedicated account manager\n\nYou're never alone after a project delivers. We're always here!`,
+    cta: 'Talk to Support',
+  },
+  influencer: {
+    keywords: ['influencer', 'collab', 'collaboration', 'partner', 'enroll', 'join', 'creator', 'content creator'],
+    answer: `🚀 *Influencer Network at Digiworq*\n\nJoin our growing network of content creators!\n\n✅ Free Registration — No cost to join\n✅ Best Earning Opportunities\n✅ Connect with top Indian brands\n✅ Barter & paid collaborations available\n\nFrom micro-influencers to mega creators — all welcome!`,
+    cta: 'Enroll as Influencer',
+  },
+};
 
-// ─── Digiworq System Prompt ───────────────────────────────────────────────────
-const SYSTEM_PROMPT = `You are "Worq AI", the friendly and highly knowledgeable virtual assistant for Digiworq — Bangalore's #1 Digital Marketing & Creative Agency.
+// ─── Bot Response Engine ─────────────────────────────────────────────────────
+function getBotResponse(userInput) {
+  const input = userInput.toLowerCase().trim();
 
-YOUR PERSONA:
-- Friendly, professional, and enthusiastic about helping clients
-- Always speak as a representative of Digiworq using "we", "our team", "at Digiworq"
-- Use emojis occasionally to make responses warm and engaging
-- Keep responses concise (3–6 lines max unless detailed info is needed)
-- Always end with a soft call-to-action when relevant
+  // Greeting check
+  if (KB.greetings.some(g => input.includes(g))) {
+    return {
+      text: `👋 Hello! Welcome to *Digiworq* — Bangalore's #1 Digital Agency!\n\nI'm your AI assistant. I can help you with:\n• Our Services (Branding, Web, Marketing, Video)\n• Pricing & Packages\n• Project Process\n• Contact & Support\n\nWhat can I help you with today? 😊`,
+      quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'Portfolio'],
+      cta: null,
+    };
+  }
 
-DIGIWORQ COMPANY DETAILS:
-- Company: Digiworq
-- Tagline: "Refining your vision"
-- Location: Bangalore, Karnataka, India
-- Phone: +91 96114 89001
-- Email: hello@digiworq.com
-- Working Hours: Mon–Sat, 9:00 AM – 7:00 PM
-- Stats: 500+ projects delivered, 99%+ client satisfaction, 15+ years combined experience, 24/7 support
-
-SERVICES WE OFFER:
-1. Creative: Branding, Logo Design, Graphic Design, Package Designing, UI/UX Design, PPT Design, Infographic Design, Social Media Content Creation, Illustrations, Rebranding, Brand Consultation
-2. Digital Marketing: SEO, Social Media Marketing, Google Ads, Facebook Ads, Content Marketing, Email Marketing, Influencer Marketing, Brand Campaigns
-3. Technology: Website Design & Development, Mobile App Development (Android & iOS), E-Commerce (Shopify, WooCommerce), WordPress, Web Applications, Landing Pages
-4. Video Production: Corporate Videos, Product Demo Videos, Explainer Videos, Testimonial Videos, Social Media Reels, YouTube Videos
-5. 2D Animation: Character Animations, Story Animations, Explainer Animations, Whiteboard Animations, Logo Animations
-6. 3D Animation: Product Animations, Brand Animations, Motion Graphics, Visual Effects, 3D Intros
-7. Printing Solutions: Business Cards, Brochures, Flyers, Banners, Hoardings, Standees, Catalogues, Packaging, Posters
-8. Photography: Product Photography, Corporate Headshots, Event Photography, Brand Lifestyle Photography, Food Photography
-9. Videography: Event Coverage, Corporate Shoots, Behind-the-Scenes, Product Shoots
-
-PROCESS:
-Step 1: Free Consultation → Step 2: Strategy & Proposal → Step 3: Onboarding → Step 4: Execution → Step 5: Review → Step 6: Launch & Support
-
-PRICING:
-- Pricing is custom-tailored to each project
-- Flexible packages for startups to large enterprises
-- Transparent pricing with no hidden costs
-- Free initial consultation available
-- Typical project timelines: websites (2–4 weeks), branding (1–2 weeks), apps (6–12 weeks)
-
-INFLUENCER PROGRAM:
-- Free registration, no cost to join
-- Best earning opportunities & brand collaborations
-- Open to micro and macro influencers
-- Barter and paid collaborations available
-
-WHEN ASKED ABOUT PRICING: Always say pricing is custom and invite them to contact for a free quote.
-WHEN ASKED ABOUT CONTACT: Give phone (+91 96114 89001), email (hello@digiworq.com), and suggest opening the Contact form.
-WHEN SOMEONE WANTS TO START A PROJECT: Encourage them to click "Talk to Our Team" or call directly.
-WHEN ASKED SOMETHING YOU DON'T KNOW: Politely say you'll connect them with a human expert.
-NEVER discuss competitors. NEVER make up specific prices. NEVER promise specific timelines without caveats.`;
-
-// ─── Call OpenRouter API (OpenAI-compatible format) ──────────────────────────
-async function callAI(chatHistory, userMessage) {
-  // Build OpenAI-format messages array
-  const messages = [
-    { role: 'system', content: SYSTEM_PROMPT },
-    ...chatHistory
-      .filter(m => m.from !== 'system')
-      .map(m => ({
-        role: m.from === 'user' ? 'user' : 'assistant',
-        content: m.text,
-      })),
-    { role: 'user', content: userMessage },
-  ];
-
-  let lastError = null;
-
-  for (const model of OR_MODELS) {
-    try {
-      const response = await fetch(OR_API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${OR_API_KEY}`,
-          'HTTP-Referer': 'https://digiworq.com',
-          'X-Title': 'Digiworq Worq AI Chatbot',
-        },
-        body: JSON.stringify({
-          model,
-          messages,
-          temperature: 0.75,
-          max_tokens: 400,
-          top_p: 0.9,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errMsg = data?.error?.message || `HTTP ${response.status}`;
-        console.warn(`[Worq AI] OpenRouter model ${model} failed: ${errMsg}`);
-        lastError = errMsg;
-        continue;
-      }
-
-      const text = data?.choices?.[0]?.message?.content?.trim();
-      if (!text) {
-        console.warn(`[Worq AI] OpenRouter model ${model} returned empty response`);
-        lastError = 'Empty response';
-        continue;
-      }
-
-      console.info(`[Worq AI] ✅ OpenRouter model ${model} responded successfully`);
-      return text;
-    } catch (err) {
-      console.warn(`[Worq AI] OpenRouter model ${model} threw: ${err.message}`);
-      lastError = err.message;
+  // Check service categories
+  for (const [key, svc] of Object.entries(KB.services)) {
+    if (svc.keywords.some(kw => input.includes(kw))) {
+      return { text: svc.answer, quickReplies: ['Pricing', 'Contact Info', 'Our Process', 'View Portfolio'], cta: svc.cta };
     }
   }
 
-  throw new Error(lastError || 'All Gemini models failed');
+  // Check other intents
+  for (const [key, intent] of Object.entries({ ...KB, services: undefined })) {
+    if (!intent || !intent.keywords) continue;
+    if (intent.keywords.some(kw => input.includes(kw))) {
+      return { text: intent.answer, quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'Start a Project'], cta: intent.cta };
+    }
+  }
+
+  // "our services" or "what do you do"
+  if (input.includes('service') || input.includes('what do you') || input.includes('offer') || input.includes('provide') || input.includes('do you')) {
+    return {
+      text: `✨ *Digiworq's Full Service Portfolio:*\n\n🎨 Creative (Branding, Graphic Design, UI/UX)\n📈 Digital Marketing (SEO, SMM, PPC, Content)\n💻 Technology (Website, App, E-Commerce)\n🎬 Video Production\n✨ 2D & 3D Animation\n🖨️ Printing Solutions\n📸 Photography & Videography\n\nWhich service interests you most?`,
+      quickReplies: ['Creative Design', 'Digital Marketing', 'Website Development', 'Video Production'],
+      cta: 'View All Services',
+    };
+  }
+
+  // Thank you
+  if (input.includes('thank') || input.includes('thanks') || input.includes('great') || input.includes('awesome') || input.includes('perfect')) {
+    return {
+      text: `😊 You're most welcome! Happy to help.\n\nIf you have any more questions or are ready to start a project, our team is just a click away. Wishing you great success with your brand! 🚀`,
+      quickReplies: ['Start a Project', 'Contact Info'],
+      cta: 'Talk to Our Team',
+    };
+  }
+
+  // Bye
+  if (input.includes('bye') || input.includes('goodbye') || input.includes('see you') || input.includes('take care')) {
+    return {
+      text: `👋 Goodbye! It was great chatting with you.\n\nRemember, Digiworq is always here whenever you need a creative or digital partner. Have a wonderful day! 🌟`,
+      quickReplies: [],
+      cta: null,
+    };
+  }
+
+  // Default fallback
+  return {
+    text: `🤔 I didn't quite get that, but I'm here to help!\n\nHere are some things I can assist you with:`,
+    quickReplies: ['Our Services', 'Pricing & Packages', 'Contact Us', 'About Digiworq'],
+    cta: 'Talk to a Human Expert',
+  };
 }
 
-// ─── Smart Quick Replies Generator ───────────────────────────────────────────
-function getQuickReplies(botText) {
-  const t = botText.toLowerCase();
-  if (t.includes('service') || t.includes('offer') || t.includes('what we do')) {
-    return ['Creative Design', 'Digital Marketing', 'Website Development', 'Pricing'];
-  }
-  if (t.includes('price') || t.includes('cost') || t.includes('quote')) {
-    return ['Get a Quote', 'Our Services', 'Contact Team'];
-  }
-  if (t.includes('contact') || t.includes('phone') || t.includes('email')) {
-    return ['Open Contact Form', 'Our Services', 'About Digiworq'];
-  }
-  if (t.includes('seo') || t.includes('marketing') || t.includes('campaign')) {
-    return ['Pricing', 'Start a Project', 'Contact Team'];
-  }
-  if (t.includes('website') || t.includes('app') || t.includes('develop')) {
-    return ['Pricing', 'Our Process', 'Contact Team'];
-  }
-  if (t.includes('video') || t.includes('animation') || t.includes('photo')) {
-    return ['Pricing', 'View Portfolio', 'Contact Team'];
-  }
-  if (t.includes('thank') || t.includes('great') || t.includes('perfect')) {
-    return ['Start a Project', 'Contact Team'];
-  }
-  // Default suggestions
-  return ['Our Services', 'Pricing', 'Contact Team', 'About Digiworq'];
-}
-
-// ─── Rule-Based Fallback (activates when all Gemini models fail) ──────────────
-function getRuleFallback(input) {
-  const t = input.toLowerCase();
-  if (['hi','hello','hey','namaste','good morning','good afternoon','howdy'].some(g => t.includes(g))) {
-    return { text: `👋 Hello! Welcome to **Digiworq** — Bangalore's #1 Digital Agency!\n\nI can help with our services, pricing, process, and more. What would you like to know?`, qr: ['Our Services', 'Pricing', 'Contact Info', 'About Digiworq'] };
-  }
-  if (t.includes('brand') || t.includes('logo') || t.includes('graphic') || t.includes('design') || t.includes('ui') || t.includes('ux') || t.includes('creative')) {
-    return { text: `🎨 Our **Creative Services** include:\n• Branding & Logo Design\n• Graphic & UI/UX Design\n• Social Media Content\n• PPT, Infographics, Illustrations\n• Package Design & Rebranding\n\nReady for a free consultation?`, qr: ['Pricing', 'Contact Team', 'Other Services'] };
-  }
-  if (t.includes('seo') || t.includes('marketing') || t.includes('ppc') || t.includes('ads') || t.includes('social media') || t.includes('leads') || t.includes('traffic')) {
-    return { text: `📈 Our **Digital Marketing** services:\n• SEO & Google Ranking\n• Social Media Marketing (SMM)\n• Google & Facebook Ads (PPC)\n• Content & Email Marketing\n• Influencer Marketing\n\nWe've run 500+ successful campaigns!`, qr: ['Pricing', 'Contact Team', 'Our Process'] };
-  }
-  if (t.includes('website') || t.includes('web') || t.includes('app') || t.includes('development') || t.includes('ecommerce') || t.includes('shopify') || t.includes('wordpress')) {
-    return { text: `💻 Our **Technology Services** include:\n• Website Design & Development\n• Mobile Apps (Android & iOS)\n• E-Commerce (Shopify, WooCommerce)\n• WordPress & Web Applications\n\nAll sites are mobile-friendly & SEO-ready!`, qr: ['Pricing', 'Contact Team', 'Our Process'] };
-  }
-  if (t.includes('video') || t.includes('reel') || t.includes('film') || t.includes('shoot')) {
-    return { text: `🎬 Our **Video Production** services:\n• Corporate & Brand Videos\n• Product & Explainer Videos\n• Testimonial Videos\n• Social Media Reels & Shorts\n\nHigh-quality videos that drive conversions!`, qr: ['Pricing', 'Contact Team', 'Animation Services'] };
-  }
-  if (t.includes('animat') || t.includes('motion') || t.includes('2d') || t.includes('3d')) {
-    return { text: `✨ Our **Animation Services**:\n• 2D Character & Story Animations\n• 3D Product & Brand Animations\n• Motion Graphics & VFX\n• Whiteboard & Explainer Animations\n\nAnimations that bring your brand to life!`, qr: ['Pricing', 'Contact Team', 'Video Production'] };
-  }
-  if (t.includes('print') || t.includes('brochure') || t.includes('banner') || t.includes('card') || t.includes('flyer') || t.includes('poster')) {
-    return { text: `🖨️ Our **Printing Solutions**:\n• Business Cards, Brochures, Flyers\n• Banners, Hoardings, Standees\n• Catalogues, Packaging, Posters\n\nPremium quality delivered to your doorstep!`, qr: ['Pricing', 'Contact Team', 'Other Services'] };
-  }
-  if (t.includes('photo')) {
-    return { text: `📸 Our **Photography** services:\n• Product & E-Commerce Photography\n• Corporate Headshots & Team Photos\n• Event & Lifestyle Photography\n• Food & Hospitality Photography`, qr: ['Pricing', 'Contact Team', 'Video Production'] };
-  }
-  if (t.includes('price') || t.includes('cost') || t.includes('how much') || t.includes('budget') || t.includes('afford') || t.includes('fee') || t.includes('rate') || t.includes('quote')) {
-    return { text: `💰 Our pricing is **custom-tailored** to each project.\n\n• Flexible packages for startups to enterprises\n• Transparent pricing — no hidden fees\n• Free initial consultation included\n\nShare your requirements and get a quote within 24 hours!`, qr: ['Get a Quote', 'Contact Team', 'Our Services'] };
-  }
-  if (t.includes('contact') || t.includes('phone') || t.includes('call') || t.includes('email') || t.includes('reach') || t.includes('location') || t.includes('bangalore') || t.includes('office')) {
-    return { text: `📞 **Contact Digiworq:**\n\n📱 Phone: +91 96114 89001\n📧 Email: hello@digiworq.com\n📍 Location: Bangalore, India\n⏰ Mon–Sat: 9 AM – 7 PM`, qr: ['Open Contact Form', 'Our Services', 'Pricing'] };
-  }
-  if (t.includes('about') || t.includes('who') || t.includes('company') || t.includes('digiworq') || t.includes('team') || t.includes('experience')) {
-    return { text: `🏢 **About Digiworq:**\n\nBangalore's #1 Digital Marketing & Creative Agency, helping brands grow since inception.\n\n🏆 500+ Projects Delivered\n✅ 99%+ Client Satisfaction\n🌟 15+ Years Combined Experience\n🛠️ 24/7 Dedicated Support`, qr: ['Our Services', 'Pricing', 'Contact Team'] };
-  }
-  if (t.includes('process') || t.includes('how') || t.includes('start') || t.includes('begin') || t.includes('onboard') || t.includes('steps')) {
-    return { text: `⚙️ **How We Work:**\n\n1. Free Consultation\n2. Strategy & Proposal\n3. Onboarding & Agreement\n4. Execution & Creation\n5. Review & Feedback\n6. Launch & Ongoing Support\n\nMost projects kick off within 48 hours!`, qr: ['Contact Team', 'Pricing', 'Our Services'] };
-  }
-  if (t.includes('influencer') || t.includes('creator') || t.includes('collab') || t.includes('enroll') || t.includes('join')) {
-    return { text: `🚀 **Influencer Network:**\n\n✅ Free Registration — No cost\n✅ Paid & Barter Collaborations\n✅ Connect with top Indian brands\n✅ Open to all creators — micro to mega!`, qr: ['Enroll as Influencer', 'Our Services', 'Contact Team'] };
-  }
-  if (t.includes('thank') || t.includes('great') || t.includes('awesome') || t.includes('perfect')) {
-    return { text: `😊 You're most welcome! We're always here to help.\n\nReady to grow your brand with Digiworq? Our team is just a message away! 🚀`, qr: ['Start a Project', 'Contact Team'] };
-  }
-  // Default
-  return { text: `🤔 Great question! Let me point you to what I can help with:\n\n• Explore our services\n• Get pricing information\n• Contact our team\n• Learn about our process\n\nWhat interests you most?`, qr: ['Our Services', 'Pricing', 'Contact Team', 'About Digiworq'] };
-}
-
-// ─── Quick Reply to Prompt Map ────────────────────────────────────────────────
-const QR_MAP = {
-  'Our Services': 'What services does Digiworq offer?',
+// ─── Quick Reply Maps ────────────────────────────────────────────────────────
+const QUICK_REPLY_MAP = {
+  'Our Services': 'What services do you offer?',
   'Pricing': 'What is your pricing?',
-  'Contact Team': 'How can I contact Digiworq?',
-  'Contact Info': 'How can I contact Digiworq?',
-  'About Digiworq': 'Tell me about Digiworq',
+  'Contact Info': 'How can I contact you?',
+  'Portfolio': 'Can I see your portfolio?',
+  'Our Process': 'How do you work?',
+  'View Portfolio': 'Can I see your portfolio?',
   'Creative Design': 'Tell me about your creative design services',
   'Digital Marketing': 'Tell me about your digital marketing services',
-  'Website Development': 'Tell me about website development services',
-  'Start a Project': 'I want to start a project with Digiworq',
-  'Get a Quote': 'I want to get a quote for my project',
-  'Our Process': 'How does your project process work?',
-  'View Portfolio': 'Can I see examples of your work?',
-  'Open Contact Form': '__OPEN_CONTACT__',
-  'Enroll as Influencer': '__OPEN_INFLUENCER__',
+  'Website Development': 'Tell me about your website development services',
+  'Video Production': 'Tell me about your video production services',
+  'Start a Project': 'How do I start a project with you?',
+  'Start My Project': 'How do I start a project with you?',
+  'Pricing & Packages': 'What is your pricing?',
+  'Contact Us': 'How can I contact you?',
+  'About Digiworq': 'Tell me about Digiworq',
+  'Talk to a Human Expert': 'I need to speak to someone from your team',
+  'Talk to Our Team': 'I need to speak to someone from your team',
 };
 
-// ─── ChatBot Component ────────────────────────────────────────────────────────
+// ─── ChatBot Component ───────────────────────────────────────────────────────
 export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
       from: 'bot',
-      text: `👋 Hi there! I'm **Worq AI** — Digiworq's intelligent assistant powered by Gemini AI.\n\nI can help you explore our services, get quotes, understand our process, and connect you with the right experts. What would you like to know? 😊`,
-      quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'About Digiworq'],
+      text: `👋 Hi there! I'm *Worq AI* — Digiworq's virtual assistant.\n\nI can help you explore our services, answer your questions, and connect you with the right team. How can I help you today? 😊`,
+      quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'Portfolio'],
       time: new Date(),
     },
   ]);
   const [inputVal, setInputVal] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [error, setError] = useState(null);
   const [unread, setUnread] = useState(1);
   const endRef = useRef(null);
   const inputRef = useRef(null);
-
-  // Tracks raw message history for Gemini context (no quick replies metadata)
-  const chatHistoryRef = useRef([]);
 
   useEffect(() => {
     if (isOpen) {
@@ -254,53 +196,27 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  const addBotMessage = (text, qrs) => {
-    const quickReplies = qrs || getQuickReplies(text);
-    setMessages(prev => [...prev, {
-      id: Date.now(),
-      from: 'bot',
-      text,
-      quickReplies,
-      time: new Date(),
-    }]);
-    // Add to history
-    chatHistoryRef.current.push({ from: 'bot', text });
-    if (!isOpen) setUnread(u => u + 1);
+  const addBotMessage = (response) => {
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages(prev => [...prev, {
+        id: Date.now(),
+        from: 'bot',
+        text: response.text,
+        quickReplies: response.quickReplies || [],
+        cta: response.cta || null,
+        time: new Date(),
+      }]);
+    }, 900 + Math.random() * 600);
   };
 
-  const handleSend = async (textOverride) => {
-    const msg = (textOverride || inputVal).trim();
-    if (!msg || isTyping) return;
+  const handleSend = (text) => {
+    const msg = (text || inputVal).trim();
+    if (!msg) return;
     setInputVal('');
-    setError(null);
 
-    // Handle special quick-reply actions
-    const mapped = QR_MAP[msg];
-    if (mapped === '__OPEN_CONTACT__') {
-      setMessages(prev => [...prev, { id: Date.now(), from: 'user', text: msg, time: new Date() }]);
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        addBotMessage(`Perfect! 📩 Opening the contact form for you now. Our team typically responds within 2–4 hours!`, ['Our Services', 'Pricing']);
-        setTimeout(() => onOpenContact?.(), 600);
-      }, 700);
-      return;
-    }
-    if (mapped === '__OPEN_INFLUENCER__') {
-      setMessages(prev => [...prev, { id: Date.now(), from: 'user', text: msg, time: new Date() }]);
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        addBotMessage(`Exciting! 🚀 Opening the Influencer Enrollment form for you. Join our growing creator network!`, ['Our Services', 'Pricing']);
-        setTimeout(() => onOpenInfluencer?.(), 600);
-      }, 700);
-      return;
-    }
-
-    // Resolve quick reply to real prompt
-    const promptText = mapped || msg;
-
-    // Add user message to UI
+    // Add user message
     setMessages(prev => [...prev, {
       id: Date.now(),
       from: 'user',
@@ -308,23 +224,22 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
       time: new Date(),
     }]);
 
-    // Add to history
-    chatHistoryRef.current.push({ from: 'user', text: promptText });
-
-    // Show typing
-    setIsTyping(true);
-
-    try {
-      const botReply = await callAI(chatHistoryRef.current.slice(0, -1), promptText);
-      setIsTyping(false);
-      addBotMessage(botReply);
-    } catch (err) {
-      console.error('[Worq AI] OpenRouter AI models failed, using rule-based fallback:', err.message);
-      setIsTyping(false);
-      // Use rule-based fallback so chatbot always gives a relevant answer
-      const fallback = getRuleFallback(promptText);
-      addBotMessage(fallback.text, fallback.qr);
+    // Handle CTA clicks
+    if (msg === 'Contact Us' || msg === 'Talk to a Human Expert' || msg === 'Talk to Our Team' || msg === 'Open Contact Form') {
+      addBotMessage({ text: `Perfect! Opening the contact form for you right now. Our team typically responds within 2–4 hours! 📩`, quickReplies: ['Our Services', 'Pricing'] });
+      setTimeout(() => onOpenContact?.(), 1400);
+      return;
     }
+    if (msg === 'Enroll as Influencer') {
+      addBotMessage({ text: `Exciting! Redirecting you to our Influencer Enrollment form. Join our growing creator network! 🚀`, quickReplies: ['Our Services', 'Pricing'] });
+      setTimeout(() => onOpenInfluencer?.(), 1400);
+      return;
+    }
+
+    // Map quick replies to full text
+    const resolvedMsg = QUICK_REPLY_MAP[msg] || msg;
+    const response = getBotResponse(resolvedMsg);
+    addBotMessage(response);
   };
 
   const handleKeyDown = (e) => {
@@ -335,31 +250,29 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
   };
 
   const clearChat = () => {
-    chatHistoryRef.current = [];
-    setError(null);
     setMessages([{
-      id: Date.now(),
+      id: 1,
       from: 'bot',
-      text: `Chat cleared! 👋 I'm **Worq AI** — still here and ready to help. What would you like to know about Digiworq?`,
-      quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'About Digiworq'],
+      text: `👋 Chat cleared! I'm *Worq AI* and I'm still here. How can I help you? 😊`,
+      quickReplies: ['Our Services', 'Pricing', 'Contact Info', 'Portfolio'],
       time: new Date(),
     }]);
   };
 
   const formatText = (text) => {
     return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br/>');
   };
 
-  const formatTime = (date) => date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-  const lastBotMsg = [...messages].reverse().find(m => m.from === 'bot');
+  const formatTime = (date) => {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
 
   return (
     <>
-      {/* Toggle Button — Left Side */}
+      {/* Chat Toggle Button — Left Side */}
       <div className={`chatbot-toggle-wrap ${isOpen ? 'is-open' : ''}`}>
         <button
           className="chatbot-toggle-btn"
@@ -386,14 +299,8 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
                 <Bot size={18} color="#111827" />
               </div>
               <div>
-                <div className="chatbot-name">
-                  Worq AI <Sparkles size={12} color="#F5B800" />
-                  <span className="gemini-badge">AI 2.0</span>
-                </div>
-                <div className="chatbot-status">
-                  <span className="status-dot" />
-                  Online — Powered by OpenRouter AI
-                </div>
+                <div className="chatbot-name">Worq AI <Sparkles size={12} color="#F5B800" /></div>
+                <div className="chatbot-status"><span className="status-dot" />Online — Avg reply &lt; 1 min</div>
               </div>
             </div>
             <div className="chatbot-header-actions">
@@ -423,14 +330,23 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
               </div>
             ))}
 
-            {/* Quick Replies — always show from last bot message */}
-            {lastBotMsg?.quickReplies?.length > 0 && !isTyping && (
+            {/* Quick Replies */}
+            {messages.length > 0 && messages[messages.length - 1].from === 'bot' && messages[messages.length - 1].quickReplies?.length > 0 && !isTyping && (
               <div className="chatbot-quick-replies">
-                {lastBotMsg.quickReplies.map((qr, i) => (
+                {messages[messages.length - 1].quickReplies.map((qr, i) => (
                   <button key={i} className="quick-reply-btn" onClick={() => handleSend(qr)}>
                     {qr} <ChevronRight size={12} />
                   </button>
                 ))}
+              </div>
+            )}
+
+            {/* CTA Button */}
+            {messages.length > 0 && messages[messages.length - 1].from === 'bot' && messages[messages.length - 1].cta && !isTyping && (
+              <div className="chatbot-cta-row">
+                <button className="chatbot-cta-btn" onClick={() => handleSend(messages[messages.length - 1].cta)}>
+                  {messages[messages.length - 1].cta} →
+                </button>
               </div>
             )}
 
@@ -447,8 +363,6 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
             <div ref={endRef} />
           </div>
 
-
-
           {/* Input */}
           <div className="chatbot-input-area">
             <input
@@ -457,20 +371,19 @@ export default function ChatBot({ onOpenContact, onOpenInfluencer }) {
               value={inputVal}
               onChange={e => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask me anything about Digiworq…"
-              disabled={isTyping}
+              placeholder="Type your message…"
             />
             <button
               className="chatbot-send-btn"
               onClick={() => handleSend()}
-              disabled={!inputVal.trim() || isTyping}
+              disabled={!inputVal.trim()}
               aria-label="Send"
             >
               <Send size={16} />
             </button>
           </div>
 
-          <div className="chatbot-footer-note">Worq AI · Powered by OpenRouter AI ✨</div>
+          <div className="chatbot-footer-note">Powered by Digiworq · Worq AI ✨</div>
         </div>
       )}
     </>
