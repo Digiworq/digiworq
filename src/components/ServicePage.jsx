@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../data/allServicesPageData';
-import ceoAvatarImg from 'C:/Users/Admin/.gemini/antigravity/brain/f2a58647-88a2-4dc5-83e9-8ad14180a45f/ceo_rk_3d_avatar_1785835980345.jpg';
+const ceoAvatarImg = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80';
 
 function ServiceHeroIllustration() {
   return (

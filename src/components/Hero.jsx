@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
-import logoMark from '../../logomark 1.png';
+const logoMark = '/digiworq-logo.png';
 
 export default function Hero({ onOpenContact }) {
   return (

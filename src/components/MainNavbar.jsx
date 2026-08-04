@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { menuCategories } from '../data/menuData';
 import MegaMenu from './MegaMenu';
-import logoMark from '../../logomark 1.png';
+const logoMark = '/digiworq-logo.png';
 
 // Helper function to render sub-service icons matching Screenshot 53
 const getSubServiceIcon = (title) => {

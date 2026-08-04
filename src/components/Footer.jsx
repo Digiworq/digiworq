@@ -11,7 +11,7 @@ import {
   Twitter, 
   Globe 
 } from 'lucide-react';
-import logoMark from '../../logomark 1.png';
+const logoMark = '/digiworq-logo.png';
 
 export default function Footer({ onNavigateService, onGoHome, onOpenContact }) {
   const quickLinks = [
