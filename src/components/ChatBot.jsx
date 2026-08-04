@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, ChevronRight, Sparkles, RefreshCw, AlertCircle } from 'lucide-react';
 
 // ─── OpenRouter API Config ────────────────────────────────────────────────────
-const OR_API_KEY = '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';
+const OR_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || '';
 const OR_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 // Models to try in priority order
 const OR_MODELS = [
