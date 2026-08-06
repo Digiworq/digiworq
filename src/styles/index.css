@@ -9872,3 +9872,1091 @@ html, body, #root, .app-root, main {
   60% { transform: translateY(3px); }
 }
 
+/* ==========================================================================
+   MARKETEAM STYLING PROMPT IMPLEMENTATION
+   Conic Gradient Rotating Border Buttons, Typewriter Urbanist H1, Concentric Orbital Circles
+   ========================================================================== */
+
+/* 1. Register CSS @property --border-angle */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotateBorderAngle {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* 2. Rotating Conic-Gradient Border Wrapper (.btn-border-wrap) */
+.btn-border-wrap {
+  position: relative !important;
+  display: inline-block !important;
+  border-radius: 50px !important;
+  padding: 2.5px !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+.btn-border-wrap::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: -3px !important;
+  border-radius: 50px !important;
+  background: conic-gradient(from var(--border-angle), #A068FF 0%, #070319 25%, #F5B800 50%, #070319 75%, #A068FF 100%) !important;
+  animation: rotateBorderAngle 3s linear infinite !important;
+  z-index: 1 !important;
+}
+
+.btn-border-wrap button,
+.btn-border-wrap a {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Primary Button Slide Hover Fill */
+.marketeam-primary-btn {
+  position: relative !important;
+  background: #060218 !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 14px 30px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  overflow: hidden !important;
+  transition: color 0.3s ease !important;
+}
+
+.marketeam-primary-btn::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: #A068FF !important;
+  transform: translateX(100%) !important;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  z-index: 1 !important;
+}
+
+.marketeam-primary-btn:hover::after {
+  transform: translateX(0) !important;
+}
+
+.marketeam-primary-btn span,
+.marketeam-primary-btn .btn-arrow-icon {
+  position: relative !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease !important;
+}
+
+.marketeam-primary-btn:hover .btn-arrow-icon {
+  transform: translateX(4px) !important;
+}
+
+.marketeam-secondary-btn {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  padding: 14px 26px !important;
+  border-radius: 50px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.marketeam-secondary-btn:hover {
+  border-color: #A068FF !important;
+  color: #A068FF !important;
+}
+
+/* 3. Marketeam Hero Layout & Typewriter H1 */
+.marketeam-hero-root {
+  min-height: 90vh !important;
+}
+
+.marketeam-hero-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+@media (max-width: 1024px) {
+  .marketeam-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.marketeam-hero-left {
+  flex: 0 1 600px !important;
+  padding-top: 20px !important;
+}
+
+.marketeam-typewriter-h1 {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 3.6rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -1.5px !important;
+  margin-bottom: 24px !important;
+}
+
+@media (max-width: 1024px) {
+  .marketeam-typewriter-h1 {
+    font-size: 2.8rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .marketeam-typewriter-h1 {
+    font-size: 2.1rem !important;
+  }
+}
+
+.part-white {
+  color: #FFFFFF !important;
+}
+
+.part-gradient {
+  background: linear-gradient(135deg, #A068FF 0%, #F5B800 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.typewriter-cursor {
+  color: #A068FF !important;
+  font-weight: 400 !important;
+  animation: blinkCursor 0.7s infinite alternate !important;
+}
+
+@keyframes blinkCursor {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.marketeam-hero-subtext {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  color: #D1D5DB !important;
+  margin-bottom: 36px !important;
+  max-width: 540px !important;
+}
+
+.marketeam-hero-cta-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 32px !important;
+}
+
+/* Floating Purple Cursor Badge Element */
+.floating-cursor-badge-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 24px !important;
+  margin-left: 20px !important;
+  animation: floatCursorBadge 4s ease-in-out infinite alternate !important;
+}
+
+@keyframes floatCursorBadge {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.cursor-arrow-svg {
+  filter: drop-shadow(0 0 10px rgba(160, 104, 255, 0.8)) !important;
+}
+
+.cursor-name-pill {
+  background: #A068FF !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', var(--font-body) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 16px rgba(160, 104, 255, 0.5) !important;
+}
+
+/* 4. Hero Right: Concentric Orbital Circles Visualization */
+.marketeam-hero-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.circles-visualization-container {
+  position: relative !important;
+  width: 580px !important;
+  height: 580px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 1280px) {
+  .circles-visualization-container {
+    transform: scale(0.85) !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .circles-visualization-container {
+    transform: scale(0.7) !important;
+    margin: -40px auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .circles-visualization-container {
+    transform: scale(0.5) !important;
+    margin: -80px auto !important;
+  }
+}
+
+.orbital-ring {
+  position: absolute !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(217, 161, 255, 0.35) !important;
+  box-shadow: 0 0 20px rgba(160, 104, 255, 0.15) !important;
+}
+
+.orbit-1 {
+  width: 250px !important;
+  height: 250px !important;
+  animation: spinCounterClockwise 30s linear infinite !important;
+}
+
+.orbit-2 {
+  width: 360px !important;
+  height: 360px !important;
+  animation: spinClockwise 40s linear infinite !important;
+}
+
+.orbit-3 {
+  width: 470px !important;
+  height: 470px !important;
+  animation: spinClockwise 50s linear infinite !important;
+}
+
+.orbit-4 {
+  width: 570px !important;
+  height: 570px !important;
+  animation: spinCounterClockwise 60s linear infinite !important;
+}
+
+@keyframes spinClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinCounterClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Positioned Avatars on Orbits */
+.avatar-placed {
+  position: absolute !important;
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.avatar-placed img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.avatar-placed.square-radius {
+  border-radius: 16px !important;
+}
+
+.avatar-placed.lg-size {
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.avatar-placed.xl-size {
+  width: 72px !important;
+  height: 72px !important;
+}
+
+/* Glow styles */
+.purple-glow {
+  box-shadow: 0 0 24px rgba(160, 104, 255, 0.8) !important;
+}
+
+.yellow-glow {
+  box-shadow: 0 0 24px rgba(245, 184, 0, 0.8) !important;
+}
+
+.pink-glow {
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.8) !important;
+}
+
+.blue-glow {
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.8) !important;
+}
+
+.orange-glow {
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.8) !important;
+}
+
+/* Orbit Avatar Positions */
+.avatar-1 { top: -26px; left: calc(50% - 26px); }
+.avatar-2 { top: 30px; right: 20px; }
+.avatar-3 { bottom: 40px; left: 10px; }
+.avatar-4 { top: 40px; left: 30px; }
+.avatar-5 { top: -32px; left: calc(50% - 32px); }
+.avatar-6 { top: 40px; right: 40px; }
+.avatar-7 { bottom: 60px; right: 40px; }
+.avatar-8 { bottom: 40px; left: 60px; }
+.avatar-9 { top: 80px; left: 40px; }
+
+/* Center Counter Circle */
+.center-counter-circle {
+  position: absolute !important;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: #0B0E1B !important;
+  border: 2px solid rgba(160, 104, 255, 0.5) !important;
+  box-shadow: 0 0 40px rgba(160, 104, 255, 0.35) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+}
+
+.counter-number {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 2.4rem !important;
+  color: #FFFFFF !important;
+  line-height: 1 !important;
+}
+
+.counter-label {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  color: #A068FF !important;
+  margin-top: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* 5. Marketeam Footer & Global Component Styling */
+.digiworq-official-footer {
+  background-color: #060218 !important;
+  border-top: 1px solid rgba(160, 104, 255, 0.2) !important;
+  color: #D1D5DB !important;
+}
+
+.footer-col-h3 {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.5px !important;
+}
+
+.social-square-box {
+  background: rgba(160, 104, 255, 0.1) !important;
+  border: 1px solid rgba(160, 104, 255, 0.3) !important;
+  color: #A068FF !important;
+  transition: all 0.3s ease !important;
+}
+
+.social-square-box:hover {
+  background: #A068FF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 16px rgba(160, 104, 255, 0.6) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* 6. Marketeam Service Landing Detail Page Styling */
+.marketeam-quote-glass-capsule {
+  background: #0B0E1B !important;
+  border: 1.5px solid rgba(160, 104, 255, 0.4) !important;
+  border-radius: 28px !important;
+  padding: 32px 40px !important;
+  box-shadow: 0 0 35px rgba(160, 104, 255, 0.25) !important;
+  margin-top: 40px !important;
+}
+
+.marketeam-quote-glass-capsule .quote-text {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  color: #FFFFFF !important;
+  line-height: 1.6 !important;
+}
+
+.marketeam-glass-feature-card {
+  background: #0F1222 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 24px !important;
+  padding: 32px 28px !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.marketeam-glass-feature-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(160, 104, 255, 0.5) !important;
+  box-shadow: 0 0 35px rgba(160, 104, 255, 0.25) !important;
+}
+
+.card-purple-dash {
+  width: 40px !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #A068FF, #F5B800) !important;
+  border-radius: 4px !important;
+  margin-bottom: 16px !important;
+}
+
+.marketeam-glass-feature-card .card-title {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  color: #FFFFFF !important;
+  margin-bottom: 10px !important;
+}
+
+.marketeam-glass-feature-card .card-text {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.95rem !important;
+  color: #D1D5DB !important;
+  line-height: 1.6 !important;
+}
+
+.service-orbital-studio-container {
+  transform: scale(0.7) !important;
+}
+
+/* Animated Service Orbital Rings with Rotation & Pulse Glow */
+.service-orbital-studio-container .orbit-1 {
+  animation: spinClockwise 25s linear infinite !important;
+}
+
+.service-orbital-studio-container .orbit-2 {
+  animation: spinCounterClockwise 35s linear infinite !important;
+}
+
+.service-orbital-studio-container .orbit-3 {
+  animation: spinClockwise 45s linear infinite !important;
+}
+
+.service-studio-center-sphere {
+  animation: centerPulseGlow 3s ease-in-out infinite alternate !important;
+}
+
+@keyframes centerPulseGlow {
+  0% {
+    box-shadow: 0 0 30px rgba(160, 104, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 60px rgba(160, 104, 255, 0.7), 0 0 25px rgba(245, 184, 0, 0.5);
+  }
+}
+
+.dynamic-service-label {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+  padding: 0 6px !important;
+  word-break: break-word !important;
+}
+
+.dynamic-service-sublabel {
+  font-size: 0.72rem !important;
+  text-transform: uppercase !important;
+  color: #F5B800 !important;
+}
+
+/* 7. Marketeam MegaMenu & Top Nav Overrides (Screenshot 112 Fix) */
+.nav-menu-button.active,
+.nav-menu-button:hover {
+  background: rgba(160, 104, 255, 0.15) !important;
+  color: #A068FF !important;
+  border-color: #A068FF !important;
+  box-shadow: 0 0 20px rgba(160, 104, 255, 0.3) !important;
+}
+
+.mega-dropdown-overlay {
+  background: #0B0E1B !important;
+  border: 1px solid rgba(160, 104, 255, 0.25) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(160, 104, 255, 0.2) !important;
+  border-radius: 24px !important;
+}
+
+.mega-category-header {
+  color: #A068FF !important;
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.mega-item-link:hover {
+  background: rgba(160, 104, 255, 0.1) !important;
+  border-color: rgba(160, 104, 255, 0.4) !important;
+}
+
+.mega-item-link:hover .mega-item-icon {
+  color: #A068FF !important;
+}
+
+.mega-badge {
+  background: #A068FF !important;
+  color: #FFFFFF !important;
+  border-radius: 12px !important;
+}
+
+.mega-feature-banner {
+  background: rgba(15, 18, 30, 0.9) !important;
+  border-left: 1px solid rgba(160, 104, 255, 0.2) !important;
+  border-top-right-radius: 24px !important;
+  border-bottom-right-radius: 24px !important;
+}
+
+.mega-feature-banner .feature-title {
+  color: #FFFFFF !important;
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   VELORAH ATMOSPHERIC BACKGROUND CONTAINER CARDS (SCREENSHOT 113 MATCH)
+   ========================================================================== */
+
+.velorah-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 32px !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 1024px) {
+  .velorah-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .velorah-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.velorah-card-container {
+  position: relative !important;
+  height: 520px !important;
+  border-radius: 36px !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 32px 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: hidden !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.velorah-card-container:hover {
+  transform: translateY(-10px) scale(1.02) !important;
+  border-color: rgba(160, 104, 255, 0.6) !important;
+  box-shadow: 0 0 40px rgba(160, 104, 255, 0.35), 0 25px 60px rgba(0, 0, 0, 0.8) !important;
+}
+
+.velorah-top-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+.velorah-category-badge {
+  background: rgba(11, 14, 27, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #F5B800 !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.velorah-card-body {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-top: auto !important;
+  margin-bottom: 20px !important;
+}
+
+.velorah-card-title {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 2.1rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 14px !important;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+}
+
+.velorah-card-desc {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: #E5E7EB !important;
+  max-width: 320px !important;
+  margin-bottom: 24px !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.velorah-btn-wrap {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.velorah-glass-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding: 12px 28px !important;
+  border-radius: 50px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.35s ease !important;
+}
+
+.velorah-glass-btn:hover {
+  background: rgba(160, 104, 255, 0.35) !important;
+  border-color: #A068FF !important;
+  box-shadow: 0 0 24px rgba(160, 104, 255, 0.6) !important;
+  color: #FFFFFF !important;
+}
+
+.velorah-glass-btn .btn-arrow {
+  transition: transform 0.3s ease !important;
+}
+
+.velorah-glass-btn:hover .btn-arrow {
+  transform: translateX(4px) !important;
+}
+
+.velorah-card-footer {
+  text-align: center !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding-top: 14px !important;
+}
+
+.velorah-brand-wordmark {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  letter-spacing: 1px !important;
+}
+
+/* Velorah Frosted Glass Hover Reveal Overlay */
+.velorah-hover-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(11, 14, 27, 0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  padding: 36px 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  border-radius: 36px !important;
+  opacity: 0 !important;
+  transform: translateY(100%) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 10 !important;
+}
+
+.velorah-card-container:hover .velorah-hover-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.velorah-hover-overlay .overlay-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(245, 184, 0, 0.12) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #F5B800 !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  margin-bottom: 16px !important;
+}
+
+.velorah-hover-overlay .overlay-title {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 12px !important;
+  line-height: 1.2 !important;
+}
+
+.velorah-hover-overlay .overlay-full-desc {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  color: #E5E7EB !important;
+  margin-bottom: 24px !important;
+  max-width: 320px !important;
+}
+
+/* Marketeam Home Process Section Styling */
+.marketeam-process-section {
+  padding: 100px 24px !important;
+  background: #05060A !important;
+  position: relative !important;
+}
+
+.marketeam-header-center {
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto 60px auto !important;
+}
+
+.marketeam-purple-tag {
+  display: inline-block !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: #A068FF !important;
+  background: rgba(160, 104, 255, 0.1) !important;
+  border: 1px solid rgba(160, 104, 255, 0.25) !important;
+  padding: 6px 18px !important;
+  border-radius: 20px !important;
+  margin-bottom: 16px !important;
+}
+
+.marketeam-section-h2 {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -1px !important;
+  line-height: 1.15 !important;
+  margin-bottom: 16px !important;
+}
+
+.marketeam-text-gradient {
+  background: linear-gradient(135deg, #A068FF 0%, #F5B800 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.marketeam-section-subdesc {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 1.05rem !important;
+  color: #9CA3AF !important;
+  line-height: 1.6 !important;
+}
+
+.marketeam-process-flow-container {
+  position: relative !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+}
+
+.marketeam-laser-beam-line {
+  position: absolute !important;
+  top: 60px !important;
+  left: 5% !important;
+  right: 5% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #A068FF, #F5B800, #A068FF) !important;
+  background-size: 200% 100% !important;
+  animation: laserFlow 4s linear infinite !important;
+  box-shadow: 0 0 15px rgba(160, 104, 255, 0.8) !important;
+  z-index: 1 !important;
+}
+
+@keyframes laserFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.marketeam-process-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+@media (max-width: 1024px) {
+  .marketeam-process-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .marketeam-laser-beam-line {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .marketeam-process-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.marketeam-process-card {
+  background: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(160, 104, 255, 0.2) !important;
+  border-radius: 28px !important;
+  padding: 32px 24px !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.marketeam-process-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(160, 104, 255, 0.6) !important;
+  box-shadow: 0 0 35px rgba(160, 104, 255, 0.3), 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  background: rgba(18, 22, 38, 0.9) !important;
+}
+
+.marketeam-step-num-bg {
+  position: absolute !important;
+  top: 10px !important;
+  right: 16px !important;
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 4.5rem !important;
+  font-weight: 900 !important;
+  color: rgba(160, 104, 255, 0.08) !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+}
+
+.marketeam-icon-circle {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: rgba(160, 104, 255, 0.12) !important;
+  border: 1.5px solid rgba(160, 104, 255, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 0 20px rgba(160, 104, 255, 0.3) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.marketeam-process-card:hover .marketeam-icon-circle {
+  transform: scale(1.1) rotate(5deg) !important;
+  background: rgba(160, 104, 255, 0.25) !important;
+  border-color: #A068FF !important;
+}
+
+.marketeam-step-tag {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: #F5B800 !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+.marketeam-step-title {
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.25 !important;
+  margin-bottom: 12px !important;
+}
+
+.marketeam-step-desc {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.9rem !important;
+  color: #9CA3AF !important;
+  line-height: 1.6 !important;
+}
+
+.marketeam-process-cta-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 50px !important;
+}
+
+/* Marketeam Why Choose Us Styling (Screenshot 118 Match) */
+.marketeam-why-section {
+  background: #07080E !important;
+  padding: 100px 24px !important;
+}
+
+.marketeam-glass-pill-badge {
+  background: rgba(11, 14, 27, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(160, 104, 255, 0.3) !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.marketeam-icon-capsule {
+  background: rgba(160, 104, 255, 0.12) !important;
+  border: 1px solid rgba(160, 104, 255, 0.3) !important;
+  box-shadow: 0 0 20px rgba(160, 104, 255, 0.25) !important;
+}
+
+.marketeam-pillar-node:hover .marketeam-icon-capsule {
+  background: rgba(160, 104, 255, 0.25) !important;
+  border-color: #A068FF !important;
+}
+
+.sphere-glow-aura.purple {
+  background: radial-gradient(circle, rgba(160, 104, 255, 0.3) 0%, transparent 70%) !important;
+}
+
+.sphere-glow-aura.blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%) !important;
+}
+
+.sphere-icon-circle.purple {
+  background: rgba(160, 104, 255, 0.15) !important;
+  border: 1px solid rgba(160, 104, 255, 0.35) !important;
+}
+
+.sphere-icon-circle.blue {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.35) !important;
+}
+
+.sphere-number-text.purple-glow {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 20px rgba(160, 104, 255, 0.6) !important;
+}
+
+.sphere-number-text.blue-glow {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6) !important;
+}
+
+/* Marketeam FAQ Section Styling (Screenshot 119 Match) */
+.marketeam-faq-section {
+  background: #05060A !important;
+  padding: 100px 24px 140px 24px !important;
+}
+
+.marketeam-faq-card {
+  background: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(160, 104, 255, 0.2) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  transition: all 0.35s ease !important;
+}
+
+.marketeam-faq-card:hover {
+  border-color: rgba(160, 104, 255, 0.5) !important;
+  box-shadow: 0 0 25px rgba(160, 104, 255, 0.25) !important;
+  transform: translateY(-2px) !important;
+}
+
+.marketeam-faq-card.active {
+  border-color: #A068FF !important;
+  box-shadow: 0 0 35px rgba(160, 104, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  background: rgba(18, 22, 38, 0.95) !important;
+}
+
+.marketeam-num-glow {
+  color: #A068FF !important;
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 12px rgba(160, 104, 255, 0.5) !important;
+}
+
+.marketeam-faq-card .faq-question-title {
+  color: #FFFFFF !important;
+  font-family: 'Urbanist', var(--font-heading), sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+
+.marketeam-plus-circle {
+  background: rgba(160, 104, 255, 0.12) !important;
+  border: 1px solid rgba(160, 104, 255, 0.35) !important;
+  color: #A068FF !important;
+}
+
+.marketeam-faq-card.active .marketeam-plus-circle {
+  background: rgba(160, 104, 255, 0.25) !important;
+  border-color: #A068FF !important;
+}
+
+.marketeam-answer-body p {
+  color: #D1D5DB !important;
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.98rem !important;
+  line-height: 1.7 !important;
+  border-top: 1px solid rgba(160, 104, 255, 0.15) !important;
+  padding-top: 16px !important;
+  margin-top: 16px !important;
+}
+

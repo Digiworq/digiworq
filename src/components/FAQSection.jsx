@@ -67,43 +67,43 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="faq-section" id="faq">
+    <section className="faq-section marketeam-faq-section" id="faq">
       <div className="section-container">
-        {/* Section Header Matching Eventura Design */}
-        <div className="eventura-section-header">
-          <span className="eventura-sub-tag">FAQS</span>
-          <h2 className="eventura-section-title">
-            Frequently Asked <span className="eventura-text-gold">Questions</span>
+        {/* Section Header Matching Marketeam Design */}
+        <div className="eventura-section-header marketeam-header-center">
+          <span className="marketeam-purple-tag">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 className="marketeam-section-h2">
+            Frequently Asked <span className="marketeam-text-gradient">Questions</span>
           </h2>
-          <p className="eventura-section-desc">
+          <p className="marketeam-section-subdesc">
             Everything you need to know about our digital marketing, web engineering, branding, and video services.
           </p>
         </div>
 
-        {/* FAQ Accordion List (9 Items) */}
+        {/* FAQ Accordion List */}
         <div className="faq-list-container">
           {faqItems.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div 
                 key={idx} 
-                className={`faq-card-item ${isOpen ? 'active' : ''}`}
+                className={`faq-card-item marketeam-faq-card ${isOpen ? 'active' : ''}`}
                 onClick={() => toggleFAQ(idx)}
               >
                 <div className="faq-question-header">
                   <div className="faq-left-text">
-                    <span className="faq-number">{item.num}</span>
+                    <span className="faq-number marketeam-num-glow">{item.num}</span>
                     <h3 className="faq-question-title">{item.question}</h3>
                   </div>
 
-                  <div className="faq-plus-circle">
-                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                  <div className="faq-plus-circle marketeam-plus-circle">
+                    {isOpen ? <Minus size={18} color="#A068FF" /> : <Plus size={18} color="#A068FF" />}
                   </div>
                 </div>
 
                 {/* Answer Accordion Content */}
                 {isOpen && (
-                  <div className="faq-answer-body">
+                  <div className="faq-answer-body marketeam-answer-body">
                     <p>{item.answer}</p>
                   </div>
                 )}

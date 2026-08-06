@@ -57,16 +57,16 @@ export default function WhyChooseUs({ onOpenContact }) {
   ];
 
   return (
-    <section className="why-choose-us-section">
+    <section className="why-choose-us-section marketeam-why-section">
       <div className="section-container">
-        {/* Header Title Box Matching Eventura Design */}
-        <div className="eventura-section-header">
-          <span className="eventura-sub-tag">WHY CHOOSE US</span>
-          <h2 className="eventura-section-title">
+        {/* Header Title Box Matching Marketeam Design */}
+        <div className="eventura-section-header marketeam-header-center">
+          <span className="marketeam-purple-tag">WHY CHOOSE US</span>
+          <h2 className="marketeam-section-h2">
             Why Leading Brands Partner.<br />
-            <span className="eventura-text-indigo-gradient">Here's why they choose Digiworq.</span>
+            <span className="marketeam-text-gradient">Here's why they choose Digiworq.</span>
           </h2>
-          <p className="eventura-section-desc">
+          <p className="marketeam-section-subdesc">
             We combine cutting-edge technology, strategic branding expertise, and performance-driven digital marketing to help your business outpace the competition.
           </p>
         </div>
@@ -82,12 +82,12 @@ export default function WhyChooseUs({ onOpenContact }) {
                 className="why-hero-img"
               />
               <div className="why-img-overlay"></div>
-              <div className="why-floating-badge badge-top">
-                <Icons.CheckCircle2 size={16} className="badge-check-gold" />
+              <div className="why-floating-badge badge-top marketeam-glass-pill-badge">
+                <Icons.CheckCircle2 size={16} color="#A068FF" />
                 <span>#1 Rated Digital Agency in Bangalore</span>
               </div>
-              <div className="why-floating-badge badge-bottom-right">
-                <Icons.Zap size={16} className="badge-check-gold" />
+              <div className="why-floating-badge badge-bottom-right marketeam-glass-pill-badge">
+                <Icons.Zap size={16} color="#F5B800" />
                 <span>100+ AI Workflows Live</span>
               </div>
             </div>
@@ -98,9 +98,9 @@ export default function WhyChooseUs({ onOpenContact }) {
             {pillars.map((p, idx) => {
               const IconComp = p.icon;
               return (
-                <div key={idx} className="why-pillar-open-node">
-                  <div className="pillar-icon-capsule">
-                    <IconComp size={22} color="#F5B800" />
+                <div key={idx} className="why-pillar-open-node marketeam-pillar-node">
+                  <div className="pillar-icon-capsule marketeam-icon-capsule">
+                    <IconComp size={22} color="#A068FF" />
                   </div>
                   <div className="pillar-text-box">
                     <h3 className="pillar-title">{p.title}</h3>
@@ -112,29 +112,31 @@ export default function WhyChooseUs({ onOpenContact }) {
 
             {/* Bottom CTA Action Button */}
             <div className="why-cta-row">
-              <button className="btn-yellow-solid-why" onClick={onOpenContact}>
-                <span>Partner with Digiworq</span>
-                <Icons.ArrowRight size={18} />
-              </button>
+              <div className="btn-border-wrap">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Partner with Digiworq</span>
+                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Organic Floating Holographic Metric Spheres (Zero Rectangular Box Frame) */}
+        {/* Organic Floating Holographic Metric Spheres */}
         <div className="holographic-metrics-section">
-          <div className="metrics-header-tag">
-            <Icons.Sparkles size={16} className="sparkle-gold-icon" />
+          <div className="metrics-header-tag marketeam-purple-tag">
+            <Icons.Sparkles size={16} color="#A068FF" />
             <span>AGENCY PERFORMANCE METRICS</span>
-            <Icons.Sparkles size={16} className="sparkle-gold-icon" />
+            <Icons.Sparkles size={16} color="#A068FF" />
           </div>
 
           <div className="holographic-spheres-grid">
             <div className="metric-glass-sphere">
-              <div className="sphere-glow-aura"></div>
-              <div className="sphere-icon-circle">
-                <Icons.ShieldCheck size={24} color="#F5B800" />
+              <div className="sphere-glow-aura purple"></div>
+              <div className="sphere-icon-circle purple">
+                <Icons.ShieldCheck size={24} color="#A068FF" />
               </div>
-              <h3 className="sphere-number-text">
+              <h3 className="sphere-number-text purple-glow">
                 <AnimatedStatNumber target={99} suffix="%+" />
               </h3>
               <span className="sphere-label-text">Client Retention</span>
@@ -143,7 +145,7 @@ export default function WhyChooseUs({ onOpenContact }) {
             <div className="metric-glass-sphere highlight-gold-sphere">
               <div className="sphere-glow-aura gold"></div>
               <div className="sphere-icon-circle gold">
-                <Icons.Rocket size={26} color="#111827" />
+                <Icons.Rocket size={26} color="#F5B800" />
               </div>
               <h3 className="sphere-number-text gold-glow">
                 <AnimatedStatNumber target={500} suffix="+" />
@@ -152,22 +154,22 @@ export default function WhyChooseUs({ onOpenContact }) {
             </div>
 
             <div className="metric-glass-sphere">
-              <div className="sphere-glow-aura"></div>
-              <div className="sphere-icon-circle">
-                <Icons.Trophy size={24} color="#F5B800" />
+              <div className="sphere-glow-aura purple"></div>
+              <div className="sphere-icon-circle purple">
+                <Icons.Trophy size={24} color="#A068FF" />
               </div>
-              <h3 className="sphere-number-text">
+              <h3 className="sphere-number-text purple-glow">
                 <AnimatedStatNumber target={15} suffix="+" />
               </h3>
               <span className="sphere-label-text">Years Combined Exp.</span>
             </div>
 
             <div className="metric-glass-sphere">
-              <div className="sphere-glow-aura"></div>
-              <div className="sphere-icon-circle">
-                <Icons.Clock size={24} color="#F5B800" />
+              <div className="sphere-glow-aura blue"></div>
+              <div className="sphere-icon-circle blue">
+                <Icons.Clock size={24} color="#3B82F6" />
               </div>
-              <h3 className="sphere-number-text">
+              <h3 className="sphere-number-text blue-glow">
                 <AnimatedStatNumber target={24} suffix="/7" />
               </h3>
               <span className="sphere-label-text">Dedicated Support</span>

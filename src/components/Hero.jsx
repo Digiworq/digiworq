@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, ChevronDown } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, ChevronDown, MousePointer } from 'lucide-react';
 const logoMark = '/digiworq-logo.png';
 
 const PROMPT_SAMPLES = [
@@ -9,12 +9,85 @@ const PROMPT_SAMPLES = [
   "3D Product Animation & Rebranding · Global · ₹3,00,000 budget"
 ];
 
+// Custom Count-Up Hook from styling prompt
+function useCountUp(target, duration = 2000, delay = 1200) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp = null;
+    let animationId = null;
+
+    const timeoutId = setTimeout(() => {
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        // easeOutCubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(easeProgress * target));
+
+        if (progress < 1) {
+          animationId = requestAnimationFrame(step);
+        }
+      };
+      animationId = requestAnimationFrame(step);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [target, duration, delay]);
+
+  return count;
+}
+
+// Typewriter Heading Component from styling prompt
+function TypewriterHeading({ text, splitIndex = 67, onFinish }) {
+  const [displayedLength, setDisplayedLength] = useState(0);
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    let timeoutId;
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setDisplayedLength((prev) => {
+          if (prev >= text.length) {
+            clearInterval(interval);
+            setIsDone(true);
+            if (onFinish) onFinish();
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, 35);
+    }, 400);
+
+    return () => {
+      clearTimeout(startDelay);
+      clearTimeout(timeoutId);
+    };
+  }, [text, onFinish]);
+
+  const currentText = text.slice(0, displayedLength);
+  const part1 = currentText.slice(0, Math.min(displayedLength, splitIndex));
+  const part2 = displayedLength > splitIndex ? currentText.slice(splitIndex) : "";
+
+  return (
+    <h1 className="marketeam-typewriter-h1">
+      <span className="part-white">{part1}</span>
+      <span className="part-gradient">{part2}</span>
+      {!isDone && <span className="typewriter-cursor">|</span>}
+    </h1>
+  );
+}
+
 export default function Hero({ onOpenContact }) {
   const canvasRef = useRef(null);
   const heroRef = useRef(null);
-  const [sampleIdx, setSampleIdx] = useState(0);
+  const [typingFinished, setTypingFinished] = useState(false);
+  const counterVal = useCountUp(500, 2000, 1200);
 
-  // Full-Screen High-Density Moving Gold Lights Canvas (Matching Eventura Photo 1 100%)
+  // High-Density Moving Gold Lights Canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -30,11 +103,10 @@ export default function Hero({ onOpenContact }) {
     updateCanvasDimensions();
     window.addEventListener('resize', updateCanvasDimensions);
 
-    // Initialize 300 particle lights evenly distributed across full width & height
     const width = canvas.width || window.innerWidth;
     const height = canvas.height || 800;
 
-    const particles = Array.from({ length: 300 }, () => {
+    const particles = Array.from({ length: 280 }, () => {
       const isSquare = Math.random() > 0.76;
       const isLarge = Math.random() > 0.85;
       return {
@@ -42,7 +114,7 @@ export default function Hero({ onOpenContact }) {
         y: Math.random() * height,
         radius: isLarge ? Math.random() * 2.2 + 1.2 : Math.random() * 1.4 + 0.4,
         size: isLarge ? Math.random() * 3.5 + 2.0 : Math.random() * 2.0 + 0.8,
-        color: Math.random() > 0.25 ? '#F5B800' : (Math.random() > 0.5 ? '#FEF08A' : (Math.random() > 0.5 ? '#F97316' : '#FFFFFF')),
+        color: Math.random() > 0.3 ? '#A068FF' : (Math.random() > 0.5 ? '#F5B800' : '#FFFFFF'),
         alpha: Math.random() * 0.85 + 0.15,
         alphaSpeed: (Math.random() - 0.5) * 0.015,
         vx: (Math.random() - 0.5) * 0.3,
@@ -77,13 +149,6 @@ export default function Hero({ onOpenContact }) {
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fill();
         }
-
-        if (p.isLarge) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(245, 184, 0, 0.15)';
-          ctx.fill();
-        }
       });
 
       ctx.globalAlpha = 1;
@@ -98,153 +163,112 @@ export default function Hero({ onOpenContact }) {
     };
   }, []);
 
-  // Cycle through prompt samples every 3.5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSampleIdx((prev) => (prev + 1) % PROMPT_SAMPLES.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
+  const headlineText = "Unlock Top Digital Growth Talent & AI Strategy You Thought Was Out of Reach -- Now Just One Click Away!";
 
   return (
-    <section ref={heroRef} className="eventura-hero-section">
-      {/* 300 Moving Light Canvas */}
+    <section ref={heroRef} className="eventura-hero-section marketeam-hero-root">
+      {/* Moving Lights Canvas */}
       <canvas ref={canvasRef} className="eventura-hero-canvas" />
 
-      {/* Ambient Radial Spotlights */}
+      {/* Ambient Spotlights */}
       <div className="eventura-purple-spotlight" />
       <div className="eventura-gold-spotlight" />
 
       <div className="section-container eventura-hero-container">
-        {/* Top Floating Badge */}
+        {/* Top Floating Pill Badge */}
         <div className="eventura-badge-pill">
           <span className="eventura-badge-dot">●</span>
-          <span>AI-powered digital growth · now in Bangalore</span>
+          <span>AI-Powered Marketing Talent Platform · Bangalore</span>
         </div>
 
-        <div className="eventura-hero-grid">
-          {/* Left Column: Headline & CTAs */}
-          <div className="eventura-hero-left">
-            <h1 className="eventura-hero-title">
-              Refine your <br />
-              entire brand <br />
-              in <span className="eventura-text-gold">one agency.</span>
-            </h1>
+        <div className="marketeam-hero-grid">
+          {/* Hero Left Column: Typewriter & Conic Border CTAs */}
+          <div className="marketeam-hero-left">
+            <TypewriterHeading 
+              text={headlineText} 
+              splitIndex={67}
+              onFinish={() => setTypingFinished(true)} 
+            />
 
-            <p className="eventura-hero-subtext">
-              Tell Digiworq what you're building. It crafts custom strategies, designs world-class websites, runs high-ROI campaigns, and builds your digital presence — while you watch.
+            <p className="marketeam-hero-subtext">
+              Digiworq pairs you with Bangalore's top digital marketing strategists, full-stack engineers, 3D animators, and video directors — fully managed in one platform.
             </p>
 
-            {/* Action Buttons */}
-            <div className="eventura-hero-cta-group">
-              <button className="eventura-primary-btn" onClick={onOpenContact}>
-                Get started →
-              </button>
-              <a href="#services" className="eventura-secondary-btn">
-                Explore services
-              </a>
-            </div>
+            {/* Rotating Conic-Gradient Border Action Buttons */}
+            <div className="marketeam-hero-cta-group">
+              <div className="btn-border-wrap">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Start Project</span>
+                  <ArrowRight size={18} className="btn-arrow-icon" />
+                </button>
+              </div>
 
-            {/* Bottom 3 Performance Stats */}
-            <div className="eventura-hero-stats-row">
-              <div className="eventura-hero-stat">
-                <span className="stat-val">500+</span>
-                <span className="stat-lbl">delivered projects</span>
-              </div>
-              <div className="eventura-hero-stat">
-                <span className="stat-val">100%</span>
-                <span className="stat-lbl">human-verified results</span>
-              </div>
-              <div className="eventura-hero-stat">
-                <span className="stat-val">₹</span>
-                <span className="stat-lbl">transparent pricing</span>
-              </div>
+              <a href="#services" className="marketeam-secondary-btn">
+                Explore Specialists
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Live AI Strategy Preview Card */}
-          <div className="eventura-hero-right">
-            <div className="eventura-preview-card">
-              {/* Header Bar */}
-              <div className="eventura-card-top-bar">
-                <span className="yellow-dot">■</span>
-                <span className="card-top-text">{PROMPT_SAMPLES[sampleIdx]}</span>
-              </div>
-
-              {/* Status Indicator */}
-              <div className="eventura-card-status">
-                <Sparkles size={14} className="sparkle-gold-icon" />
-                <span>Assembling your growth strategy...</span>
-              </div>
-
-              {/* 5 Real-Time Execution Milestones */}
-              <div className="eventura-milestones-list">
-                <div className="milestone-item active">
-                  <div className="milestone-icon-box">
-                    <ShieldCheck size={16} />
-                  </div>
-                  <div className="milestone-info">
-                    <span className="milestone-title">Market research complete</span>
-                    <span className="milestone-desc">Bangalore competitor audit & keyword strategy</span>
-                  </div>
-                  <CheckCircle2 size={16} className="check-icon-gold" />
-                </div>
-
-                <div className="milestone-item active">
-                  <div className="milestone-icon-box">
-                    <Sparkles size={16} />
-                  </div>
-                  <div className="milestone-info">
-                    <span className="milestone-title">Bespoke UI/UX & Web Engine matched</span>
-                    <span className="milestone-desc">React + Vite + 3D Animation Studio stack</span>
-                  </div>
-                  <CheckCircle2 size={16} className="check-icon-gold" />
-                </div>
-
-                <div className="milestone-item active">
-                  <div className="milestone-icon-box">
-                    <ShieldCheck size={16} />
-                  </div>
-                  <div className="milestone-info">
-                    <span className="milestone-title">Creative video shoot scheduled</span>
-                    <span className="milestone-desc">Indoor studio & outdoor drone coverage</span>
-                  </div>
-                  <CheckCircle2 size={16} className="check-icon-gold" />
-                </div>
-
-                <div className="milestone-item active">
-                  <div className="milestone-icon-box">
-                    <Sparkles size={16} />
-                  </div>
-                  <div className="milestone-info">
-                    <span className="milestone-title">Performance campaign staged</span>
-                    <span className="milestone-desc">Google Ads + Meta lead forms + Influencer outreach</span>
-                  </div>
-                  <CheckCircle2 size={16} className="check-icon-gold" />
-                </div>
-
-                <div className="milestone-item active">
-                  <div className="milestone-icon-box">
-                    <ShieldCheck size={16} />
-                  </div>
-                  <div className="milestone-info">
-                    <span className="milestone-title">ROI dashboard activated</span>
-                    <span className="milestone-desc">Real-time leads, traffic, and conversion tracking</span>
-                  </div>
-                  <CheckCircle2 size={16} className="check-icon-gold" />
+          {/* Hero Right Column: Concentric Orbital Circles Visualization */}
+          <div className="marketeam-hero-right">
+            <div className="circles-visualization-container">
+              
+              {/* Orbit 1 (Innermost: 353px) */}
+              <div className="orbital-ring orbit-1">
+                <div className="avatar-placed avatar-1 square-radius purple-glow">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
                 </div>
               </div>
 
-              <div className="eventura-card-footer">
-                <span>One agency. One platform. Every deliverable.</span>
+              {/* Orbit 2 (501px) */}
+              <div className="orbital-ring orbit-2">
+                <div className="avatar-placed avatar-2 round yellow-glow">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+                <div className="avatar-placed avatar-3 lg-size pink-glow">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+                <div className="avatar-placed avatar-4 square-radius blue-glow">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
               </div>
+
+              {/* Orbit 3 (649px) */}
+              <div className="orbital-ring orbit-3">
+                <div className="avatar-placed avatar-5 xl-size pink-glow">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+              </div>
+
+              {/* Orbit 4 (Outermost: 797px) */}
+              <div className="orbital-ring orbit-4">
+                <div className="avatar-placed avatar-6 purple-glow">
+                  <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+                <div className="avatar-placed avatar-7 xl-size orange-glow">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+                <div className="avatar-placed avatar-8 xl-size pink-glow">
+                  <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+                <div className="avatar-placed avatar-9 purple-glow">
+                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Specialist" />
+                </div>
+              </div>
+
+              {/* Center Counter Circle */}
+              <div className="center-counter-circle">
+                <span className="counter-number">{counterVal}+</span>
+                <span className="counter-label">Specialists</span>
+              </div>
+
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
         <div className="eventura-scroll-indicator">
-          <span>scroll to see it work</span>
+          <span>scroll to explore talent</span>
           <ChevronDown size={14} />
         </div>
       </div>

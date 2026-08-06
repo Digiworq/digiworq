@@ -144,6 +144,77 @@ function ArticleGraphicHeader({ type }) {
   );
 }
 
+// Helper to provide dynamic icon, label, and avatars per active service
+const getDynamicServiceVisualData = (serviceId = '', serviceTitle = '', categoryId = '') => {
+  const rawTitle = (serviceTitle || serviceId || 'DIGITAL GROWTH').toUpperCase();
+  const searchStr = `${serviceTitle} ${serviceId} ${categoryId}`.toLowerCase();
+
+  let icon = Icons.Sparkles;
+  let subLabel = "SPECIALIZATION STACK";
+  let avatars = [
+    { img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80", tag: "AI Lead", glow: "purple-glow" },
+    { img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80", tag: "Strategy", glow: "yellow-glow" },
+    { img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80", tag: "Delivered", glow: "pink-glow" }
+  ];
+
+  if (searchStr.includes('brand') || searchStr.includes('creative') || categoryId === 'creative') {
+    icon = Icons.Palette;
+    subLabel = "CREATIVE STUDIO";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80", tag: "Figma", glow: "purple-glow" },
+      { img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80", tag: "Vector", glow: "yellow-glow" },
+      { img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80", tag: "Identity", glow: "pink-glow" }
+    ];
+  } else if (searchStr.includes('tech') || searchStr.includes('web') || searchStr.includes('app') || categoryId === 'technology') {
+    icon = Icons.Code2;
+    subLabel = "ENGINEERING STACK";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80", tag: "React", glow: "blue-glow" },
+      { img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80", tag: "Vite", glow: "purple-glow" },
+      { img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80", tag: "API", glow: "yellow-glow" }
+    ];
+  } else if (searchStr.includes('video') || searchStr.includes('film') || searchStr.includes('photo') || categoryId === 'video-production') {
+    icon = Icons.Video;
+    subLabel = "4K CINEMA STACK";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80", tag: "4K Drone", glow: "orange-glow" },
+      { img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80", tag: "Post Edit", glow: "pink-glow" },
+      { img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80", tag: "Live Cam", glow: "purple-glow" }
+    ];
+  } else if (searchStr.includes('animat') || searchStr.includes('3d') || searchStr.includes('2d')) {
+    icon = Icons.Box;
+    subLabel = "3D MOTION STACK";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80", tag: "Render", glow: "purple-glow" },
+      { img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80", tag: "Motion", glow: "yellow-glow" },
+      { img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80", tag: "VFX", glow: "blue-glow" }
+    ];
+  } else if (searchStr.includes('market') || searchStr.includes('seo') || searchStr.includes('ads') || categoryId === 'digital-marketing') {
+    icon = Icons.TrendingUp;
+    subLabel = "PERFORMANCE & ROI";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80", tag: "Google Ads", glow: "yellow-glow" },
+      { img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80", tag: "Meta", glow: "blue-glow" },
+      { img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80", tag: "ROI 4x", glow: "purple-glow" }
+    ];
+  } else if (searchStr.includes('print')) {
+    icon = Icons.Printer;
+    subLabel = "OFFSET & CMYK";
+    avatars = [
+      { img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80", tag: "CMYK", glow: "purple-glow" },
+      { img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80", tag: "Packaging", glow: "yellow-glow" },
+      { img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80", tag: "Die-Cut", glow: "orange-glow" }
+    ];
+  }
+
+  return {
+    label: rawTitle,
+    subLabel,
+    icon,
+    avatars
+  };
+};
+
 export default function ServicePage({ categoryId = "creative", subServiceId, initialServiceId, onOpenContact, onBackHome }) {
   const [isCeoCardHovered, setIsCeoCardHovered] = useState(false);
   const [activeFaqIndex, setActiveFaqIndex] = useState(0);
@@ -247,70 +318,111 @@ export default function ServicePage({ categoryId = "creative", subServiceId, ini
             <span className="bc-current">{activeService.title}</span>
           </div>
 
-          <div className="service-hero-grid">
+          <div className="service-hero-grid marketeam-hero-grid">
             {/* Left Hero Text Column */}
-            <div className="service-hero-left">
-              <h1 className="service-hero-h1">
-                {activeService.title} <span className="highlight-yellow">in Bangalore</span>
+            <div className="service-hero-left marketeam-hero-left">
+              <h1 className="marketeam-typewriter-h1">
+                <span className="part-white">{activeService.title}</span> <span className="part-gradient">in Bangalore</span>
               </h1>
 
-              <p className="service-hero-p">
-                Digiworq is a leading {activeService.title.toLowerCase()} agency in Bangalore. We help businesses build a strong digital presence, improve customer experience, and accelerate market growth.
+              <p className="marketeam-hero-subtext">
+                Digiworq is Bangalore's premier {activeService.title.toLowerCase()} agency. We build market-defining digital presences, elevate user experiences, and engineer scalable growth for your business.
               </p>
 
-              {/* Two CTA Buttons matching Screenshot 15 */}
-              <div className="service-hero-cta-group">
-                <button className="btn-yellow-solid" onClick={onOpenContact}>
-                  <span>Request for quote</span>
-                  <Icons.ArrowRight size={16} />
-                </button>
+              {/* Action Buttons wrapped in rotating conic gradient */}
+              <div className="marketeam-hero-cta-group">
+                <div className="btn-border-wrap">
+                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                    <span>Request Quote</span>
+                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                  </button>
+                </div>
 
-                <button className="btn-yellow-outline" onClick={scrollToDetails}>
-                  <span>Tell me more</span>
-                  <Icons.ArrowDown size={16} />
+                <button className="marketeam-secondary-btn" onClick={scrollToDetails}>
+                  Tell Me More ↓
                 </button>
               </div>
             </div>
 
-            {/* Right Vector Illustration Column */}
-            <div className="service-hero-right">
-              <ServiceHeroIllustration />
+            {/* Right Concentric Studio Sphere Visual Column (Dynamic per Service) */}
+            <div className="service-hero-right marketeam-hero-right">
+              {(() => {
+                const visualData = getDynamicServiceVisualData(activeService.id, activeService.title, categoryId);
+                const CenterIcon = visualData.icon;
+                return (
+                  <div className="circles-visualization-container service-orbital-studio-container">
+                    {/* Orbit 1 */}
+                    <div className="orbital-ring orbit-1">
+                      {visualData.avatars[0] && (
+                        <div className={`avatar-placed avatar-1 ${visualData.avatars[0].glow}`}>
+                          <img src={visualData.avatars[0].img} alt={visualData.avatars[0].tag} />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Orbit 2 */}
+                    <div className="orbital-ring orbit-2">
+                      {visualData.avatars[1] && (
+                        <div className={`avatar-placed avatar-2 ${visualData.avatars[1].glow}`}>
+                          <img src={visualData.avatars[1].img} alt={visualData.avatars[1].tag} />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Orbit 3 */}
+                    <div className="orbital-ring orbit-3">
+                      {visualData.avatars[2] && (
+                        <div className={`avatar-placed avatar-3 ${visualData.avatars[2].glow}`}>
+                          <img src={visualData.avatars[2].img} alt={visualData.avatars[2].tag} />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Dynamic Center Sphere */}
+                    <div className="center-counter-circle service-studio-center-sphere">
+                      <CenterIcon size={26} color="#A068FF" />
+                      <span className="counter-number dynamic-service-label">{visualData.label}</span>
+                      <span className="counter-label dynamic-service-sublabel">{visualData.subLabel}</span>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </div>
 
-          {/* Yellow Border Quote Box (Matching Screenshot 15) */}
-          <div className="service-quote-callout-card">
+          {/* Organic Floating Glass Quote Capsule */}
+          <div className="service-quote-callout-card marketeam-quote-glass-capsule">
             <span className="quote-mark left">“</span>
             <p className="quote-text">
-              Digiworq provides {activeService.title.toLowerCase()} solutions. These are for startups, enterprises and growing businesses. They want to establish a brand presence in competitive markets.
+              Digiworq provides end-to-end {activeService.title.toLowerCase()} solutions tailored for ambitious startups, enterprise brands, and market leaders aiming to dominate competitive landscapes.
             </p>
             <span className="quote-mark right">”</span>
           </div>
 
-          {/* Dark Charcoal Container enclosing 3 White Cards (Matching Screenshot 16) */}
+          {/* 3 Bottom Floating Glass Feature Capsules */}
           <div className="dark-cards-outer-container">
             <div className="service-three-cards-grid">
-              <div className="service-feature-card">
-                <div className="card-yellow-dash"></div>
+              <div className="service-feature-card marketeam-glass-feature-card">
+                <div className="card-purple-dash"></div>
                 <h3 className="card-title">Trusted {activeService.title} Agency</h3>
                 <p className="card-text">
-                  Digiworq is a leading brand design agency. They focus on creating engaging branding experiences that help businesses stand out.
+                  Digiworq is a top-tier digital agency specializing in high-impact creative solutions and conversion-focused experiences.
                 </p>
               </div>
 
-              <div className="service-feature-card">
-                <div className="card-yellow-dash"></div>
-                <h3 className="card-title">{activeService.title} Companies Near Me</h3>
+              <div className="service-feature-card marketeam-glass-feature-card">
+                <div className="card-purple-dash"></div>
+                <h3 className="card-title">{activeService.title} Experts Near You</h3>
                 <p className="card-text">
-                  Businesses choose Digiworq for creative expertise. They also choose them for design solutions. Digiworq offers performance-driven branding services.
+                  Brands partner with Digiworq for proven creative direction, agile execution, and transparent ROI metrics.
                 </p>
               </div>
 
-              <div className="service-feature-card">
-                <div className="card-yellow-dash"></div>
+              <div className="service-feature-card marketeam-glass-feature-card">
+                <div className="card-purple-dash"></div>
                 <h3 className="card-title">Industries We Serve</h3>
                 <p className="card-text">
-                  Digiworq provides branding services for businesses across multiple industries. These include market segments.
+                  Delivering specialized growth solutions across Tech, FinTech, E-Commerce, Real Estate, Healthcare, and FMCG.
                 </p>
               </div>
             </div>

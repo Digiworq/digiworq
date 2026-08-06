@@ -22,21 +22,21 @@ import { menuCategories } from '../data/menuData';
 import MegaMenu from './MegaMenu';
 const logoMark = '/digiworq-logo.png';
 
-// Helper function to render sub-service icons matching Screenshot 53
+// Helper function to render sub-service icons matching Marketeam design system
 const getSubServiceIcon = (title) => {
   const t = title.toLowerCase();
-  if (t.includes('branding')) return <Palette size={18} color="#D97706" />;
-  if (t.includes('package')) return <Package size={18} color="#D97706" />;
-  if (t.includes('graphic')) return <Brush size={18} color="#D97706" />;
-  if (t.includes('ui-ux') || t.includes('ui/ux')) return <Layout size={18} color="#D97706" />;
-  if (t.includes('mobile') || t.includes('app')) return <Smartphone size={18} color="#D97706" />;
-  if (t.includes('ppt') || t.includes('presentation')) return <Presentation size={18} color="#D97706" />;
-  if (t.includes('consultation')) return <Users size={18} color="#D97706" />;
-  if (t.includes('infographic')) return <PieChart size={18} color="#D97706" />;
-  if (t.includes('social') || t.includes('content')) return <Share2 size={18} color="#D97706" />;
-  if (t.includes('illustration')) return <Image size={18} color="#D97706" />;
-  if (t.includes('rebrand')) return <RefreshCw size={18} color="#D97706" />;
-  return <Zap size={18} color="#D97706" />;
+  if (t.includes('branding')) return <Palette size={18} color="#A068FF" />;
+  if (t.includes('package')) return <Package size={18} color="#A068FF" />;
+  if (t.includes('graphic')) return <Brush size={18} color="#A068FF" />;
+  if (t.includes('ui-ux') || t.includes('ui/ux')) return <Layout size={18} color="#A068FF" />;
+  if (t.includes('mobile') || t.includes('app')) return <Smartphone size={18} color="#A068FF" />;
+  if (t.includes('ppt') || t.includes('presentation')) return <Presentation size={18} color="#A068FF" />;
+  if (t.includes('consultation')) return <Users size={18} color="#A068FF" />;
+  if (t.includes('infographic')) return <PieChart size={18} color="#A068FF" />;
+  if (t.includes('social') || t.includes('content')) return <Share2 size={18} color="#A068FF" />;
+  if (t.includes('illustration')) return <Image size={18} color="#A068FF" />;
+  if (t.includes('rebrand')) return <RefreshCw size={18} color="#A068FF" />;
+  return <Zap size={18} color="#A068FF" />;
 };
 
 export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome }) {
@@ -113,9 +113,11 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
 
           {/* Contact Us CTA (Desktop) & Mobile 3-Lines Hamburger Icon */}
           <div className="nav-right-actions">
-            <button className="contact-us-btn desktop-only" onClick={onOpenContact}>
-              Contact Us
-            </button>
+            <div className="btn-border-wrap desktop-only">
+              <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                <span>Get Started</span>
+              </button>
+            </div>
 
             {/* Mobile 3-Lines Hamburger Button */}
             <button 

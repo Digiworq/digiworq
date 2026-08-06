@@ -34,40 +34,60 @@ export default function HomeProcessSection() {
   ];
 
   return (
-    <section className="eventura-process-section" id="process">
+    <section className="eventura-process-section marketeam-process-section" id="process">
       <div className="section-container">
         {/* Section Header */}
-        <div className="eventura-section-header">
-          <span className="eventura-sub-tag">HOW DIGIWORQ WORKS</span>
-          <h2 className="eventura-section-title">
-            From a sentence to a <span className="eventura-text-gold-gradient">finished brand</span>
+        <div className="eventura-section-header marketeam-header-center">
+          <span className="marketeam-purple-tag">HOW DIGIWORQ WORKS</span>
+          <h2 className="marketeam-section-h2">
+            From a sentence to a <span className="marketeam-text-gradient">finished brand</span>
           </h2>
-          <p className="eventura-section-desc">
+          <p className="marketeam-section-subdesc">
             An agile 4-step execution framework engineered for maximum speed, transparency, and high ROI.
           </p>
         </div>
 
-        {/* Organic Fluid Open-Space Process Flow (Zero Box Containers) */}
-        <div className="organic-process-flow">
-          {/* Glowing Animated Ambient Curved Beam */}
-          <div className="organic-curved-flow-line"></div>
+        {/* Marketeam Interactive Timeline Grid */}
+        <div className="marketeam-process-flow-container">
+          {/* Animated Connecting Laser Beam Line */}
+          <div className="marketeam-laser-beam-line"></div>
 
-          {steps.map((s, idx) => {
-            const IconComp = s.icon;
-            return (
-              <div key={idx} className="organic-process-node">
-                <div className="node-number-backdrop">{s.num}</div>
-                <div className="node-icon-capsule">
-                  <IconComp size={24} color="#F5B800" />
+          <div className="marketeam-process-grid">
+            {steps.map((s, idx) => {
+              const IconComp = s.icon;
+              return (
+                <div key={idx} className="marketeam-process-card">
+                  {/* Giant Background Step Number */}
+                  <div className="marketeam-step-num-bg">{s.num}</div>
+
+                  {/* Glowing Icon Circle */}
+                  <div className="marketeam-icon-circle">
+                    <IconComp size={24} color="#A068FF" />
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="marketeam-card-content">
+                    <span className="marketeam-step-tag">{s.highlightTag}</span>
+                    <h3 className="marketeam-step-title">{s.title}</h3>
+                    <p className="marketeam-step-desc">{s.desc}</p>
+                  </div>
                 </div>
-                <div className="node-content-wrap">
-                  <span className="node-tag-pill">{s.highlightTag}</span>
-                  <h3 className="node-title">{s.title}</h3>
-                  <p className="node-desc">{s.desc}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Bottom Conic Border Action CTA */}
+          <div className="marketeam-process-cta-wrap">
+            <div className="btn-border-wrap">
+              <button className="marketeam-primary-btn" onClick={() => {
+                const el = document.getElementById('contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                <span>Launch Your Project</span>
+                <ArrowRight size={18} className="btn-arrow-icon" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -128,8 +128,8 @@ export default function ServicesGrid({ onOpenContact }) {
             </button>
           </div>
 
-        {/* Clean 3x3 Grid of All 9 Services */}
-        <div className="services-3-grid">
+        {/* Clean 3x3 Grid of All 9 Services (Velorah Container Box Style) */}
+        <div className="services-3-grid velorah-cards-grid">
           {allNineServices.map((service) => {
             const officialSrc = new URL(`../../services logo/${service.imageFile}`, import.meta.url).href;
             const modernSrc = modernArtworks[service.id];
@@ -139,45 +139,26 @@ export default function ServicesGrid({ onOpenContact }) {
             return (
               <div 
                 key={service.id} 
-                className={`hover-service-card ${isExpanded ? 'is-expanded-mobile' : ''}`}
+                className={`velorah-card-container ${isExpanded ? 'is-expanded-mobile' : ''}`}
                 onClick={() => handleCardClick(service.id)}
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(8, 10, 20, 0.45) 0%, rgba(8, 10, 20, 0.75) 55%, rgba(5, 7, 15, 0.95) 100%), url(${activeSrc})`
+                }}
               >
-                {/* Default Front View with 3D Image */}
-                <div className="card-front-content">
-                  <div className="card-top-image-container">
-                    <img 
-                      src={activeSrc} 
-                      alt={service.title} 
-                      className="service-3d-image" 
-                      onError={(e) => {
-                        e.target.src = officialSrc;
-                      }}
-                    />
-                    <span className="card-category-badge-floating">{service.category}</span>
-                  </div>
+                {/* Category Badge Pill Top Right */}
+                <div className="velorah-top-row">
+                  <span className="velorah-category-badge">{service.category}</span>
+                </div>
 
-                  <div className="card-bottom-info">
-                    <div className="service-title-pill">
-                      <span>{service.title}</span>
-                    </div>
+                {/* Main Card Text Content (Centered, Velorah Style) */}
+                <div className="velorah-card-body">
+                  <h3 className="velorah-card-title">{service.title}</h3>
+                  <p className="velorah-card-desc">{service.shortDesc}</p>
 
-                    <p className="service-short-text">{service.shortDesc}</p>
-
-                    {/* Mobile Only Expand Toggle Button */}
+                  {/* Glassmorphic Floating Pill Button */}
+                  <div className="velorah-btn-wrap">
                     <button 
-                      className="mobile-expand-toggle-btn mobile-only-toggle"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCardClick(service.id);
-                      }}
-                    >
-                      <span>{isExpanded ? 'Hide Description' : 'View Full Description'}</span>
-                      {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </button>
-
-                    {/* Desktop Direct CTA Button */}
-                    <button 
-                      className="desktop-service-explore-btn"
+                      className="velorah-glass-btn"
                       onClick={(e) => {
                         e.stopPropagation();
                         onOpenContact();
@@ -189,40 +170,28 @@ export default function ServicesGrid({ onOpenContact }) {
                   </div>
                 </div>
 
-                {/* Mobile Expandable Description Box */}
-                {isExpanded && (
-                  <div className="mobile-expanded-desc-box">
-                    <p className="mobile-full-desc-text">{service.fullDesc}</p>
-                    <button 
-                      className="mobile-explore-act-btn" 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onOpenContact();
-                      }}
-                    >
-                      <span>Get Instant Quote</span>
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
-                )}
-
-                {/* Hover Reveal Back Overlay for Desktop */}
-                <div className="card-hover-overlay desktop-only-overlay">
+                {/* Frosted Glass Hover Reveal Overlay */}
+                <div className="velorah-hover-overlay">
                   <div className="overlay-badge">
-                    <CheckCircle2 size={18} className="check-icon" />
+                    <CheckCircle2 size={16} color="#F5B800" />
                     <span>{service.category}</span>
                   </div>
 
                   <h4 className="overlay-title">{service.title}</h4>
                   <p className="overlay-full-desc">{service.fullDesc}</p>
 
-                  <button className="overlay-explore-btn" onClick={(e) => {
-                    e.stopPropagation();
-                    onOpenContact();
-                  }}>
-                    <span>EXPLORE SERVICE</span>
-                    <ArrowRight size={16} />
-                  </button>
+                  <div className="btn-border-wrap">
+                    <button 
+                      className="marketeam-primary-btn" 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenContact();
+                      }}
+                    >
+                      <span>Explore Service</span>
+                      <ArrowRight size={16} className="btn-arrow-icon" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
