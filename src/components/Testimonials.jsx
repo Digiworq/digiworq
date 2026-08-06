@@ -56,19 +56,15 @@ export default function Testimonials() {
   return (
     <section className="testimonials-section">
       <div className="section-container">
-        {/* Top Section Header matching screenshot */}
-        <div className="testimonials-header-flex">
-          <div className="testimonials-left-title">
-            <h2>Our Happy Clientele</h2>
-            <h2 className="title-highlight">Diaries</h2>
-          </div>
-
-          <div className="testimonials-right-subtitle">
-            <span className="subtitle-tag">Testimonials</span>
-            <p className="subtitle-desc">
-              We are happy and motivated to do more than what's expected...
-            </p>
-          </div>
+        {/* Section Header Matching Screenshot 64 */}
+        <div className="eventura-section-header">
+          <span className="eventura-sub-tag">WHERE THINGS STAND</span>
+          <h2 className="eventura-section-title">
+            Most agencies stop at delivery. <span className="eventura-text-indigo">Here's what's real, and what's next.</span>
+          </h2>
+          <p className="eventura-section-desc">
+            We build long-term partnerships. Here is what our clients say about their journey with Digiworq.
+          </p>
         </div>
 
         {/* Testimonial Cards Carousel Row */}

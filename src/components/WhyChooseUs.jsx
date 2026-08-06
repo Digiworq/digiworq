@@ -59,22 +59,16 @@ export default function WhyChooseUs({ onOpenContact }) {
   return (
     <section className="why-choose-us-section">
       <div className="section-container">
-        {/* Header Title Box */}
-        <div className="why-choose-header">
-          <div className="why-badge-pill">
-            <Icons.Award size={14} className="why-badge-icon" />
-            <span>WHY CHOOSE US</span>
-          </div>
-
-          <h2 className="why-choose-h2">
-            Why Leading Brands Partner with <span className="highlight-yellow">Digiworq</span>
+        {/* Header Title Box Matching Eventura Design */}
+        <div className="eventura-section-header">
+          <span className="eventura-sub-tag">WHY CHOOSE US</span>
+          <h2 className="eventura-section-title">
+            Why Leading Brands Partner.<br />
+            <span className="eventura-text-indigo-gradient">Here's why they choose Digiworq.</span>
           </h2>
-
-          <p className="why-choose-subp">
+          <p className="eventura-section-desc">
             We combine cutting-edge technology, strategic branding expertise, and performance-driven digital marketing to help your business outpace the competition.
           </p>
-
-          <div className="why-title-glow-line"></div>
         </div>
 
         {/* Dual-Column Main Content Grid */}

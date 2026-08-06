@@ -69,9 +69,15 @@ export default function FAQSection() {
   return (
     <section className="faq-section" id="faq">
       <div className="section-container">
-        {/* Section Heading matching screenshot */}
-        <div className="faq-header-box">
-          <h2 className="faq-main-title">Frequently Asked Questions</h2>
+        {/* Section Header Matching Eventura Design */}
+        <div className="eventura-section-header">
+          <span className="eventura-sub-tag">FAQS</span>
+          <h2 className="eventura-section-title">
+            Frequently Asked <span className="eventura-text-gold">Questions</span>
+          </h2>
+          <p className="eventura-section-desc">
+            Everything you need to know about our digital marketing, web engineering, branding, and video services.
+          </p>
         </div>
 
         {/* FAQ Accordion List (9 Items) */}

@@ -99,13 +99,16 @@ export default function ServicesGrid({ onOpenContact }) {
   return (
     <section className="services-section-v3" id="services">
       <div className="section-container">
-        {/* Main Section Header with "Our Services" */}
-        <div className="services-main-header-box">
-          <span className="section-subtitle">What We Offer</span>
-          <h2 className="services-main-title">Our Services</h2>
-          <p className="services-main-subtext">
-            Complete Website Development & Digital Marketing Services in Bangalore. We deliver bespoke digital solutions to help businesses grow their online marketing and communication.
+        {/* Main Section Header Matching Screenshot 63 */}
+        <div className="eventura-section-header">
+          <span className="eventura-sub-tag">ONE AGENCY, 9 SPECIALIZATIONS</span>
+          <h2 className="eventura-section-title">
+            Every service your brand needs, <span className="eventura-text-indigo">in one place</span>
+          </h2>
+          <p className="eventura-section-desc">
+            Each one human-verified. No template fluff, no surprise quotes — and every service is engineered for scalable business growth.
           </p>
+        </div>
 
           {/* Style Switcher Toggle */}
           <div className="image-style-toggle-bar">
@@ -124,7 +127,6 @@ export default function ServicesGrid({ onOpenContact }) {
               <span>Official Digiworq 3D Logos</span>
             </button>
           </div>
-        </div>
 
         {/* Clean 3x3 Grid of All 9 Services */}
         <div className="services-3-grid">

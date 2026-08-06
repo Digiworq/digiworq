@@ -5035,8 +5035,11 @@ html, body, #root, .app-root {
 
 .faq-section {
   padding: 80px 24px 140px 24px;
-  margin-bottom: 80px;
-  background-color: #FFFFFF;
+  margin-bottom: 0;
+  background-color: #07080E;
+  color: #FFFFFF;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .faq-header-box {
@@ -5046,9 +5049,9 @@ html, body, #root, .app-root {
 
 .faq-main-title {
   font-family: var(--font-heading);
-  font-size: 2.15rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  color: #111827;
+  color: #FFFFFF;
   letter-spacing: -0.5px;
 }
 
@@ -5061,24 +5064,39 @@ html, body, #root, .app-root {
 }
 
 .faq-card-item {
-  background-color: #ffffff;
-  border: 1px solid var(--border-color);
+  background-color: rgba(15, 18, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 22px 28px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
 .faq-card-item:hover {
   border-color: rgba(245, 184, 0, 0.6);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(245, 184, 0, 0.15);
   transform: translateY(-2px);
 }
 
 .faq-card-item.active {
   border-color: var(--primary-yellow);
-  box-shadow: 0 10px 24px rgba(245, 184, 0, 0.15);
+  box-shadow: 0 10px 28px rgba(245, 184, 0, 0.2);
+  background-color: rgba(18, 22, 38, 0.9);
+}
+
+.faq-question-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #FFFFFF;
+}
+
+.faq-answer-box p {
+  color: #9CA3AF;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .faq-question-header {
@@ -5967,7 +5985,3151 @@ html, body, #root, .app-root {
   font-size: 0.67rem;
   color: #9CA3AF;
   padding: 4px 12px 8px 12px;
-  background: #FFFFFF;
+  background: #0D0F1A !important;
   flex-shrink: 0;
   letter-spacing: 0.02em;
 }
+
+/* ==========================================================================
+   GOLDEN NAVBAR HOVER PILL & DARK OBSIDIAN MEGA MENU (SCREENSHOT 84 FIX)
+   ========================================================================== */
+
+/* 1. Navbar Service Button Hover/Active State -> Golden Yellow Pill */
+.nav-menu-item:hover .nav-menu-button,
+.nav-menu-item.active .nav-menu-button,
+.nav-menu-button:hover,
+.nav-menu-button.active {
+  background: #F5B800 !important;
+  background-color: #F5B800 !important;
+  color: #111827 !important;
+  border-radius: 20px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 18px rgba(245, 184, 0, 0.5) !important;
+  padding: 8px 16px !important;
+}
+
+.nav-menu-item:hover .nav-menu-button span,
+.nav-menu-item.active .nav-menu-button span,
+.nav-menu-button:hover span,
+.nav-menu-button.active span,
+.nav-menu-item:hover .nav-menu-button svg,
+.nav-menu-item.active .nav-menu-button svg,
+.nav-menu-button:hover svg,
+.nav-menu-button.active svg {
+  color: #111827 !important;
+  fill: none !important;
+  stroke: #111827 !important;
+}
+
+/* 2. 100vw Dark Obsidian & Gold Glassmorphism Mega Menu */
+.mega-dropdown-overlay {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  transform: none !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  z-index: 99999 !important;
+  padding-top: 0 !important;
+  animation: megaMenuSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes megaMenuSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mega-menu-content {
+  background: #0D0F1A !important;
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-top: none !important;
+  border-radius: 0 0 28px 28px !important;
+  padding: 40px 60px !important;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 184, 0, 0.15) !important;
+  display: grid !important;
+  grid-template-columns: 1fr 400px !important;
+  gap: 52px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.mega-menu-left {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+.mega-category-header {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1.35rem !important;
+  color: #F5B800 !important;
+  border-bottom: 3px solid #F5B800 !important;
+  padding-bottom: 6px !important;
+  width: fit-content !important;
+}
+
+.mega-category-header span {
+  color: #F5B800 !important;
+}
+
+.mega-category-header svg {
+  color: #F5B800 !important;
+}
+
+.mega-columns-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 32px !important;
+}
+
+.mega-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+.mega-item-link {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+  padding: 12px 16px !important;
+  border-radius: 16px !important;
+  border: 1px solid transparent !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+/* Service Item Hover -> Glowing Gold Highlight */
+.mega-item-link:hover {
+  background: rgba(245, 184, 0, 0.12) !important;
+  border-color: rgba(245, 184, 0, 0.4) !important;
+  box-shadow: 0 6px 20px rgba(245, 184, 0, 0.18) !important;
+  transform: translateX(4px) !important;
+}
+
+.mega-item-icon {
+  color: #F5B800 !important;
+  width: 22px !important;
+  height: 22px !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.mega-item-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.mega-item-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.mega-item-title span {
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  color: #FFFFFF !important;
+  line-height: 1.25 !important;
+  transition: color 0.2s ease !important;
+}
+
+.mega-item-link:hover .mega-item-title span {
+  color: #F5B800 !important;
+}
+
+.mega-badge {
+  background: #F5B800 !important;
+  color: #111827 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 0.65rem !important;
+  padding: 2px 7px !important;
+  border-radius: 6px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.mega-item-desc {
+  font-size: 0.83rem !important;
+  color: #9CA3AF !important;
+  line-height: 1.4 !important;
+  transition: color 0.2s ease !important;
+}
+
+.mega-item-link:hover .mega-item-desc {
+  color: #FEF08A !important;
+}
+
+/* Right Column Feature Artwork Box */
+.mega-feature-banner {
+  background: #161A2E !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  width: 100% !important;
+}
+
+.feature-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1.25rem !important;
+  color: #FFFFFF !important;
+  margin-bottom: 18px !important;
+}
+
+.feature-illustration-box {
+  width: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: #0D0F1A !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ==========================================================================
+   SERVICE PAGE DARK OBSIDIAN NAVY & HIGH-CONTRAST CONVERSION (SCREENSHOTS 88-91 FIX)
+   Zero White Cards · High-Contrast Pure White Text · Gold Accents (#F5B800)
+   ========================================================================== */
+
+/* 1. Root & Landing Hero Background */
+.digiworq-service-page-root,
+.service-landing-hero,
+.digiworq-process-section,
+.service-details-section-v2 {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.service-hero-h1 {
+  color: #FFFFFF !important;
+}
+
+.service-hero-p {
+  color: #E5E7EB !important;
+}
+
+.service-breadcrumbs .bc-link,
+.service-breadcrumbs .bc-link-sub {
+  color: #9CA3AF !important;
+}
+
+.service-breadcrumbs .bc-current {
+  color: #F5B800 !important;
+}
+
+/* 2. Top Hero Quote Card (Screenshot 88 Fix) */
+.service-quote-callout-card {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 28px 36px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.service-quote-callout-card .quote-text {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+}
+
+.service-quote-callout-card .quote-mark {
+  color: #F5B800 !important;
+}
+
+/* 3. Three Feature Cards Below Hero (Screenshot 88 Fix) */
+.dark-cards-outer-container {
+  background: #0A0C16 !important;
+}
+
+.service-feature-card {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  padding: 28px 24px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-feature-card .card-title {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  font-size: 1.15rem !important;
+}
+
+.service-feature-card .card-text {
+  color: #E5E7EB !important;
+  font-size: 0.92rem !important;
+}
+
+/* 4. Executive CEO Quote Section (Screenshot 89 Fix) */
+.ceo-quote-section-container {
+  background: #0A0C16 !important;
+  border: 1px solid rgba(245, 184, 0, 0.25) !important;
+  border-radius: 24px !important;
+}
+
+.ceo-quote-right-box {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-radius: 20px !important;
+  padding: 32px 36px !important;
+}
+
+.ceo-quote-text-paragraph {
+  color: #FFFFFF !important;
+  font-size: 1.15rem !important;
+  line-height: 1.7 !important;
+}
+
+.ceo-quote-symbol {
+  color: #F5B800 !important;
+}
+
+/* 5. Process Cards & Deliverables Tags (Screenshot 90 Fix) */
+.process-card-v2,
+.process-card {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-radius: 20px !important;
+}
+
+.step-title-v2,
+.process-step-title,
+.process-card h3 {
+  color: #FFFFFF !important;
+}
+
+.step-desc-v2,
+.process-step-desc,
+.process-card p {
+  color: #E5E7EB !important;
+}
+
+.deliverables-sub-box {
+  background: #161A2E !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+}
+
+.deliverables-sub-title {
+  color: #F5B800 !important;
+  font-weight: 800 !important;
+}
+
+.deliverable-tag-pill,
+.deliverable-tag,
+.process-card .tag-pill {
+  background: #1A1D30 !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #F5B800 !important;
+  font-weight: 700 !important;
+}
+
+/* 6. Giant Detail Box (Screenshot 91 Fix) */
+.service-details-card-v2,
+.creative-detail-box,
+.service-detail-container,
+.service-details-white-box {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  padding: 44px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+.details-title-v2,
+.detail-main-title,
+.detail-block-heading {
+  color: #FFFFFF !important;
+}
+
+.details-text-v2,
+.detail-paragraph {
+  color: #E5E7EB !important;
+  font-size: 0.98rem !important;
+}
+
+.value-badge-item {
+  background: #161A2E !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  color: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+}
+
+.value-badge-item span {
+  color: #FFFFFF !important;
+}
+
+.deliverable-card-v2,
+.deliverable-item-card {
+  background: #161A2E !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  border-radius: 14px !important;
+}
+
+.deliverable-text-v2,
+.deliverable-item-card span {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   PROCESS CARDS & FAQ ACCORDION OVERRIDES (SCREENSHOTS 92 & 93 FIX)
+   Zero White Cards · Vibrant Amber Gold Ribbons & High-Contrast Text
+   ========================================================================== */
+
+/* 1. Process Cards Corner Ribbon & Duration Pills (Screenshot 92 Fix) */
+.card-top-ribbon {
+  background: linear-gradient(135deg, #F5B800 0%, #D97706 100%) !important;
+  box-shadow: 0 2px 10px rgba(245, 184, 0, 0.4) !important;
+}
+
+.step-circle-badge {
+  background: linear-gradient(135deg, #F5B800 0%, #EAB308 100%) !important;
+  color: #111827 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 4px 14px rgba(245, 184, 0, 0.4) !important;
+}
+
+.step-circle-badge span {
+  color: #111827 !important;
+  font-weight: 900 !important;
+}
+
+.duration-pill {
+  background: rgba(245, 184, 0, 0.18) !important;
+  border: 1px solid rgba(245, 184, 0, 0.45) !important;
+  color: #F5B800 !important;
+  font-weight: 800 !important;
+  padding: 3px 10px !important;
+  border-radius: 12px !important;
+}
+
+.process-card-v2 {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.step-title-v2 {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.step-desc-v2 {
+  color: #E5E7EB !important;
+}
+
+/* 2. FAQ Accordion Item (Screenshot 93 Fix - 100% Zero White!) */
+.accordion-faq-item,
+.accordion-faq-item.is-open,
+.faq-card-item,
+.faq-mini-item {
+  background: #161A2E !important;
+  background-color: #161A2E !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.accordion-faq-item.is-open {
+  background: #1A1D32 !important;
+  background-color: #1A1D32 !important;
+  border-color: #F5B800 !important;
+  box-shadow: 0 12px 32px rgba(245, 184, 0, 0.2) !important;
+}
+
+.faq-q-text,
+.faq-question-title,
+.faq-question-text {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+}
+
+.faq-q-icon-yellow,
+.faq-q-icon {
+  color: #F5B800 !important;
+}
+
+.faq-toggle-icon svg {
+  color: #F5B800 !important;
+}
+
+.accordion-faq-answer-box,
+.faq-answer-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.faq-a-text,
+.faq-answer-body p {
+  color: #E5E7EB !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+}
+
+/* ==========================================================================
+   EVENTURA DUAL-GRADIENT TEXT & AMBIENT AURA STATS BOX (SCREENSHOTS 94 & 95 FIX)
+   ========================================================================== */
+
+/* 1. Exact 2-Color Dual Gradient Headline Text (Screenshot 94 Match) */
+.eventura-text-indigo,
+.eventura-text-indigo-gradient {
+  background: linear-gradient(135deg, #818CF8 0%, #6366F1 45%, #C084FC 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block !important;
+}
+
+.eventura-text-gold,
+.eventura-text-gold-gradient {
+  background: linear-gradient(135deg, #F5B800 0%, #FDE047 50%, #EAB308 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block !important;
+}
+
+/* 2. Eventura Ambient Dual-Glow Stats Box (Screenshot 95 Match) */
+.standalone-stats-container-box-v2,
+.eventura-ambient-stats-card {
+  background: #0B0D1B !important;
+  background-color: #0B0D1B !important;
+  border: 1px solid rgba(129, 140, 248, 0.25) !important;
+  border-radius: 28px !important;
+  padding: 44px 52px !important;
+  box-shadow: 0 0 70px rgba(245, 184, 0, 0.22), 0 0 110px rgba(99, 102, 241, 0.28), 0 24px 60px rgba(0, 0, 0, 0.8) !important;
+  position: relative !important;
+}
+
+.standalone-stat-num-v2 {
+  background: linear-gradient(135deg, #F5B800 0%, #FDE047 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 2.8rem !important;
+  text-shadow: 0 0 25px rgba(245, 184, 0, 0.5) !important;
+}
+
+.standalone-stat-label-v2 {
+  color: #E5E7EB !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+/* ==========================================================================
+   MOBILE EXPANDABLE DESCRIPTION BOX FIX (SCREENSHOT 100 FIX)
+   High-Contrast Bold Black Buttons & Pure White Description Text on Dark Obsidian
+   ========================================================================== */
+
+/* Mobile Expand Toggle Button Pill */
+.mobile-expand-toggle-btn {
+  background: #F5B800 !important;
+  background-color: #F5B800 !important;
+  color: #111827 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(245, 184, 0, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-top: 14px !important;
+}
+
+.mobile-expand-toggle-btn span,
+.mobile-expand-toggle-btn svg {
+  color: #111827 !important;
+  font-weight: 900 !important;
+}
+
+/* Mobile Expanded Description Container */
+.mobile-expanded-desc-box {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.4) !important;
+  border-radius: 0 0 20px 20px !important;
+  padding: 20px 22px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+  margin-top: 0 !important;
+}
+
+.mobile-full-desc-text {
+  color: #FFFFFF !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  font-weight: 600 !important;
+  margin-bottom: 18px !important;
+}
+
+/* Get Instant Quote Button inside Mobile Expand Box */
+.mobile-explore-act-btn {
+  background: linear-gradient(135deg, #F5B800 0%, #EAB308 100%) !important;
+  color: #111827 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 0.9rem !important;
+  padding: 12px 20px !important;
+  border-radius: 30px !important;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(245, 184, 0, 0.45) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.mobile-explore-act-btn span,
+.mobile-explore-act-btn svg {
+  color: #111827 !important;
+  font-weight: 900 !important;
+}
+
+/* Remove all Section Divider Lines & Force 100% Seamless Space Background Gradient (Screenshot 99 Match) */
+html, body, #root, .app-root-container,
+.digiworq-service-page-root {
+  border: none !important;
+  box-shadow: none !important;
+  background: #07080E !important;
+  background-color: #07080E !important;
+  background-image: radial-gradient(circle at 50% 20%, #0E1228 0%, #080A14 50%, #05060A 100%) !important;
+  background-attachment: fixed !important;
+}
+
+.why-choose-us-section,
+.services-section-v3,
+.testimonials-section,
+.agency-showcase-section,
+.faq-section,
+.home-process-section,
+.digiworq-process-section,
+.service-details-section-v2,
+.service-landing-hero {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* ==========================================================================
+   EVENTURA HERO SECTION & STARRY GOLDEN CANVAS SYSTEM (SCREENSHOT 73 FIX)
+   ========================================================================== */
+
+.eventura-hero-section {
+  position: relative !important;
+  min-height: 85vh !important;
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: 120px 0 60px 0 !important;
+  width: 100% !important;
+}
+
+.eventura-hero-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.eventura-purple-spotlight {
+  position: absolute !important;
+  top: -150px !important;
+  left: -150px !important;
+  width: 700px !important;
+  height: 700px !important;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(76, 29, 149, 0.15) 50%, transparent 80%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  filter: blur(60px) !important;
+}
+
+.eventura-gold-spotlight {
+  position: absolute !important;
+  bottom: -150px !important;
+  right: -100px !important;
+  width: 750px !important;
+  height: 750px !important;
+  background: radial-gradient(circle, rgba(245, 184, 0, 0.25) 0%, rgba(217, 119, 6, 0.12) 50%, transparent 80%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  filter: blur(60px) !important;
+}
+
+.eventura-hero-container {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+.eventura-badge-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(17, 20, 36, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 30px !important;
+  padding: 6px 18px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.82rem !important;
+  color: #D1D5DB !important;
+  margin-bottom: 32px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.eventura-badge-dot {
+  color: #10B981 !important;
+  font-size: 0.7rem !important;
+}
+
+.eventura-hero-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 48px !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+@media (max-width: 992px) {
+  .eventura-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+.eventura-hero-left {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.eventura-hero-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.8rem, 5vw, 4.4rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -1.5px !important;
+  color: #FFFFFF !important;
+  margin-bottom: 20px !important;
+}
+
+.eventura-hero-subtext {
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+  color: #9CA3AF !important;
+  max-width: 520px !important;
+  margin-bottom: 32px !important;
+}
+
+.eventura-hero-cta-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 48px !important;
+  flex-wrap: wrap !important;
+}
+
+.eventura-primary-btn {
+  background: linear-gradient(135deg, #F5B800 0%, #D97706 100%) !important;
+  color: #111827 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  padding: 14px 28px !important;
+  border-radius: 30px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 24px rgba(245, 184, 0, 0.35) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.eventura-primary-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 32px rgba(245, 184, 0, 0.5) !important;
+}
+
+.eventura-secondary-btn {
+  background: rgba(17, 20, 36, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  padding: 14px 24px !important;
+  border-radius: 30px !important;
+  cursor: pointer !important;
+  transition: background 0.25s ease, border-color 0.25s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.eventura-secondary-btn:hover {
+  background: rgba(25, 30, 55, 0.9) !important;
+  border-color: rgba(245, 184, 0, 0.4) !important;
+}
+
+.eventura-hero-stats-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 36px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding-top: 24px !important;
+  width: 100% !important;
+}
+
+.eventura-hero-stat {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.stat-val {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1.6rem !important;
+  color: #FFFFFF !important;
+}
+
+.stat-lbl {
+  font-size: 0.78rem !important;
+  color: #9CA3AF !important;
+  text-transform: lowercase !important;
+}
+
+/* Right Card Styling */
+.eventura-hero-right {
+  width: 100% !important;
+}
+
+.eventura-preview-card {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  padding: 24px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+.eventura-card-top-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: #1A1D30 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.yellow-dot {
+  color: #F5B800 !important;
+  font-size: 0.8rem !important;
+}
+
+.card-top-text {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  color: #FFFFFF !important;
+}
+
+.eventura-card-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.82rem !important;
+  color: #818CF8 !important;
+  margin-bottom: 16px !important;
+}
+
+.eventura-milestones-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+.milestone-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: #161A2E !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+
+.milestone-icon-box {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  background: #1E233D !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #F5B800 !important;
+  flex-shrink: 0 !important;
+}
+
+.milestone-info {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.milestone-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  color: #FFFFFF !important;
+}
+
+.milestone-desc {
+  font-size: 0.75rem !important;
+  color: #9CA3AF !important;
+}
+
+.check-icon-gold {
+  color: #10B981 !important;
+  flex-shrink: 0 !important;
+}
+
+.eventura-card-footer {
+  text-align: center !important;
+  font-size: 0.76rem !important;
+  color: #F5B800 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding-top: 14px !important;
+}
+
+.eventura-scroll-indicator {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin-top: 40px !important;
+  font-size: 0.78rem !important;
+  color: #6B7280 !important;
+  text-transform: lowercase !important;
+}
+
+
+/* ==========================================================================
+   CLIENT LOGO CLEAN WHITE BADGES & FAQ PURE WHITE TEXT VISIBILITY FIX
+   Fixes Screenshots 69 & 70 (100% Crisp White Text & Zero Black Logo Shadows)
+   ========================================================================== */
+
+/* 1. Remove Black Shadow Box behind Client Logos (Screenshot 70 Fix) */
+.client-logo-wrapper {
+  background: #FFFFFF !important;
+  border-radius: 14px !important;
+  padding: 12px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 80px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.client-card-box:hover .client-logo-wrapper {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(245, 184, 0, 0.3) !important;
+}
+
+.client-logo-img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.client-card-box {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 18px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.client-name-label {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  opacity: 1 !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+  display: block !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 2. FAQ Pure Bright White Text Fix (Screenshot 69 Fix) */
+.faq-question-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  cursor: pointer !important;
+}
+
+.faq-left-text {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.faq-number {
+  color: #F5B800 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1.15rem !important;
+  opacity: 1 !important;
+}
+
+.faq-question-title {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+}
+
+.faq-card-item {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  padding: 22px 26px !important;
+  margin-bottom: 14px !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+.faq-card-item:hover, 
+.faq-card-item.active {
+  border-color: rgba(245, 184, 0, 0.5) !important;
+  background: #161A2E !important;
+}
+
+.faq-plus-circle {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(245, 184, 0, 0.15) !important;
+  color: #F5B800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.faq-answer-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-top: 14px !important;
+  padding-top: 14px !important;
+}
+
+.faq-answer-body p {
+  color: #E5E7EB !important;
+  font-size: 0.96rem !important;
+  line-height: 1.65 !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+}
+
+/* 3. Global Text High-Contrast Enforcer across all components */
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+p, span, li, label {
+  color: #E5E7EB !important;
+  opacity: 1 !important;
+}
+
+
+/* ==========================================================================
+   MASTER HIGH-CONTRAST TEXT VISIBILITY & UNIFIED DARK BACKGROUND SYSTEM
+   Fixes Screenshots 65, 66, 67 & 68 (100% Crisp White Text & Zero Mismatched Boxes)
+   ========================================================================== */
+
+/* 1. Global Page Background - Eventura Deep Midnight Obsidian */
+html, body, #root, .app-root, main, section, article, header, footer, nav, aside {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+/* 2. Client Logo Slider (Screenshot 65 - Client Names High Contrast Fix) */
+.client-slider-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+}
+
+.client-title-main, 
+.client-title-sub {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+}
+
+.client-card-box, 
+.marquee-card {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.client-name-label {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  opacity: 1 !important;
+  margin-top: 10px !important;
+  display: block !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 3. Services Grid Showcase (Screenshot 66 - Title & Subtext High Contrast Fix) */
+.services-section-v3, 
+.services-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+}
+
+.hover-service-card, 
+.service-card {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+.service-title-pill span, 
+.hover-service-card h3, 
+.service-card h3 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1.15rem !important;
+  opacity: 1 !important;
+}
+
+.hover-service-card p, 
+.service-card p, 
+.service-card-desc {
+  color: #E5E7EB !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+/* 4. Testimonials Section (Screenshot 67 - Quotes High Contrast Fix) */
+.testimonials-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.testimonial-card {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  padding: 28px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.testimonial-quote-text, 
+.testimonial-card p {
+  color: #F3F4F6 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+.testimonial-author-name {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+}
+
+.testimonial-author-role {
+  color: #F5B800 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* 5. FAQ Section (Screenshot 67 - Question & Answer Contrast Fix) */
+.faq-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.faq-card-item {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.faq-card-item:hover {
+  border-color: rgba(245, 184, 0, 0.5) !important;
+}
+
+.faq-question-text {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  opacity: 1 !important;
+}
+
+.faq-answer-box p {
+  color: #E5E7EB !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+}
+
+/* 6. Why Choose Us Section (Screenshot 68 - Mismatched Dark Box & Text Fix) */
+.why-choose-us-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.why-choose-header, 
+.why-choose-content-grid {
+  background: transparent !important;
+}
+
+.why-left-visual-card {
+  background: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.pillar-card-v2, 
+.why-card-item {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.pillar-card-v2 h3, 
+.why-card-item h3 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1.15rem !important;
+  opacity: 1 !important;
+  margin-bottom: 8px !important;
+}
+
+.pillar-card-v2 p, 
+.why-card-item p {
+  color: #E5E7EB !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+}
+
+.standalone-stats-container-box-v2 {
+  background: #111424 !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 7. Dedicated Service Landing Page */
+.service-detail-page, 
+.creative-detail-box, 
+.deliverable-item-card, 
+.faq-mini-item {
+  background-color: #111424 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+.detail-main-title, 
+.detail-block-heading, 
+.faq-mini-question {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+.detail-paragraph, 
+.faq-mini-answer {
+  color: #E5E7EB !important;
+  opacity: 1 !important;
+}
+
+/* 8. Modals & Popups */
+.modal-card, 
+.influencer-modal-box {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+.form-field label, 
+.influencer-modal-title {
+  color: #FFFFFF !important;
+}
+
+.form-field input, 
+.form-field select {
+  background-color: #1A1D30 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+/* 9. Chatbot Window */
+.chatbot-window {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+}
+
+.chatbot-messages {
+  background-color: #07080E !important;
+}
+
+.bot-bubble {
+  background-color: #1A1D30 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F3F4F6 !important;
+}
+
+
+/* ==========================================================================
+   EVENTURA EXACT CARD & TYPOGRAPHY SYSTEM (SCREENSHOTS 63 & 64)
+   ========================================================================== */
+
+.eventura-process-section,
+.eventura-showcase-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  padding: 90px 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.eventura-section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 52px auto;
+}
+
+.eventura-sub-tag {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #F5B800;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.eventura-section-title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.eventura-section-desc {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+.eventura-text-gold {
+  background: linear-gradient(135deg, #FEF08A 0%, #F5B800 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.eventura-text-indigo {
+  background: linear-gradient(135deg, #C7D2FE 0%, #818CF8 50%, #6366F1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 4 Cards Grid (Screenshot 63 - Process Cards) */
+.eventura-4cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .eventura-4cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .eventura-4cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2x2 Feature Grid (Screenshot 64 - Showcase Cards) */
+.eventura-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .eventura-2x2-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Eventura Dark Card Component */
+.eventura-card-dark {
+  background: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 32px 28px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.eventura-card-dark:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(245, 184, 0, 0.35) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.eventura-card-row {
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+}
+
+.eventura-card-icon-box {
+  width: 44px;
+  height: 44px;
+  background: #1A1D30;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.eventura-card-step-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #F5B800;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.eventura-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.eventura-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   100% COMPREHENSIVE EVENTURA DARK OBSIDIAN THEME & TEXT VISIBILITY FIX
+   Zero White Side Margins Anywhere · High-Contrast White & Gold Text
+   ========================================================================== */
+
+/* Universal Root Reset & Full Width Dark Canvas */
+html, body, #root, .app-root, main, section, article, header, footer, nav, aside {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+/* Force Transparent Backgrounds on all inner text containers to remove black strips (Fix Screenshots 74-77) */
+.eventura-card-content,
+.milestone-info,
+.faq-left-text,
+.faq-question-header,
+.eventura-section-header,
+.why-choose-header,
+.why-choose-h2,
+.why-choose-subp,
+.card-bottom-info,
+.service-title-pill,
+.eventura-card-status,
+.eventura-card-footer,
+.eventura-card-title,
+.eventura-card-desc,
+.milestone-title,
+.milestone-desc {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   FIX SCREENSHOTS 78 & 79 - 100% DARK NAVY OBSIDIAN CARDS (NO WHITE CARDS!)
+   ========================================================================== */
+.why-pillar-card,
+.testimonial-card-item,
+.testimonial-card,
+.pillar-card-v2,
+.why-card-item {
+  background: #111424 !important;
+  background-color: #111424 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  padding: 28px !important;
+}
+
+.why-pillar-card:hover,
+.testimonial-card-item:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(245, 184, 0, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+  background: #161A2E !important;
+  background-color: #161A2E !important;
+}
+
+/* Typography Overrides */
+.pillar-title,
+.why-pillar-card h3,
+.author-name,
+.testimonial-card-item h4 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  opacity: 1 !important;
+}
+
+.pillar-desc,
+.why-pillar-card p,
+.testimonial-quote-text,
+.testimonial-card-item p {
+  color: #E5E7EB !important;
+  opacity: 1 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+}
+
+.author-time {
+  color: #9CA3AF !important;
+}
+
+.pillar-icon-box,
+.author-avatar-circle {
+  background: #1A1D30 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #F5B800 !important;
+}
+
+/* Force 100% Full Width Dark Background Across Every Section */
+.app-root, main,
+.hero-section-v2,
+.eventura-hero-section,
+.agency-intro-section,
+.client-slider-section,
+.home-process-section-v2,
+.services-section,
+.services-showcase-section,
+.why-choose-us-section,
+.testimonials-section,
+.faq-section,
+.digiworq-official-footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+/* Inner Centered Section Containers */
+.section-container,
+.intro-container,
+.home-process-section-v2 .section-container,
+.agency-intro-section .intro-container,
+.client-slider-section .section-container,
+.services-section .section-container,
+.why-choose-us-section .section-container,
+.testimonials-section .section-container,
+.faq-section .section-container {
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  background-color: transparent !important;
+}
+
+/* 1. Main Navbar & Top Header */
+.top-header {
+  background-color: #05060A !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.top-nav-link, .follow-us-label, .phone-num-text {
+  color: #9CA3AF !important;
+}
+
+.main-navbar {
+  background-color: rgba(7, 8, 14, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.nav-menu-button {
+  color: #E5E7EB !important;
+}
+
+.brand-title {
+  color: #FFFFFF !important;
+}
+
+.brand-subtext {
+  color: #9CA3AF !important;
+}
+
+/* Mega Menu Dropdown */
+.mega-menu-container {
+  background-color: #0A0C16 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+  color: #FFFFFF !important;
+}
+
+.mega-column-title, 
+.mega-menu-item-title, 
+.mega-feature-title {
+  color: #FFFFFF !important;
+}
+
+.mega-menu-item-desc, 
+.mega-feature-desc {
+  color: #9CA3AF !important;
+}
+
+.mega-menu-item-card {
+  background-color: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.mega-feature-banner {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+}
+
+/* 2. Agency Showcase Section (Screenshot 60 - 4 Stats Cards Fix) */
+.agency-intro-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.intro-heading {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+}
+
+.intro-subtext {
+  color: #9CA3AF !important;
+}
+
+.showcase-banner-box {
+  background: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.showcase-left-title {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1.8rem !important;
+}
+
+/* Stat Cards Dark Styling with Glowing Gold Numbers */
+.stat-card-white,
+.showcase-stat-card {
+  background: rgba(15, 18, 30, 0.9) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  border-radius: 16px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+.stat-card-white .stat-number,
+.showcase-stat-card .stat-number {
+  color: #F5B800 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 2.2rem !important;
+  display: block !important;
+  text-shadow: 0 0 20px rgba(245, 184, 0, 0.3) !important;
+}
+
+.stat-card-white .stat-label,
+.showcase-stat-card .stat-label {
+  color: #D1D5DB !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+}
+
+.stat-card-white .stat-icon {
+  color: #F5B800 !important;
+}
+
+/* 3. Home Process Section (Screenshot 62 - Text Visibility & Dark Cards Fix) */
+.home-process-section-v2 {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  padding: 90px 0 !important;
+}
+
+.home-process-h2-v2, 
+.home-process-section-v2 h2, 
+.home-process-section-v2 h3 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+}
+
+.home-process-p-v2, 
+.home-process-section-v2 p {
+  color: #9CA3AF !important;
+}
+
+.home-process-card-v2 {
+  background: rgba(15, 18, 30, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+}
+
+.process-card-title-v2 {
+  color: #FFFFFF !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1.2rem !important;
+  margin-bottom: 10px !important;
+}
+
+.process-card-desc-v2 {
+  color: #D1D5DB !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 20px !important;
+}
+
+.process-deliverables-box-v2 {
+  background: rgba(8, 10, 20, 0.95) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+}
+
+.deliverables-sub-head span {
+  color: #F5B800 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+}
+
+.deliverable-chip {
+  background: rgba(245, 184, 0, 0.12) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #FEF08A !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+/* 4. Client Slider Section */
+.client-slider-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+}
+
+.client-slider-title, 
+.client-slider-section h2, 
+.client-slider-section h3 {
+  color: #FFFFFF !important;
+}
+
+.client-card-item, 
+.client-logo-card {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 5. Services Grid Showcase Section */
+.services-section, 
+.services-showcase-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+}
+
+.services-section .section-title, 
+.services-showcase-section h2 {
+  color: #FFFFFF !important;
+}
+
+.service-card, 
+.service-showcase-card {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-card h3, 
+.service-card-title {
+  color: #FFFFFF !important;
+}
+
+.service-card p, 
+.service-card-desc {
+  color: #9CA3AF !important;
+}
+
+/* 6. Why Choose Us Section & Standalone Performance Metrics Box */
+.why-choose-us-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.why-choose-us-section h2, 
+.why-choose-us-section h3 {
+  color: #FFFFFF !important;
+}
+
+.why-choose-us-section p {
+  color: #9CA3AF !important;
+}
+
+.standalone-stats-container-box-v2, 
+.why-card-item {
+  background: rgba(15, 18, 30, 0.88) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 7. Testimonials Section (Client Diaries) */
+.testimonials-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+}
+
+.testimonials-section h2, 
+.testimonials-section h3 {
+  color: #FFFFFF !important;
+}
+
+.testimonial-card {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-name {
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-role {
+  color: #9CA3AF !important;
+}
+
+/* 8. FAQ Section */
+.faq-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+.faq-main-title {
+  color: #FFFFFF !important;
+}
+
+.faq-card-item {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.faq-question-text {
+  color: #FFFFFF !important;
+}
+
+.faq-answer-box p {
+  color: #9CA3AF !important;
+}
+
+/* 9. Service Landing Page (Dedicated Sub-Service View) */
+.service-detail-page, 
+.creative-detail-box, 
+.deliverable-item-card, 
+.faq-mini-item {
+  background-color: rgba(15, 18, 30, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.detail-main-title, 
+.detail-block-heading, 
+.faq-mini-question, 
+.ceo-name-title {
+  color: #FFFFFF !important;
+}
+
+.detail-paragraph, 
+.faq-mini-answer, 
+.process-step-desc {
+  color: #9CA3AF !important;
+}
+
+/* 10. Modals & Popups (Contact Modal & Influencer Registration) */
+.modal-card, 
+.influencer-modal-box {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8) !important;
+}
+
+.influencer-modal-header,
+.influencer-modal-footer,
+.modal-header,
+.modal-footer {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.influencer-modal-title,
+.influencer-step-heading h3,
+.influencer-confirmation h3,
+.form-field label {
+  color: #FFFFFF !important;
+}
+
+.influencer-step-heading p,
+.influencer-confirmation p,
+.perk-item {
+  color: #9CA3AF !important;
+}
+
+.form-field input,
+.form-field select,
+.modal-form input,
+.modal-form textarea {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: #F5B800 !important;
+  background-color: rgba(20, 25, 45, 0.95) !important;
+}
+
+.influencer-benefit-pills {
+  background: rgba(245, 184, 0, 0.1) !important;
+}
+
+.benefit-pill {
+  background: rgba(15, 18, 30, 0.9) !important;
+  border-color: rgba(245, 184, 0, 0.4) !important;
+  color: #F5B800 !important;
+}
+
+/* 11. Chatbot Window */
+.chatbot-window {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+}
+
+.chatbot-messages {
+  background-color: #07080E !important;
+}
+
+.bot-bubble {
+  background-color: rgba(20, 25, 45, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #F3F4F6 !important;
+}
+
+.chatbot-input-area {
+  background-color: #0D0F1A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.chatbot-input {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+.quick-reply-btn {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1px solid rgba(245, 184, 0, 0.4) !important;
+  color: #F5B800 !important;
+}
+
+/* 12. Official Digiworq Footer */
+.digiworq-official-footer {
+  background-color: #05060A !important;
+  color: #FFFFFF !important;
+  border-top: 2px solid #F5B800 !important;
+  box-shadow: 0 -4px 20px rgba(245, 184, 0, 0.4) !important;
+}
+
+.footer-col-h3, 
+.footer-brand-title {
+  color: #FFFFFF !important;
+}
+
+.footer-brand-desc, 
+.footer-ul a, 
+.footer-contact-text {
+  color: #9CA3AF !important;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #6B7280 !important;
+}
+
+
+/* ==========================================================================
+   100% COMPREHENSIVE EVENTURA DARK OBSIDIAN THEME (ZERO WHITE ANYWHERE!)
+   Applicable across all Pages, Sub-Pages, Modals, Menus, Cards & Components
+   ========================================================================== */
+
+/* Universal Root Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root, .app-root, main, page, section, article, header, footer, nav, aside {
+  background-color: #07080E;
+  color: #FFFFFF;
+}
+
+/* 1. Sticky Navigation Header & Mega Menu Dropdown */
+.top-header {
+  background-color: #05060A !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.top-nav-link, .follow-us-label, .phone-num-text {
+  color: #9CA3AF !important;
+}
+
+.main-navbar {
+  background-color: rgba(7, 8, 14, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.nav-menu-button {
+  color: #E5E7EB !important;
+}
+
+.brand-title {
+  color: #FFFFFF !important;
+}
+
+.brand-subtext {
+  color: #9CA3AF !important;
+}
+
+/* Mega Menu Dropdown Container */
+.mega-menu-container {
+  background-color: #0A0C16 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+  color: #FFFFFF !important;
+}
+
+.mega-column-title, 
+.mega-menu-item-title, 
+.mega-feature-title {
+  color: #FFFFFF !important;
+}
+
+.mega-menu-item-desc, 
+.mega-feature-desc {
+  color: #9CA3AF !important;
+}
+
+.mega-menu-item-card {
+  background-color: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.mega-menu-item-card:hover {
+  background-color: rgba(25, 30, 50, 0.9) !important;
+  border-color: rgba(245, 184, 0, 0.5) !important;
+}
+
+.mega-feature-banner {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+}
+
+/* 2. Mobile Navigation Drawer Overlay (100% Dark) */
+.mobile-nav-full-overlay {
+  background-color: #07080E !important;
+}
+
+.mobile-drawer-sub-links-bar {
+  background-color: #0F111E !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.mobile-drawer-sub-links-bar .sub-link-btn {
+  color: #E5E7EB !important;
+}
+
+.mobile-drawer-scroll-body-v53 {
+  background-color: #07080E !important;
+}
+
+.mobile-category-block-v53 {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mobile-category-row-v53 {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+}
+
+.mobile-category-row-v53.yellow-bg {
+  background-color: var(--primary-yellow) !important;
+}
+
+.mobile-sub-tiles-grid-v53 {
+  background-color: #07080E !important;
+}
+
+.mobile-sub-tile-card {
+  background-color: rgba(20, 25, 45, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.sub-tile-title {
+  color: #FFFFFF !important;
+}
+
+/* 3. Agency Showcase Section (Screenshot 60 - 4 Stats Grid) */
+.agency-intro-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.intro-heading {
+  color: #FFFFFF !important;
+}
+
+.intro-subtext {
+  color: #9CA3AF !important;
+}
+
+.showcase-banner-box {
+  background: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.showcase-stat-card, 
+.showcase-banner-box [class*="stat"],
+.intro-container [class*="card"] {
+  background-color: rgba(20, 25, 45, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.showcase-banner-box [class*="stat"] h3,
+.showcase-banner-box [class*="stat"] .stat-number,
+.showcase-banner-box [class*="stat"] span,
+.intro-container [class*="card"] h3,
+.intro-container [class*="card"] div {
+  color: #FFFFFF !important;
+}
+
+.showcase-banner-box [class*="stat"] p,
+.showcase-banner-box [class*="stat"] .stat-label,
+.intro-container [class*="card"] p,
+.intro-container [class*="card"] span {
+  color: #9CA3AF !important;
+}
+
+/* 4. Client Slider Section */
+.client-slider-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.client-slider-title, 
+.client-slider-section h2, 
+.client-slider-section h3 {
+  color: #FFFFFF !important;
+}
+
+.client-card-item, 
+.client-logo-card {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 5. Home Process Section (Workflow Steps) */
+.home-process-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.process-header-title, 
+.home-process-section h2, 
+.home-process-section h3 {
+  color: #FFFFFF !important;
+}
+
+.process-header-desc, 
+.home-process-section p {
+  color: #9CA3AF !important;
+}
+
+.process-step-card, 
+.process-card-v2 {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+/* 6. Services Grid Showcase Section */
+.services-section, 
+.services-showcase-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.services-section .section-title, 
+.services-showcase-section h2 {
+  color: #FFFFFF !important;
+}
+
+.service-card, 
+.service-showcase-card {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-card h3, 
+.service-card-title {
+  color: #FFFFFF !important;
+}
+
+.service-card p, 
+.service-card-desc {
+  color: #9CA3AF !important;
+}
+
+/* 7. Why Choose Us Section & Standalone Performance Metrics Box */
+.why-choose-us-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.why-choose-us-section h2, 
+.why-choose-us-section h3 {
+  color: #FFFFFF !important;
+}
+
+.why-choose-us-section p {
+  color: #9CA3AF !important;
+}
+
+.standalone-stats-container-box-v2, 
+.why-card-item {
+  background: rgba(15, 18, 30, 0.88) !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 8. Testimonials Section (Client Diaries) */
+.testimonials-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.testimonials-section h2, 
+.testimonials-section h3 {
+  color: #FFFFFF !important;
+}
+
+.testimonial-card {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-name {
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-role {
+  color: #9CA3AF !important;
+}
+
+/* 9. FAQ Section */
+.faq-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.faq-main-title {
+  color: #FFFFFF !important;
+}
+
+.faq-card-item {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.faq-question-text {
+  color: #FFFFFF !important;
+}
+
+.faq-answer-box p {
+  color: #9CA3AF !important;
+}
+
+/* 10. Service Landing Page (Dedicated Sub-Service View) */
+.service-detail-page, 
+.creative-detail-box, 
+.deliverable-item-card, 
+.faq-mini-item {
+  background-color: rgba(15, 18, 30, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.detail-main-title, 
+.detail-block-heading, 
+.faq-mini-question, 
+.ceo-name-title {
+  color: #FFFFFF !important;
+}
+
+.detail-paragraph, 
+.faq-mini-answer, 
+.process-step-desc {
+  color: #9CA3AF !important;
+}
+
+/* 11. Modals & Popups (Contact Modal & Influencer Registration) */
+.modal-card, 
+.influencer-modal-box {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.35) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8) !important;
+}
+
+.influencer-modal-header,
+.influencer-modal-footer,
+.modal-header,
+.modal-footer {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.influencer-modal-title,
+.influencer-step-heading h3,
+.influencer-confirmation h3,
+.form-field label {
+  color: #FFFFFF !important;
+}
+
+.influencer-step-heading p,
+.influencer-confirmation p,
+.perk-item {
+  color: #9CA3AF !important;
+}
+
+.form-field input,
+.form-field select,
+.modal-form input,
+.modal-form textarea {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: #F5B800 !important;
+  background-color: rgba(20, 25, 45, 0.95) !important;
+}
+
+.influencer-benefit-pills {
+  background: rgba(245, 184, 0, 0.1) !important;
+}
+
+.benefit-pill {
+  background: rgba(15, 18, 30, 0.9) !important;
+  border-color: rgba(245, 184, 0, 0.4) !important;
+  color: #F5B800 !important;
+}
+
+.influencer-step-dot {
+  background: rgba(15, 18, 30, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #9CA3AF !important;
+}
+
+.influencer-step-dot.active {
+  background: rgba(245, 184, 0, 0.15) !important;
+  border-color: #F5B800 !important;
+  color: #F5B800 !important;
+}
+
+.influencer-step-dot.current {
+  background: #F5B800 !important;
+  color: #0F172A !important;
+}
+
+/* 12. Chatbot Window */
+.chatbot-window {
+  background-color: #0D0F1A !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+}
+
+.chatbot-messages {
+  background-color: #07080E !important;
+}
+
+.bot-bubble {
+  background-color: rgba(20, 25, 45, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #F3F4F6 !important;
+}
+
+.chatbot-input-area {
+  background-color: #0D0F1A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.chatbot-input {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+.quick-reply-btn {
+  background-color: rgba(15, 18, 30, 0.9) !important;
+  border: 1px solid rgba(245, 184, 0, 0.4) !important;
+  color: #F5B800 !important;
+}
+
+/* 13. Official Digiworq Footer */
+.digiworq-official-footer {
+  background-color: #05060A !important;
+  color: #FFFFFF !important;
+  border-top: 2px solid #F5B800 !important;
+  box-shadow: 0 -4px 20px rgba(245, 184, 0, 0.4) !important;
+}
+
+.footer-col-h3, 
+.footer-brand-title {
+  color: #FFFFFF !important;
+}
+
+.footer-brand-desc, 
+.footer-ul a, 
+.footer-contact-text {
+  color: #9CA3AF !important;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #6B7280 !important;
+}
+
+
+/* ==========================================================================
+   EVENTURA FULL WEBSITE DARK OBSIDIAN OVERRIDE (NO WHITE BACKGROUNDS ANYWHERE!)
+   Matching Screenshot 61 (Eventura.in) 100% Exactly
+   ========================================================================== */
+
+/* Global Body & Roots */
+html, body, #root, .app-root, main {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+}
+
+/* 1. Main Navbar Header */
+.main-navbar {
+  background-color: rgba(7, 8, 14, 0.92) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.nav-menu-button {
+  color: #E5E7EB !important;
+}
+
+.brand-title {
+  color: #FFFFFF !important;
+}
+
+.brand-subtext {
+  color: #9CA3AF !important;
+}
+
+.top-header {
+  background-color: #05060A !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.top-nav-link, .follow-us-label, .phone-num-text {
+  color: #9CA3AF !important;
+}
+
+/* 2. Agency Showcase Section (Enhanced global marketing / 4 Stats Grid - Screenshot 60) */
+.agency-intro-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.intro-heading {
+  color: #FFFFFF !important;
+}
+
+.intro-subtext {
+  color: #9CA3AF !important;
+}
+
+.showcase-banner-box {
+  background: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.showcase-stat-card, 
+.showcase-banner-box .stat-box-item,
+.intro-container .showcase-banner-box [class*="stat"],
+.intro-container [class*="card"] {
+  background-color: rgba(20, 25, 45, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.showcase-banner-box [class*="stat"] h3,
+.showcase-banner-box [class*="stat"] .stat-number,
+.showcase-banner-box [class*="stat"] span,
+.intro-container [class*="card"] h3,
+.intro-container [class*="card"] div {
+  color: #FFFFFF !important;
+}
+
+.showcase-banner-box [class*="stat"] p,
+.showcase-banner-box [class*="stat"] .stat-label,
+.intro-container [class*="card"] p,
+.intro-container [class*="card"] span {
+  color: #9CA3AF !important;
+}
+
+/* 3. Client Slider Section (Our Clients Trust Us Worldwide) */
+.client-slider-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.client-slider-title, 
+.client-slider-section h2, 
+.client-slider-section h3 {
+  color: #FFFFFF !important;
+}
+
+.client-card-item, 
+.client-logo-card {
+  background-color: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 4. Home Process Section (Our 6-Step Workflow) */
+.home-process-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.process-header-title, 
+.home-process-section h2, 
+.home-process-section h3 {
+  color: #FFFFFF !important;
+}
+
+.process-header-desc, 
+.home-process-section p {
+  color: #9CA3AF !important;
+}
+
+.process-step-card, 
+.process-card-v2 {
+  background-color: rgba(15, 18, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+/* 5. Services Grid Showcase Section */
+.services-section, 
+.services-showcase-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.services-section .section-title, 
+.services-showcase-section h2 {
+  color: #FFFFFF !important;
+}
+
+.service-card, 
+.service-showcase-card {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+.service-card h3, 
+.service-card-title {
+  color: #FFFFFF !important;
+}
+
+.service-card p, 
+.service-card-desc {
+  color: #9CA3AF !important;
+}
+
+/* 6. Why Choose Us Section & Standalone Performance Metrics Box */
+.why-choose-us-section {
+  background-color: #07080E !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.why-choose-us-section h2, 
+.why-choose-us-section h3 {
+  color: #FFFFFF !important;
+}
+
+.why-choose-us-section p {
+  color: #9CA3AF !important;
+}
+
+.standalone-stats-container-box-v2, 
+.why-card-item {
+  background: rgba(15, 18, 30, 0.85) !important;
+  border: 1px solid rgba(245, 184, 0, 0.3) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 7. Testimonials Section (Client Diaries) */
+.testimonials-section {
+  background-color: #0A0C16 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.testimonials-section h2, 
+.testimonials-section h3 {
+  color: #FFFFFF !important;
+}
+
+.testimonial-card {
+  background-color: rgba(15, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-name {
+  color: #FFFFFF !important;
+}
+
+.testimonial-author-role {
+  color: #9CA3AF !important;
+}
+
+/* 8. Service Landing Page (Detail View) */
+.service-detail-page, 
+.creative-detail-box, 
+.deliverable-item-card, 
+.faq-mini-item {
+  background-color: rgba(15, 18, 30, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+.detail-main-title, 
+.detail-block-heading, 
+.faq-mini-question, 
+.ceo-name-title {
+  color: #FFFFFF !important;
+}
+
+.detail-paragraph, 
+.faq-mini-answer, 
+.process-step-desc {
+  color: #9CA3AF !important;
+}
+
+/* 9. Official Digiworq Footer */
+.digiworq-official-footer {
+  background-color: #05060A !important;
+  color: #FFFFFF !important;
+  border-top: 2px solid #F5B800 !important;
+  box-shadow: 0 -4px 20px rgba(245, 184, 0, 0.4) !important;
+}
+
+.footer-col-h3, 
+.footer-brand-title {
+  color: #FFFFFF !important;
+}
+
+.footer-brand-desc, 
+.footer-ul a, 
+.footer-contact-text {
+  color: #9CA3AF !important;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #6B7280 !important;
+}
+
+
+/* ==========================================================================
+   Eventura-Inspired Hero Section (Starry Gold Cosmos + Live AI Feature Card)
+   Matching Screenshot 59
+   ========================================================================== */
+.eventura-hero-section {
+  position: relative;
+  background-color: #07080E;
+  color: #FFFFFF;
+  padding: 110px 24px 70px 24px;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.eventura-starfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient Radial Glows */
+.eventura-glow-purple-left {
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(76, 29, 149, 0.45) 0%, rgba(15, 17, 30, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.eventura-glow-gold-right {
+  position: absolute;
+  bottom: -150px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(245, 184, 0, 0.16) 0%, rgba(15, 17, 30, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.eventura-hero-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Top Pill Badge */
+.eventura-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #D1D5DB;
+  margin-bottom: 42px;
+}
+
+.badge-teal-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #14B8A6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #14B8A6;
+  animation: statusPulse 2s infinite;
+}
+
+/* Grid Layout */
+.eventura-hero-main-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .eventura-hero-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Left Content */
+.eventura-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+}
+
+.eventura-title-gold-gradient {
+  background: linear-gradient(135deg, #FEF08A 0%, #F5B800 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.eventura-hero-subtext {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #9CA3AF;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+/* Action Buttons */
+.eventura-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.eventura-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #F5B800 0%, #EAB308 100%);
+  color: #0F172A;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(245, 184, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.eventura-btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(245, 184, 0, 0.55);
+}
+
+.eventura-btn-dark-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.eventura-btn-dark-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Metrics Row */
+.eventura-hero-metrics-bar {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-num, .metric-symbol {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: #6B7280;
+}
+
+/* Right Column: AI Prompt Glass Card (Matching Screenshot 59) */
+.eventura-hero-right {
+  position: relative;
+}
+
+.eventura-ai-card-glass {
+  background: rgba(15, 18, 30, 0.75);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 20px;
+  padding: 32px 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.eventura-ai-card-glass:hover {
+  border-color: rgba(245, 184, 0, 0.4);
+}
+
+.ai-card-glow-aura {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ai-prompt-box {
+  background: rgba(8, 10, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ai-prompt-yellow-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-yellow);
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--primary-yellow);
+}
+
+.ai-prompt-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #E5E7EB;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ai-status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #9CA3AF;
+}
+
+.ai-status-pulse {
+  width: 6px;
+  height: 6px;
+  background-color: #6366F1;
+  border-radius: 50%;
+  animation: statusPulse 1.5s infinite;
+}
+
+/* Scroll Prompt Indicator */
+.eventura-scroll-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 60px;
+  font-size: 0.8rem;
+  color: #6B7280;
+  letter-spacing: 0.04em;
+}
+
+.scroll-arrow-bounce {
+  animation: arrowBounce 2s infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(5px); }
+  60% { transform: translateY(3px); }
+}
+

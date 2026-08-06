@@ -95,7 +95,7 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
                   onMouseEnter={() => handleMenuHover(category.id)}
                 >
                   <button 
-                    className="nav-menu-button"
+                    className={`nav-menu-button ${isActive ? 'active' : ''}`}
                     onClick={() => {
                       if (onNavigateService) {
                         onNavigateService(category.id);
@@ -104,7 +104,7 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
                     }}
                   >
                     <span>{category.name}</span>
-                    <ChevronDown size={14} />
+                    <ChevronDown size={14} className={isActive ? 'rotate-180' : ''} />
                   </button>
                 </li>
               );
