@@ -10618,9 +10618,11 @@ html, body, #root, .app-root, main {
   z-index: 10 !important;
 }
 
-.velorah-card-container:hover .velorah-hover-overlay {
+.velorah-card-container:hover .velorah-hover-overlay,
+.velorah-card-container.is-expanded-mobile .velorah-hover-overlay {
   opacity: 1 !important;
   transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 
 .velorah-hover-overlay .overlay-badge {
@@ -10958,5 +10960,62 @@ html, body, #root, .app-root, main {
   border-top: 1px solid rgba(160, 104, 255, 0.15) !important;
   padding-top: 16px !important;
   margin-top: 16px !important;
+}
+
+/* Responsive Mobile Centering for Hero & Concentric Orbital Visual */
+@media (max-width: 1024px) {
+  .marketeam-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center !important;
+    justify-items: center !important;
+  }
+
+  .marketeam-hero-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .marketeam-hero-subtext {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .marketeam-hero-cta-group {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .marketeam-hero-right {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+  }
+
+  .circles-visualization-container {
+    margin: 0 auto !important;
+    transform-origin: center center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .circles-visualization-container {
+    transform: scale(0.65) !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .circles-visualization-container {
+    transform: scale(0.48) !important;
+    margin: 0 auto !important;
+  }
 }
 
