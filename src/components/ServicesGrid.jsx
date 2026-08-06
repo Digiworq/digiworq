@@ -171,9 +171,15 @@ export default function ServicesGrid({ onOpenContact }) {
                 </div>
 
                 {/* Frosted Glass Hover Reveal Overlay */}
-                <div className="velorah-hover-overlay">
+                <div 
+                  className="velorah-hover-overlay"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCardClick(service.id);
+                  }}
+                >
                   <div className="overlay-badge">
-                    <CheckCircle2 size={16} color="#F5B800" />
+                    <CheckCircle2 size={16} color="#A068FF" />
                     <span>{service.category}</span>
                   </div>
 
@@ -192,6 +198,9 @@ export default function ServicesGrid({ onOpenContact }) {
                       <ArrowRight size={16} className="btn-arrow-icon" />
                     </button>
                   </div>
+
+                  {/* Mobile Tap Close Hint */}
+                  <span className="mobile-tap-close-hint">(Tap anywhere to close)</span>
                 </div>
               </div>
             );

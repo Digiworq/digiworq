@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopHeader from './components/TopHeader';
 import MainNavbar from './components/MainNavbar';
 import Hero from './components/Hero';
@@ -22,6 +22,56 @@ export default function App() {
   const [activeSubServiceId, setActiveSubServiceId] = useState('');
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfluencerOpen, setIsInfluencerOpen] = useState(false);
+
+  // Scroll Reveal Observer for Smooth Scroll Pop-Out Animations
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -80px 0px',
+      threshold: 0.12
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const revealSelectors = [
+      '.eventura-section-header',
+      '.velorah-card-container',
+      '.marketeam-process-card',
+      '.marketeam-glass-feature-card',
+      '.marketeam-quote-glass-capsule',
+      '.why-left-visual-card',
+      '.why-pillar-open-node',
+      '.metric-glass-sphere',
+      '.testimonial-glass-capsule',
+      '.faq-card-item',
+      '.service-details-left-column',
+      '.service-studio-center-sphere',
+      '.client-slider-track-wrap'
+    ];
+
+    const timer = setTimeout(() => {
+      revealSelectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((el, index) => {
+          el.classList.add('scroll-reveal-item');
+          el.style.setProperty('--reveal-index', index % 4);
+          observer.observe(el);
+        });
+      });
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [activePage, activeCategoryId, activeSubServiceId]);
 
   const handleNavigateService = (categoryId, subServiceId) => {
     setActiveCategoryId(categoryId);

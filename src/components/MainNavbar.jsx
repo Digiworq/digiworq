@@ -121,11 +121,11 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
 
             {/* Mobile 3-Lines Hamburger Button */}
             <button 
-              className="mobile-hamburger-btn-three-lines" 
+              className="mobile-hamburger-btn-three-lines marketeam-mobile-toggle-btn" 
               onClick={toggleMobileMenu} 
               aria-label="Toggle Navigation Menu"
             >
-              <Menu size={28} color="#111827" />
+              {isMobileMenuOpen ? <X size={28} color="#A068FF" /> : <Menu size={28} color="#A068FF" />}
             </button>
           </div>
         </div>
@@ -155,15 +155,15 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
       {/* Full-Screen Non-Overlapping Mobile Navigation Overlay Drawer matching Screenshot 53 */}
       {isMobileMenuOpen && (
         <div className="mobile-nav-full-overlay">
-          {/* Yellow Top Bar inside Drawer */}
-          <div className="mobile-drawer-top-yellow-bar">
+          {/* Top Bar inside Drawer */}
+          <div className="mobile-drawer-top-yellow-bar marketeam-drawer-top-bar">
             <img src={logoMark} alt="Digiworq Official Logo" className="official-brand-logo-img-sm" />
             <button 
               className="mobile-drawer-close-btn" 
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Close Menu"
             >
-              <Menu size={28} color="#111827" />
+              <X size={28} color="#A068FF" />
             </button>
           </div>
 

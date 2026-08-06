@@ -10618,11 +10618,32 @@ html, body, #root, .app-root, main {
   z-index: 10 !important;
 }
 
-.velorah-card-container:hover .velorah-hover-overlay,
+@media (hover: hover) and (pointer: fine) {
+  .velorah-card-container:hover .velorah-hover-overlay {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+}
+
 .velorah-card-container.is-expanded-mobile .velorah-hover-overlay {
   opacity: 1 !important;
   transform: translateY(0) !important;
   pointer-events: auto !important;
+}
+
+.mobile-tap-close-hint {
+  font-family: 'Inter', var(--font-body), sans-serif !important;
+  font-size: 0.75rem !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  margin-top: 14px !important;
+  display: block !important;
+}
+
+@media (min-width: 1025px) {
+  .mobile-tap-close-hint {
+    display: none !important;
+  }
 }
 
 .velorah-hover-overlay .overlay-badge {
@@ -11017,5 +11038,51 @@ html, body, #root, .app-root, main {
     transform: scale(0.48) !important;
     margin: 0 auto !important;
   }
+}
+
+/* Marketeam Mobile Hamburger Toggle Button Styling (Screenshot 123 Fix) */
+.mobile-hamburger-btn-three-lines,
+.marketeam-mobile-toggle-btn {
+  background: rgba(160, 104, 255, 0.18) !important;
+  border: 1.5px solid #A068FF !important;
+  border-radius: 12px !important;
+  padding: 8px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 0 20px rgba(160, 104, 255, 0.45) !important;
+  cursor: pointer !important;
+}
+
+.marketeam-mobile-toggle-btn svg,
+.mobile-hamburger-btn-three-lines svg {
+  stroke: #A068FF !important;
+}
+
+.marketeam-drawer-top-bar {
+  background: #0B0E1B !important;
+  border-bottom: 1px solid rgba(160, 104, 255, 0.2) !important;
+}
+
+.mobile-nav-full-overlay {
+  background: #05060A !important;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL POP-OUT ANIMATION SYSTEM (SMOOTH POP-UP ON SCROLL)
+   ========================================================================== */
+
+.scroll-reveal-item {
+  opacity: 0 !important;
+  transform: translateY(50px) scale(0.96) !important;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform !important;
+}
+
+.scroll-reveal-item.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  transition-delay: calc(var(--reveal-index, 0) * 0.12s) !important;
 }
 
