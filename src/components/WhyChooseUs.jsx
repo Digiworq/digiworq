@@ -82,21 +82,25 @@ export default function WhyChooseUs({ onOpenContact }) {
                 className="why-hero-img"
               />
               <div className="why-img-overlay"></div>
-              <div className="why-floating-badge">
+              <div className="why-floating-badge badge-top">
                 <Icons.CheckCircle2 size={16} className="badge-check-gold" />
                 <span>#1 Rated Digital Agency in Bangalore</span>
+              </div>
+              <div className="why-floating-badge badge-bottom-right">
+                <Icons.Zap size={16} className="badge-check-gold" />
+                <span>100+ AI Workflows Live</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 4 Value Pillars List */}
+          {/* Right Column: 4 Value Pillars List (Open Space Nodes) */}
           <div className="why-right-pillars-list">
             {pillars.map((p, idx) => {
               const IconComp = p.icon;
               return (
-                <div key={idx} className="why-pillar-card">
-                  <div className="pillar-icon-box">
-                    <IconComp size={22} />
+                <div key={idx} className="why-pillar-open-node">
+                  <div className="pillar-icon-capsule">
+                    <IconComp size={22} color="#F5B800" />
                   </div>
                   <div className="pillar-text-box">
                     <h3 className="pillar-title">{p.title}</h3>
@@ -116,55 +120,57 @@ export default function WhyChooseUs({ onOpenContact }) {
           </div>
         </div>
 
-        {/* Ultra-Attractive Dark Charcoal & Gold Standalone Metrics Box */}
-        <div className="standalone-stats-container-box-v2">
-          <div className="stats-box-ambient-glow"></div>
-
-          <div className="stats-box-header-v2">
+        {/* Organic Floating Holographic Metric Spheres (Zero Rectangular Box Frame) */}
+        <div className="holographic-metrics-section">
+          <div className="metrics-header-tag">
             <Icons.Sparkles size={16} className="sparkle-gold-icon" />
             <span>AGENCY PERFORMANCE METRICS</span>
             <Icons.Sparkles size={16} className="sparkle-gold-icon" />
           </div>
 
-          <div className="standalone-stats-grid-v2">
-            <div className="standalone-stat-card-v2">
-              <div className="stat-card-icon-circle">
-                <Icons.ShieldCheck size={20} />
+          <div className="holographic-spheres-grid">
+            <div className="metric-glass-sphere">
+              <div className="sphere-glow-aura"></div>
+              <div className="sphere-icon-circle">
+                <Icons.ShieldCheck size={24} color="#F5B800" />
               </div>
-              <h3 className="standalone-stat-num-v2">
+              <h3 className="sphere-number-text">
                 <AnimatedStatNumber target={99} suffix="%+" />
               </h3>
-              <span className="standalone-stat-label-v2">Client Retention</span>
+              <span className="sphere-label-text">Client Retention</span>
             </div>
 
-            <div className="standalone-stat-card-v2 highlighted-card-v2">
-              <div className="stat-card-icon-circle gold">
-                <Icons.Rocket size={20} />
+            <div className="metric-glass-sphere highlight-gold-sphere">
+              <div className="sphere-glow-aura gold"></div>
+              <div className="sphere-icon-circle gold">
+                <Icons.Rocket size={26} color="#111827" />
               </div>
-              <h3 className="standalone-stat-num-v2 highlight-gold">
+              <h3 className="sphere-number-text gold-glow">
                 <AnimatedStatNumber target={500} suffix="+" />
               </h3>
-              <span className="standalone-stat-label-v2">Projects Delivered</span>
+              <span className="sphere-label-text highlight">Projects Delivered</span>
             </div>
 
-            <div className="standalone-stat-card-v2">
-              <div className="stat-card-icon-circle">
-                <Icons.Trophy size={20} />
+            <div className="metric-glass-sphere">
+              <div className="sphere-glow-aura"></div>
+              <div className="sphere-icon-circle">
+                <Icons.Trophy size={24} color="#F5B800" />
               </div>
-              <h3 className="standalone-stat-num-v2">
+              <h3 className="sphere-number-text">
                 <AnimatedStatNumber target={15} suffix="+" />
               </h3>
-              <span className="standalone-stat-label-v2">Years Combined Exp.</span>
+              <span className="sphere-label-text">Years Combined Exp.</span>
             </div>
 
-            <div className="standalone-stat-card-v2">
-              <div className="stat-card-icon-circle">
-                <Icons.Clock size={20} />
+            <div className="metric-glass-sphere">
+              <div className="sphere-glow-aura"></div>
+              <div className="sphere-icon-circle">
+                <Icons.Clock size={24} color="#F5B800" />
               </div>
-              <h3 className="standalone-stat-num-v2">
+              <h3 className="sphere-number-text">
                 <AnimatedStatNumber target={24} suffix="/7" />
               </h3>
-              <span className="standalone-stat-label-v2">Dedicated Support</span>
+              <span className="sphere-label-text">Dedicated Support</span>
             </div>
           </div>
         </div>

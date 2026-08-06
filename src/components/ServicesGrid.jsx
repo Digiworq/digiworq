@@ -163,9 +163,9 @@ export default function ServicesGrid({ onOpenContact }) {
 
                     <p className="service-short-text">{service.shortDesc}</p>
 
-                    {/* Mobile Tap to View Description Indicator Button */}
+                    {/* Mobile Only Expand Toggle Button */}
                     <button 
-                      className="mobile-expand-toggle-btn"
+                      className="mobile-expand-toggle-btn mobile-only-toggle"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleCardClick(service.id);
@@ -173,6 +173,18 @@ export default function ServicesGrid({ onOpenContact }) {
                     >
                       <span>{isExpanded ? 'Hide Description' : 'View Full Description'}</span>
                       {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </button>
+
+                    {/* Desktop Direct CTA Button */}
+                    <button 
+                      className="desktop-service-explore-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenContact();
+                      }}
+                    >
+                      <span>Explore Service</span>
+                      <ArrowRight size={16} className="btn-arrow" />
                     </button>
                   </div>
                 </div>
