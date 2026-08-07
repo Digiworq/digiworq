@@ -10,27 +10,32 @@ export const menuCategories = [
             title: "Branding Solutions",
             desc: "Enhance brand Identity",
             icon: "Palette",
-            badge: "Featured"
+            badge: "Featured",
+            id: "branding-solutions"
           },
           {
             title: "Package Designing",
             desc: "Eye-catching packages",
-            icon: "Box"
+            icon: "Box",
+            id: "package-designing"
           },
           {
             title: "Graphic Designing",
             desc: "High quality designs",
-            icon: "PenTool"
+            icon: "PenTool",
+            id: "graphic-designing"
           },
           {
             title: "UI-UX Design",
             desc: "User-friendly experiences",
-            icon: "Layout"
+            icon: "Layout",
+            id: "ui-ux-design"
           },
           {
             title: "Mobile App Design",
             desc: "Modern app interfaces",
-            icon: "Smartphone"
+            icon: "Smartphone",
+            id: "mobile-app-design"
           }
         ]
       },
@@ -39,27 +44,32 @@ export const menuCategories = [
           {
             title: "PPT Design",
             desc: "Engaging presentations",
-            icon: "Presentation"
+            icon: "Presentation",
+            id: "ppt-design"
           },
           {
             title: "Brand Consultation",
             desc: "Expert brand advice",
-            icon: "Users"
+            icon: "Users",
+            id: "brand-consultation"
           },
           {
             title: "Infographic Design",
             desc: "Visual storytelling",
-            icon: "PieChart"
+            icon: "PieChart",
+            id: "infographic-design"
           },
           {
             title: "Social Media Content Creation",
             desc: "Engaging social media posts",
-            icon: "Share2"
+            icon: "Share2",
+            id: "social-media-content-creation"
           },
           {
             title: "Illustrations and Recreation Services",
             desc: "Custom illustrations",
-            icon: "Brush"
+            icon: "Brush",
+            id: "illustrations-and-recreation-services"
           }
         ]
       },
@@ -68,7 +78,8 @@ export const menuCategories = [
           {
             title: "Rebranding",
             desc: "Refresh your brand",
-            icon: "RefreshCw"
+            icon: "RefreshCw",
+            id: "rebranding"
           }
         ]
       }
@@ -85,27 +96,32 @@ export const menuCategories = [
             title: "Website Development",
             desc: "Custom websites",
             icon: "Monitor",
-            badge: "Popular"
+            badge: "Popular",
+            id: "website-development"
           },
           {
             title: "App Development",
             desc: "Mobile & Web Apps",
-            icon: "Smartphone"
+            icon: "Smartphone",
+            id: "app-development"
           },
           {
             title: "E-commerce Website Development",
             desc: "E-commerce solutions",
-            icon: "ShoppingCart"
+            icon: "ShoppingCart",
+            id: "e-commerce-website-development"
           },
           {
             title: "E-Learning Solutions",
             desc: "Educational platforms",
-            icon: "GraduationCap"
+            icon: "GraduationCap",
+            id: "e-learning-solutions"
           },
           {
             title: "AR-VR Solutions",
             desc: "Augmented & Virtual Reality",
-            icon: "Glasses"
+            icon: "Glasses",
+            id: "ar-vr-solutions"
           }
         ]
       },
@@ -114,18 +130,21 @@ export const menuCategories = [
           {
             title: "Emailer Design and Development",
             desc: "Marketing email designs",
-            icon: "Mail"
+            icon: "Mail",
+            id: "emailer-design-and-development"
           },
           {
             title: "Software Development",
             desc: "Custom software solutions",
-            icon: "Code"
+            icon: "Code",
+            id: "software-development"
           },
           {
             title: "Artificial Intelligence",
             desc: "AI powered applications",
             icon: "Cpu",
-            badge: "New"
+            badge: "New",
+            id: "artificial-intelligence"
           }
         ]
       }
@@ -141,27 +160,32 @@ export const menuCategories = [
           {
             title: "Indoor and Outdoor Shooting",
             desc: "High-quality video shooting",
-            icon: "Video"
+            icon: "Video",
+            id: "indoor-and-outdoor-shooting"
           },
           {
             title: "Video Editing",
             desc: "Professional editing",
-            icon: "Film"
+            icon: "Film",
+            id: "video-editing"
           },
           {
             title: "Explainer Videos",
             desc: "Animated & engaging videos",
-            icon: "PlayCircle"
+            icon: "PlayCircle",
+            id: "explainer-videos"
           },
           {
             title: "Testimonials",
             desc: "Customer success stories",
-            icon: "MessageSquare"
+            icon: "MessageSquare",
+            id: "testimonials"
           },
           {
             title: "Social Media Videos",
             desc: "Engaging social media content",
-            icon: "Clapperboard"
+            icon: "Clapperboard",
+            id: "social-media-videos"
           }
         ]
       },
@@ -170,27 +194,32 @@ export const menuCategories = [
           {
             title: "Ad Films",
             desc: "Creative advertisements",
-            icon: "Tv"
+            icon: "Tv",
+            id: "ad-films"
           },
           {
             title: "Podcast Videos",
             desc: "Professional podcast production",
-            icon: "Mic"
+            icon: "Mic",
+            id: "podcast-videos"
           },
           {
             title: "Brand Films",
             desc: "Compelling brand stories",
-            icon: "Sparkles"
+            icon: "Sparkles",
+            id: "brand-films"
           },
           {
             title: "Corporate Shoot Videos",
             desc: "Corporate video production",
-            icon: "Building"
+            icon: "Building",
+            id: "corporate-shoot-videos"
           },
           {
             title: "E-Learning Videos",
             desc: "Educational video content",
-            icon: "BookOpen"
+            icon: "BookOpen",
+            id: "e-learning-videos"
           }
         ]
       },
@@ -199,7 +228,8 @@ export const menuCategories = [
           {
             title: "Voice Over Recordings",
             desc: "Professional voiceovers",
-            icon: "Volume2"
+            icon: "Volume2",
+            id: "voice-over-recordings"
           }
         ]
       }
@@ -215,27 +245,32 @@ export const menuCategories = [
           {
             title: "Social Media Marketing",
             desc: "Grow your brand",
-            icon: "Share2"
+            icon: "Share2",
+            id: "social-media-marketing"
           },
           {
             title: "Search Engine Optimization",
             desc: "Rank higher on search engines",
-            icon: "Search"
+            icon: "Search",
+            id: "search-engine-optimization"
           },
           {
             title: "Social Ads Management",
             desc: "Targeted ad campaigns",
-            icon: "Target"
+            icon: "Target",
+            id: "social-ads-management"
           },
           {
             title: "Lead Generation",
             desc: "Generate quality leads",
-            icon: "TrendingUp"
+            icon: "TrendingUp",
+            id: "lead-generation"
           },
           {
             title: "Performance Marketing",
             desc: "Data-driven campaigns",
-            icon: "BarChart3"
+            icon: "BarChart3",
+            id: "performance-marketing"
           }
         ]
       },
@@ -244,7 +279,8 @@ export const menuCategories = [
           {
             title: "Content Writing Services",
             desc: "Engaging content creation",
-            icon: "FileText"
+            icon: "FileText",
+            id: "content-writing-services"
           }
         ]
       }
@@ -253,30 +289,13 @@ export const menuCategories = [
   {
     id: "2d-animation",
     name: "2D Animation",
-    bannerTitle: "2D Animation Services",
+    bannerTitle: "2D Architecture Animation",
     columns: [
       {
         items: [
-          {
-            title: "2D Character Animation",
-            desc: "Expressive 2D characters",
-            icon: "Sparkles"
-          },
-          {
-            title: "Motion Graphics",
-            desc: "Dynamic animated elements",
-            icon: "PlayCircle"
-          },
-          {
-            title: "Animated Commercials",
-            desc: "High converting animated ads",
-            icon: "Tv"
-          },
-          {
-            title: "Storyboarding & Scripting",
-            desc: "Conceptual visual narrative",
-            icon: "FileText"
-          }
+          { title: "2D Architecture Animation", desc: "Visualize architecture", icon: "Building", id: "2d-architecture-animation" },
+          { title: "2D Motion Graphics", desc: "Animated motion graphics", icon: "Zap", id: "2d-motion-graphics" },
+          { title: "2D Logo Animation", desc: "Logo animations", icon: "Film", id: "2d-logo-animation" }
         ]
       }
     ]
@@ -284,30 +303,13 @@ export const menuCategories = [
   {
     id: "3d-animation",
     name: "3D Animation",
-    bannerTitle: "3D Animation Services",
+    bannerTitle: "3D Architecture Animation",
     columns: [
       {
         items: [
-          {
-            title: "3D Product Modeling",
-            desc: "Photorealistic 3D models",
-            icon: "Box"
-          },
-          {
-            title: "3D Architectural Visualization",
-            desc: "Immersive walkthroughs",
-            icon: "Building"
-          },
-          {
-            title: "3D VFX & Motion",
-            desc: "High impact visual effects",
-            icon: "Sparkles"
-          },
-          {
-            title: "Medical & Industrial 3D",
-            desc: "Technical 3D animations",
-            icon: "Cpu"
-          }
+          { title: "3D Architecture Animation", desc: "3D architectural visualizations", icon: "Building", id: "3d-architecture-animation" },
+          { title: "3D Motion Graphics", desc: "Dynamic 3D graphics", icon: "Box", id: "3d-motion-graphics" },
+          { title: "3D Logo Animation", desc: "3D logo animations", icon: "Sparkles", id: "3d-logo-animation" }
         ]
       }
     ]
@@ -315,30 +317,29 @@ export const menuCategories = [
   {
     id: "printing-solutions",
     name: "Printing Solutions",
-    bannerTitle: "Print & Packaging",
+    bannerTitle: "Digital Printing",
     columns: [
       {
         items: [
-          {
-            title: "Corporate Stationery Printing",
-            desc: "Visiting cards & letterheads",
-            icon: "FileText"
-          },
-          {
-            title: "Large Format & Flex Printing",
-            desc: "Banners, hoardings, standees",
-            icon: "Layout"
-          },
-          {
-            title: "Promotional Gift Printing",
-            desc: "Custom merch & branded items",
-            icon: "Gift"
-          },
-          {
-            title: "Packaging Box Printing",
-            desc: "Custom rigid & corrugated boxes",
-            icon: "Box"
-          }
+          { title: "Digital Printing", desc: "Fast and precise printing", icon: "Printer", id: "digital-printing" },
+          { title: "Offset Printing", desc: "High-volume printing", icon: "Layers", id: "offset-printing" },
+          { title: "Screen Printing", desc: "Custom screen printing", icon: "Palette", id: "screen-printing" },
+          { title: "Large Format Printing", desc: "Large-scale prints", icon: "Maximize", id: "large-format-printing" },
+          { title: "Embossing and Debossing", desc: "Textured printing", icon: "FileText", id: "embossing-and-debossing" }
+        ]
+      },
+      {
+        items: [
+          { title: "Letterpress Printing", desc: "Traditional printing", icon: "Printer", id: "letterpress-printing" },
+          { title: "Die Cutting", desc: "Custom shapes and designs", icon: "Scissors", id: "die-cutting" },
+          { title: "UV Printing", desc: "Durable UV prints", icon: "Sparkles", id: "uv-printing" },
+          { title: "Foil Stamping", desc: "Metallic foil finishes", icon: "Award", id: "foil-stamping" },
+          { title: "Binding and Finishing", desc: "Professional finishing", icon: "CheckCircle2", id: "binding-and-finishing" }
+        ]
+      },
+      {
+        items: [
+          { title: "Vehicle Wraps", desc: "Custom vehicle graphics", icon: "Maximize", id: "vehicle-wraps" }
         ]
       }
     ]
@@ -346,30 +347,20 @@ export const menuCategories = [
   {
     id: "photography",
     name: "Photography",
-    bannerTitle: "Commercial Photography",
+    bannerTitle: "Event Photography",
     columns: [
       {
         items: [
-          {
-            title: "Product Photography",
-            desc: "E-commerce & studio photography",
-            icon: "Camera"
-          },
-          {
-            title: "Corporate & Headshots",
-            desc: "Professional team portraits",
-            icon: "Users"
-          },
-          {
-            title: "Fashion & Model Shoots",
-            desc: "High fashion portfolio",
-            icon: "Sparkles"
-          },
-          {
-            title: "Event & Architecture",
-            desc: "Commercial event coverage",
-            icon: "Building"
-          }
+          { title: "Event Photography", desc: "Capture special moments", icon: "Camera", id: "event-photography" },
+          { title: "Product Photography", desc: "Showcase your products", icon: "Box", id: "product-photography" },
+          { title: "Model Shoots", desc: "Professional model photography", icon: "Users", id: "model-shoots" },
+          { title: "Corporate Headshots and Team Photography", desc: "Professional corporate photos", icon: "UserCheck", id: "corporate-headshots-and-team-photography" },
+          { title: "Real Estate Photography", desc: "Stunning property visuals", icon: "Building", id: "real-estate-photography" }
+        ]
+      },
+      {
+        items: [
+          { title: "Lifestyle and Brand Photography", desc: "Lifestyle and brand imagery", icon: "Sparkles", id: "lifestyle-and-brand-photography" }
         ]
       }
     ]
@@ -377,25 +368,21 @@ export const menuCategories = [
   {
     id: "videography",
     name: "Videography",
-    bannerTitle: "Videography Services",
+    bannerTitle: "Event Videography",
     columns: [
       {
         items: [
-          {
-            title: "Drone & Aerial Videography",
-            desc: "4K drone aerial coverage",
-            icon: "Video"
-          },
-          {
-            title: "Commercial & Event Coverage",
-            desc: "Live stream & multi-cam",
-            icon: "Film"
-          },
-          {
-            title: "Industrial & Site Videos",
-            desc: "Factory & site walkthroughs",
-            icon: "Building"
-          }
+          { title: "Event Videography", desc: "Capture events in motion", icon: "Video", id: "event-videography" },
+          { title: "Product Shoot", desc: "Showcase products in video", icon: "Box", id: "product-shoot" },
+          { title: "Modelling", desc: "Professional model videography", icon: "Film", id: "modelling" },
+          { title: "Commercial and Advertising Videography", desc: "Engaging ad videos", icon: "Tv", id: "commercial-and-advertising-videography" },
+          { title: "Real Estate Videography", desc: "Property walkthroughs", icon: "Building", id: "real-estate-videography" }
+        ]
+      },
+      {
+        items: [
+          { title: "Ariel Views", desc: "Aerial video footage", icon: "Maximize", id: "ariel-views" },
+          { title: "Educational and Training Videography", desc: "Instructional videos", icon: "CheckCircle2", id: "educational-and-training-videography" }
         ]
       }
     ]
@@ -403,11 +390,10 @@ export const menuCategories = [
 ];
 
 export const topNavLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Our Works", href: "#works" },
-  { name: "E commerce", href: "#ecommerce" },
-  { name: "Training", href: "#training" },
-  { name: "Blog", href: "#blog" }
+  { name: "Home", page: "home" },
+  { name: "About Us", page: "about" },
+  { name: "Services", page: "services" },
+  { name: "Our Works", page: "works" },
+  { name: "E commerce", page: "ecommerce" },
+  { name: "Blog", page: "blog" }
 ];

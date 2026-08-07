@@ -84,9 +84,9 @@ function MenuIllustration({ type }) {
 export default function MegaMenu({ category, onClose, onNavigateService }) {
   if (!category) return null;
 
-  const handleItemClick = (e, itemTitle) => {
+  const handleItemClick = (e, itemTitle, itemId) => {
     e.preventDefault();
-    const slug = itemTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const slug = itemId || itemTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     if (onNavigateService) {
       onNavigateService(category.id, slug);
     }
@@ -98,7 +98,7 @@ export default function MegaMenu({ category, onClose, onNavigateService }) {
       <div className="mega-menu-content">
         {/* Left Column: Category Header & Services Columns */}
         <div className="mega-menu-left">
-          <div className="mega-category-header" onClick={(e) => handleItemClick(e, category.name)} style={{ cursor: 'pointer' }}>
+          <div className="mega-category-header" onClick={(e) => { e.preventDefault(); if (onNavigateService) onNavigateService(category.id, ''); onClose(); }} style={{ cursor: 'pointer' }}>
             <span>{category.name}</span>
             <Icons.ArrowRight size={18} />
           </div>
@@ -113,7 +113,7 @@ export default function MegaMenu({ category, onClose, onNavigateService }) {
                       href={`#${item.title.toLowerCase().replace(/\s+/g, '-')}`} 
                       className="mega-item-link" 
                       key={iIdx}
-                      onClick={(e) => handleItemClick(e, item.title)}
+                      onClick={(e) => handleItemClick(e, item.title, item.id)}
                     >
                       <IconComp className="mega-item-icon" />
                       <div className="mega-item-text">

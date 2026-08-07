@@ -38,7 +38,6 @@ export default function HomeProcessSection() {
       <div className="section-container">
         {/* Section Header */}
         <div className="eventura-section-header marketeam-header-center">
-          <span className="marketeam-purple-tag">HOW DIGIWORQ WORKS</span>
           <h2 className="marketeam-section-h2">
             From a sentence to a <span className="marketeam-text-gradient">finished brand</span>
           </h2>

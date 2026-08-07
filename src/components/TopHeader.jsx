@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { topNavLinks } from '../data/menuData';
 
-export default function TopHeader() {
+export default function TopHeader({ onNavigatePage }) {
   return (
     <header className="top-header">
       <div className="top-header-container">
@@ -47,9 +47,12 @@ export default function TopHeader() {
           <ul className="top-nav-links desktop-only">
             {topNavLinks.map((link, idx) => (
               <li key={idx}>
-                <a href={link.href} className="top-nav-link">
+                <button 
+                  className="top-nav-link-btn" 
+                  onClick={() => onNavigatePage && onNavigatePage(link.page)}
+                >
                   {link.name}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

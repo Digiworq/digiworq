@@ -15,9 +15,16 @@ import WhyChooseUs from './components/WhyChooseUs';
 import HomeProcessSection from './components/HomeProcessSection';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
+import AboutUsPage from './components/AboutUsPage';
+import OurWorksPage from './components/OurWorksPage';
+import EcommercePage from './components/EcommercePage';
+import BlogPage from './components/BlogPage';
+import ServiceDispatcher from './pages/services/index.jsx';
+import ServicesPage from './components/ServicesPage';
+import CaseStudiesSection from './components/CaseStudiesSection';
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home'); // 'home' | 'service'
+  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'services' | 'works' | 'ecommerce' | 'blog' | 'service'
   const [activeCategoryId, setActiveCategoryId] = useState('creative');
   const [activeSubServiceId, setActiveSubServiceId] = useState('');
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -54,7 +61,15 @@ export default function App() {
       '.faq-card-item',
       '.service-details-left-column',
       '.service-studio-center-sphere',
-      '.client-slider-track-wrap'
+      '.client-slider-track-wrap',
+      '.about-stat-card',
+      '.value-glass-card',
+      '.timeline-item-card',
+      '.team-glass-card',
+      '.work-project-card',
+      '.capability-glass-card',
+      '.blog-card-item',
+      '.capability-overview-card'
     ];
 
     const timer = setTimeout(() => {
@@ -85,55 +100,72 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigatePage = (pageKey) => {
+    setActivePage(pageKey);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const renderMainContent = () => {
+    switch (activePage) {
+      case 'about':
+        return <AboutUsPage onOpenContact={() => setIsContactOpen(true)} />;
+      case 'services':
+        return (
+          <ServicesPage 
+            onOpenContact={() => setIsContactOpen(true)}
+            onNavigateService={handleNavigateService}
+          />
+        );
+      case 'works':
+        return <OurWorksPage onOpenContact={() => setIsContactOpen(true)} />;
+      case 'ecommerce':
+        return <EcommercePage onOpenContact={() => setIsContactOpen(true)} />;
+      case 'blog':
+        return <BlogPage onOpenContact={() => setIsContactOpen(true)} />;
+      case 'service':
+        return (
+          <ServiceDispatcher 
+            key={`${activeCategoryId}-${activeSubServiceId}`}
+            categoryId={activeCategoryId}
+            subServiceId={activeSubServiceId}
+            onOpenContact={() => setIsContactOpen(true)}
+            onBackHome={handleGoHome}
+          />
+        );
+      case 'home':
+      default:
+        return (
+          <>
+            <Hero onOpenContact={() => setIsContactOpen(true)} />
+            <AgencyShowcase onOpenContact={() => setIsContactOpen(true)} />
+            <ClientSlider />
+            <HomeProcessSection />
+            <ServicesGrid onOpenContact={() => setIsContactOpen(true)} />
+            <CaseStudiesSection onOpenContact={() => setIsContactOpen(true)} />
+            <WhyChooseUs onOpenContact={() => setIsContactOpen(true)} />
+            <Testimonials />
+            <FAQSection />
+          </>
+        );
+    }
+  };
+
   return (
     <div className="app-root">
       {/* Top Utility Header */}
-      <TopHeader />
+      <TopHeader onNavigatePage={handleNavigatePage} />
 
       {/* Main Sticky Navbar with Mega Dropdowns */}
       <MainNavbar 
         onOpenContact={() => setIsContactOpen(true)} 
         onNavigateService={handleNavigateService}
         onGoHome={handleGoHome}
+        onNavigatePage={handleNavigatePage}
       />
 
       {/* Main Content Sections / Router */}
       <main>
-        {activePage === 'home' ? (
-          <>
-            <Hero onOpenContact={() => setIsContactOpen(true)} />
-
-            {/* Home Page Stats Showcase */}
-            <AgencyShowcase onOpenContact={() => setIsContactOpen(true)} />
-
-            {/* Client Trust Showcase Slider */}
-            <ClientSlider />
-
-            {/* Our Process Section (Above Our Services Grid) */}
-            <HomeProcessSection />
-
-            {/* Services Showcase Grid */}
-            <ServicesGrid onOpenContact={() => setIsContactOpen(true)} />
-
-            {/* Why Choose Us Section (Below Our Services Grid) */}
-            <WhyChooseUs onOpenContact={() => setIsContactOpen(true)} />
-
-            {/* Testimonials Section - Our Happy Clientele Diaries */}
-            <Testimonials />
-
-            {/* Frequently Asked Questions (FAQ) Section */}
-            <FAQSection />
-          </>
-        ) : (
-          <ServicePage 
-            key={`${activeCategoryId}-${activeSubServiceId}`}
-            categoryId={activeCategoryId}
-            subServiceId={activeSubServiceId}
-            initialServiceId={activeSubServiceId}
-            onOpenContact={() => setIsContactOpen(true)}
-            onBackHome={handleGoHome}
-          />
-        )}
+        {renderMainContent()}
       </main>
 
       {/* Official Digiworq Footer at the End of Every Page */}
@@ -141,6 +173,7 @@ export default function App() {
         onNavigateService={handleNavigateService}
         onGoHome={handleGoHome}
         onOpenContact={() => setIsContactOpen(true)}
+        onNavigatePage={handleNavigatePage}
       />
 
       {/* Floating Left Tab, Scroll-to-top & WhatsApp Chat */}

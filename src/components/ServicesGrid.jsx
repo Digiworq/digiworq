@@ -101,7 +101,6 @@ export default function ServicesGrid({ onOpenContact }) {
       <div className="section-container">
         {/* Main Section Header Matching Screenshot 63 */}
         <div className="eventura-section-header">
-          <span className="eventura-sub-tag">ONE AGENCY, 9 SPECIALIZATIONS</span>
           <h2 className="eventura-section-title">
             Every service your brand needs, <span className="eventura-text-indigo">in one place</span>
           </h2>

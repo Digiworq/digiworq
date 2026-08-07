@@ -39,18 +39,20 @@ const getSubServiceIcon = (title) => {
   return <Zap size={18} color="#A068FF" />;
 };
 
-export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome }) {
+export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome, onNavigatePage }) {
+  const [activeCategory, setActiveCategory] = useState(null);
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [expandedMobileCatId, setExpandedMobileCatId] = useState("creative"); // Default Creative expanded matching Screenshot 53
+  const [expandedMobileCatId, setExpandedMobileCatId] = useState(null);
 
-  const activeCategory = menuCategories.find(cat => cat.id === activeMenuId);
-
-  const handleMenuHover = (id) => {
-    setActiveMenuId(id);
+  const handleMenuHover = (categoryId) => {
+    const category = menuCategories.find(c => c.id === categoryId);
+    setActiveCategory(category);
+    setActiveMenuId(categoryId);
   };
 
   const handleMenuClose = () => {
+    setActiveCategory(null);
     setActiveMenuId(null);
   };
 
@@ -58,25 +60,29 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const toggleMobileCatAccordion = (id) => {
-    setExpandedMobileCatId(expandedMobileCatId === id ? null : id);
+  const toggleMobileCatAccordion = (catId) => {
+    setExpandedMobileCatId(expandedMobileCatId === catId ? null : catId);
+  };
+
+  const handleSubLinkClick = (pageKey) => {
+    if (onNavigatePage) {
+      onNavigatePage(pageKey);
+    }
+    setIsMobileMenuOpen(false);
   };
 
   return (
-    <>
-      <nav className="main-navbar" onMouseLeave={handleMenuClose}>
+    <div className="sticky-navbar-wrapper" onMouseLeave={handleMenuClose}>
+      <nav className="main-navbar">
         <div className="navbar-container">
-          {/* Brand Logo */}
+          {/* Brand Logo & Name */}
           <button 
-            onClick={() => {
-              onGoHome();
-              setIsMobileMenuOpen(false);
-            }} 
-            className="brand-logo-container" 
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}
+            className="brand-logo-container border-none bg-transparent cursor-pointer p-0 text-left" 
+            onClick={onGoHome}
+            aria-label="Go to Home"
           >
             <img src={logoMark} alt="Digiworq Official Logo" className="official-brand-logo-img" />
-            <div className="brand-wordmark desktop-only">
+            <div className="brand-wordmark">
               <h1 className="brand-title">
                 DIGIWOR<span className="accent-dot">Q</span>
               </h1>
@@ -111,7 +117,7 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
             })}
           </ul>
 
-          {/* Contact Us CTA (Desktop) & Mobile 3-Lines Hamburger Icon */}
+          {/* CTA Right Button & Mobile Hamburger */}
           <div className="nav-right-actions">
             <div className="btn-border-wrap desktop-only">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
@@ -140,19 +146,22 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
         )}
       </nav>
 
-      {/* Mobile Sub-Bar Links (Home | About Us | Our Works | Blog |) */}
+      {/* Mobile Sub-Bar Links */}
       <div className="mobile-sub-nav-bar mobile-only">
-        <button className="sub-link-btn" onClick={onGoHome}>Home</button>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('home')}>Home</button>
         <span className="sub-link-sep">|</span>
-        <button className="sub-link-btn" onClick={onGoHome}>About Us</button>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('about')}>About Us</button>
         <span className="sub-link-sep">|</span>
-        <button className="sub-link-btn" onClick={onGoHome}>Our Works</button>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('services')}>Services</button>
         <span className="sub-link-sep">|</span>
-        <button className="sub-link-btn" onClick={onGoHome}>Blog</button>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('works')}>Our Works</button>
         <span className="sub-link-sep">|</span>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('ecommerce')}>E commerce</button>
+        <span className="sub-link-sep">|</span>
+        <button className="sub-link-btn" onClick={() => handleSubLinkClick('blog')}>Blog</button>
       </div>
 
-      {/* Full-Screen Non-Overlapping Mobile Navigation Overlay Drawer matching Screenshot 53 */}
+      {/* Full-Screen Non-Overlapping Mobile Navigation Overlay Drawer */}
       {isMobileMenuOpen && (
         <div className="mobile-nav-full-overlay">
           {/* Top Bar inside Drawer */}
@@ -169,14 +178,17 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
 
           {/* Centered Sub-Nav Links Bar inside Drawer */}
           <div className="mobile-drawer-sub-links-bar">
-            <button className="sub-link-btn" onClick={() => { onGoHome(); setIsMobileMenuOpen(false); }}>Home</button>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('home')}>Home</button>
             <span className="sub-link-sep">|</span>
-            <button className="sub-link-btn" onClick={() => { onGoHome(); setIsMobileMenuOpen(false); }}>About Us</button>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('about')}>About Us</button>
             <span className="sub-link-sep">|</span>
-            <button className="sub-link-btn" onClick={() => { onGoHome(); setIsMobileMenuOpen(false); }}>Our Works</button>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('services')}>Services</button>
             <span className="sub-link-sep">|</span>
-            <button className="sub-link-btn" onClick={() => { onGoHome(); setIsMobileMenuOpen(false); }}>Blog</button>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('works')}>Our Works</button>
             <span className="sub-link-sep">|</span>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('ecommerce')}>E commerce</button>
+            <span className="sub-link-sep">|</span>
+            <button className="sub-link-btn" onClick={() => handleSubLinkClick('blog')}>Blog</button>
           </div>
 
           <div className="mobile-drawer-scroll-body-v53">
@@ -240,6 +252,6 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome 
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

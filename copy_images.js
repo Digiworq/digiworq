@@ -32,12 +32,24 @@ if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
 }
 
-if (fs.existsSync(srcDir)) {
-  const files = fs.readdirSync(srcDir);
-  files.forEach(file => {
-    const srcFile = path.join(srcDir, file);
-    const destFile = path.join(destDir, file);
-    fs.copyFileSync(srcFile, destFile);
-  });
-  console.log('Copied images directory');
+// Copy video folder
+const videoSrcDir = path.join(__dirname, 'video');
+const videoDestDir = path.join(__dirname, 'public', 'video');
+
+if (!fs.existsSync(videoDestDir)) {
+  fs.mkdirSync(videoDestDir, { recursive: true });
 }
+
+if (fs.existsSync(videoSrcDir)) {
+  const files = fs.readdirSync(videoSrcDir);
+  files.forEach(file => {
+    const srcFile = path.join(videoSrcDir, file);
+    const destFile = path.join(videoDestDir, file);
+    fs.copyFileSync(srcFile, destFile);
+    if (file.includes('bannervideo')) {
+      fs.copyFileSync(srcFile, path.join(videoDestDir, 'bannervideo.mp4'));
+    }
+  });
+  console.log('Copied video directory');
+}
+

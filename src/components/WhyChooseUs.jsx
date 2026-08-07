@@ -61,7 +61,6 @@ export default function WhyChooseUs({ onOpenContact }) {
       <div className="section-container">
         {/* Header Title Box Matching Marketeam Design */}
         <div className="eventura-section-header marketeam-header-center">
-          <span className="marketeam-purple-tag">WHY CHOOSE US</span>
           <h2 className="marketeam-section-h2">
             Why Leading Brands Partner.<br />
             <span className="marketeam-text-gradient">Here's why they choose Digiworq.</span>
