@@ -9,8 +9,14 @@ import PrintingSolutionsPage from './PrintingSolutionsPage';
 import PhotographyPage from './PhotographyPage';
 import VideographyPage from './VideographyPage';
 
-// Dedicated Rich Sub-Service Page Imports
+// Dedicated Rich Creative Sub-Service Page Imports
 import BrandingSolutionsPage from './creative/BrandingSolutionsPage';
+import LogoDesignPage from './creative/LogoDesignPage';
+import PackagingDesignPage from './creative/PackagingDesignPage';
+import CorporateIdentityPage from './creative/CorporateIdentityPage';
+import MarketingCollateralPage from './creative/MarketingCollateralPage';
+import UiUxDesignPage from './creative/UiUxDesignPage';
+
 import WebsiteDevPage from './tech/WebsiteDevPage';
 
 // Dedicated Video Production Sub-Services
@@ -45,6 +51,11 @@ export {
   PhotographyPage,
   VideographyPage,
   BrandingSolutionsPage,
+  LogoDesignPage,
+  PackagingDesignPage,
+  CorporateIdentityPage,
+  MarketingCollateralPage,
+  UiUxDesignPage,
   WebsiteDevPage,
   IndoorOutdoorShootingPage,
   VideoEditingPage,
@@ -69,6 +80,21 @@ export default function ServiceDispatcher({ categoryId = "creative", subServiceI
   // Direct Dedicated Sub-Service Component Routing
   if (subServiceId === 'branding-solutions') {
     return <BrandingSolutionsPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+  }
+  if (subServiceId === 'logo-design') {
+    return <LogoDesignPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+  }
+  if (subServiceId === 'packaging-design') {
+    return <PackagingDesignPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+  }
+  if (subServiceId === 'corporate-identity') {
+    return <CorporateIdentityPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+  }
+  if (subServiceId === 'marketing-collateral') {
+    return <MarketingCollateralPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+  }
+  if (subServiceId === 'ui-ux-design') {
+    return <UiUxDesignPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
   }
   if (subServiceId === 'website-development') {
     return <WebsiteDevPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;

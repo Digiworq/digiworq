@@ -2,40 +2,148 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 
 function CreativeStudioWidget() {
-  const [activeColor, setActiveColor] = useState('#A068FF');
-  const colors = ['#A068FF', '#F5B800', '#10B981', '#3B82F6', '#EC4899'];
+  const [activeTheme, setActiveTheme] = useState('gold');
+
+  const themes = {
+    gold: {
+      name: '3D Gold Luxury',
+      primary: '#F5B800',
+      secondary: '#FEF3C7',
+      bg: 'linear-gradient(135deg, rgba(245, 184, 0, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%)',
+      border: 'rgba(245, 184, 0, 0.4)',
+      font: 'Cinzel Decorative / Outfit',
+      hex: '#F5B800 · #1E293B · #FEF3C7'
+    },
+    violet: {
+      name: 'Cyber Violet',
+      primary: '#A068FF',
+      secondary: '#E9D5FF',
+      bg: 'linear-gradient(135deg, rgba(160, 104, 255, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%)',
+      border: 'rgba(160, 104, 255, 0.4)',
+      font: 'Space Grotesk / Inter',
+      hex: '#A068FF · #0F172A · #E9D5FF'
+    },
+    emerald: {
+      name: 'Emerald Tech',
+      primary: '#10B981',
+      secondary: '#D1FAE5',
+      bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%)',
+      border: 'rgba(16, 185, 129, 0.4)',
+      font: 'Plus Jakarta Sans',
+      hex: '#10B981 · #022C22 · #D1FAE5'
+    },
+    monochrome: {
+      name: 'Monochrome Minimal',
+      primary: '#E2E8F0',
+      secondary: '#94A3B8',
+      bg: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(15, 23, 42, 0.95) 100%)',
+      border: 'rgba(255, 255, 255, 0.3)',
+      font: 'Cabinet Grotesk',
+      hex: '#FFFFFF · #0F172A · #94A3B8'
+    }
+  };
+
+  const current = themes[activeTheme];
 
   return (
-    <div className="custom-widget-card creative-widget-box">
-      <div className="widget-header-row">
-        <Icons.Palette size={20} color="#F5B800" />
-        <span className="widget-title-text">Interactive Brand Identity Studio</span>
+    <div className="custom-widget-card creative-widget-box" style={{ background: 'rgba(11, 15, 25, 0.95)', border: `1px solid ${current.border}`, padding: '24px', borderRadius: '20px' }}>
+      <div className="widget-header-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Icons.Sparkles size={22} color={current.primary} />
+          <span className="widget-title-text" style={{ color: '#FFFFFF', fontWeight: 800, fontSize: '1.1rem' }}>Brand Identity Studio & Asset Inspector</span>
+        </div>
+        <span style={{ background: `${current.primary}22`, border: `1px solid ${current.primary}66`, color: current.primary, fontSize: '0.75rem', fontWeight: 800, padding: '4px 10px', borderRadius: '12px', textTransform: 'uppercase' }}>
+          Live 3D Preview
+        </span>
       </div>
-      <p className="widget-subdesc">Test dynamic brand color palettes & atmospheric container themes live:</p>
       
-      <div className="palette-color-picker-row">
-        {colors.map((c, idx) => (
-          <button 
-            key={idx} 
-            className={`palette-circle ${activeColor === c ? 'active' : ''}`} 
-            style={{ backgroundColor: c }}
-            onClick={() => setActiveColor(c)}
-          />
+      <p className="widget-subdesc" style={{ color: '#9CA3AF', fontSize: '0.88rem', marginBottom: '16px' }}>
+        Select a brand aesthetic style to inspect real-time logo rendering, typography, and palette:
+      </p>
+
+      {/* Theme Select Pills */}
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
+        {Object.keys(themes).map((key) => (
+          <button
+            key={key}
+            onClick={() => setActiveTheme(key)}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '20px',
+              border: activeTheme === key ? `1.5px solid ${themes[key].primary}` : '1px solid rgba(255,255,255,0.12)',
+              background: activeTheme === key ? `${themes[key].primary}22` : 'rgba(255,255,255,0.04)',
+              color: activeTheme === key ? themes[key].primary : '#9CA3AF',
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            {themes[key].name}
+          </button>
         ))}
       </div>
 
-      <div className="brand-preview-canvas" style={{ borderColor: `${activeColor}66`, boxShadow: `0 10px 30px ${activeColor}33` }}>
-        <div className="canvas-logo-mark" style={{ backgroundColor: `${activeColor}22`, color: activeColor }}>
-          <Icons.Sparkles size={28} />
+      {/* Live Brand Canvas Card */}
+      <div 
+        style={{ 
+          background: current.bg, 
+          border: `1.5px solid ${current.primary}55`, 
+          borderRadius: '16px', 
+          padding: '24px',
+          boxShadow: `0 16px 40px ${current.primary}20`,
+          transition: 'all 0.3s ease'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '18px' }}>
+          <div 
+            style={{ 
+              width: '56px', 
+              height: '56px', 
+              borderRadius: '14px', 
+              background: `linear-gradient(135deg, ${current.primary} 0%, #0F172A 100%)`, 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              boxShadow: `0 8px 20px ${current.primary}44`
+            }}
+          >
+            <Icons.Layers size={30} color="#FFFFFF" />
+          </div>
+          <div>
+            <h4 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 900, margin: 0, letterSpacing: '0.5px' }}>
+              DIGIWORQ BRANDING
+            </h4>
+            <span style={{ color: current.primary, fontWeight: 700, fontSize: '0.85rem' }}>
+              {current.name} System
+            </span>
+          </div>
         </div>
-        <div className="canvas-text-group">
-          <h4 style={{ color: '#FFFFFF' }}>DIGIWORQ BRANDING</h4>
-          <span style={{ color: activeColor, fontWeight: 700, fontSize: '0.85rem' }}>Atmospheric 3D Brand System</span>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <div>
+            <span style={{ color: '#6B7280', fontSize: '0.75rem', display: 'block', textTransform: 'uppercase', fontWeight: 700 }}>Typography</span>
+            <strong style={{ color: '#E2E8F0', fontSize: '0.85rem' }}>{current.font}</strong>
+          </div>
+          <div>
+            <span style={{ color: '#6B7280', fontSize: '0.75rem', display: 'block', textTransform: 'uppercase', fontWeight: 700 }}>Palette Hex</span>
+            <strong style={{ color: current.primary, fontSize: '0.85rem' }}>{current.hex}</strong>
+          </div>
+        </div>
+
+        {/* Master Deliverables Status Badge */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px', paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10B981', fontSize: '0.82rem', fontWeight: 700 }}>
+            <Icons.CheckCircle2 size={16} />
+            <span>50+ Page Brand Guide PDF Ready</span>
+          </div>
+          <span style={{ color: '#9CA3AF', fontSize: '0.8rem' }}>AI · EPS · SVG · PNG</span>
         </div>
       </div>
     </div>
   );
 }
+
 
 export default function BrandingSolutionsPage({ onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
