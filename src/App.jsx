@@ -21,7 +21,6 @@ import EcommercePage from './components/EcommercePage';
 import BlogPage from './components/BlogPage';
 import ServiceDispatcher from './pages/services/index.jsx';
 import ServicesPage from './components/ServicesPage';
-import CaseStudiesSection from './components/CaseStudiesSection';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'services' | 'works' | 'ecommerce' | 'blog' | 'service'
@@ -141,7 +140,6 @@ export default function App() {
             <ClientSlider />
             <HomeProcessSection />
             <ServicesGrid onOpenContact={() => setIsContactOpen(true)} />
-            <CaseStudiesSection onOpenContact={() => setIsContactOpen(true)} />
             <WhyChooseUs onOpenContact={() => setIsContactOpen(true)} />
             <Testimonials />
             <FAQSection />
