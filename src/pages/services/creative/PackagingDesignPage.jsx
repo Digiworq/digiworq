@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function PackagingInspectorWidget() {
   const [activeBox, setActiveBox] = useState('Rigid Retail Box');
@@ -235,7 +236,7 @@ export default function PackagingDesignPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <PackagingInspectorWidget />
+              <ServiceIllustrationCard serviceId="package-designing" title="Packaging Design" />
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function VoiceOverWidget() {
   const [activeAccent, setActiveAccent] = useState('US English Professional');
@@ -159,7 +160,7 @@ export default function VoiceOverRecordingsPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <VoiceOverWidget />
+              <ServiceIllustrationCard serviceId="voice-over-recordings" title="Voice Over Recordings" />
             </div>
           </div>
 

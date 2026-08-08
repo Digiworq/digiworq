@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function CorporateWidget() {
   const [activeSegment, setActiveSegment] = useState('Facility Walkthrough');
@@ -159,7 +160,7 @@ export default function CorporateShootVideosPage({ onOpenContact, onBackHome }) 
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <CorporateWidget />
+              <ServiceIllustrationCard serviceId="corporate-shoot-videos" title="Corporate Shoot Videos" />
             </div>
           </div>
 

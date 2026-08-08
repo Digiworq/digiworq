@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark Square Container -->
+  <rect width="432" height="432" rx="40" fill="#0A0D14" />
+  
+  <!-- Outer D / G Monogram White Shape -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M 80 80 H 280 C 350 80 392 122 392 192 V 240 C 392 310 350 352 280 352 H 80 V 80 Z M 152 144 V 288 H 272 C 304 288 324 268 324 236 V 196 C 324 164 304 144 272 144 H 152 Z" fill="#FFFFFF" />
+  
+  <!-- Inner G Bar Cutout Details -->
+  <path d="M 230 200 H 324 V 240 H 270 V 288 H 230 V 200 Z" fill="#FFFFFF" />
+
+  <!-- Yellow Accent Dot -->
+  <circle cx="430" cy="430" r="38" fill="#F5B800" />
+</svg>

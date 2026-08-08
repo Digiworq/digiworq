@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function SocialAdsWidget() {
   const [activePlatform, setActivePlatform] = useState('Meta Advantage+');
@@ -166,7 +167,7 @@ export default function SocialAdsManagementPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <SocialAdsWidget />
+              <ServiceIllustrationCard serviceId="social-ads-management" title="Social Ads Management" />
             </div>
           </div>
 

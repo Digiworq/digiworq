@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function SocialMediaWidget() {
   const [activePlatform, setActivePlatform] = useState('9:16 Instagram Reels');
@@ -159,7 +160,7 @@ export default function SocialMediaVideosPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <SocialMediaWidget />
+              <ServiceIllustrationCard serviceId="social-media-videos" title="Social Media Videos" />
             </div>
           </div>
 

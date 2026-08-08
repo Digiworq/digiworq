@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function PerformanceWidget() {
   const [adSpend, setAdSpend] = useState(100000);
@@ -169,7 +170,7 @@ export default function PerformanceMarketingPage({ onOpenContact, onBackHome }) 
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <PerformanceWidget />
+              <ServiceIllustrationCard serviceId="performance-marketing" title="Performance Marketing" />
             </div>
           </div>
 

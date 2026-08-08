@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, ChevronDown, MousePointer, Play, X, Film } from 'lucide-react';
 import bannerVideo from '../../video/bannervideo.25ef476f25d8f1c2cbe9.mp4';
-const logoMark = '/digiworq-logo.png';
+import logoMark from '../../logomark 1.png';
 
 const PROMPT_SAMPLES = [
   "SEO & Web Design in Bangalore · 500k Reach · ₹1,50,000 budget",

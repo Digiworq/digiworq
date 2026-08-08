@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function CreativeStudioWidget() {
   const [activeTheme, setActiveTheme] = useState('gold');
@@ -307,7 +308,7 @@ export default function BrandingSolutionsPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <CreativeStudioWidget />
+              <ServiceIllustrationCard serviceId="branding-solutions" title="Branding Solutions" />
             </div>
           </div>
 

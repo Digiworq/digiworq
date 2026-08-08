@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function EditingSuiteWidget() {
   const [activeTrack, setActiveTrack] = useState('Color Grade (DaVinci LUT)');
@@ -159,7 +160,7 @@ export default function VideoEditingPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <EditingSuiteWidget />
+              <ServiceIllustrationCard serviceId="video-editing" title="Video Editing" />
             </div>
           </div>
 

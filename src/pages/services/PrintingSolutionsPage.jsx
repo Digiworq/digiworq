@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function PrintInspectorWidget() {
   const [finish, setFinish] = useState('Gold Foil');
@@ -168,7 +169,7 @@ export default function PrintingSolutionsPage({ subServiceId, onOpenContact, onB
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <PrintInspectorWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

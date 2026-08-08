@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function SeoRankWidget() {
   const [keyword, setKeyword] = useState('Best Digital Marketing Agency');
@@ -166,7 +167,7 @@ export default function SeoPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <SeoRankWidget />
+              <ServiceIllustrationCard serviceId="search-engine-optimization" title="Search Engine Optimization" />
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function AdFilmTheaterWidget() {
   const [aspect, setAspect] = useState('16:9 4K TV Spot');
@@ -159,7 +160,7 @@ export default function AdFilmsPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <AdFilmTheaterWidget />
+              <ServiceIllustrationCard serviceId="ad-films" title="Ad Films" />
             </div>
           </div>
 

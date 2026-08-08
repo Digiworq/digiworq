@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function ContentInspectorWidget() {
   const [activeType, setActiveType] = useState('SEO Website Copy');
@@ -166,7 +167,7 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <ContentInspectorWidget />
+              <ServiceIllustrationCard serviceId="content-writing-services" title="Content Writing Services" />
             </div>
           </div>
 

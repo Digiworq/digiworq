@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function LogoInspectorWidget() {
   const [activeVariant, setActiveVariant] = useState('Primary Monogram');
@@ -241,7 +242,7 @@ export default function LogoDesignPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <LogoInspectorWidget />
+              <ServiceIllustrationCard serviceId="graphic-designing" title="Graphic & Logo Design" />
             </div>
           </div>
 

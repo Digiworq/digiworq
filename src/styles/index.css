@@ -32,6 +32,11 @@
   --font-body: 'Inter', sans-serif;
 }
 
+@keyframes megaImgFadeIn {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -220,6 +225,11 @@ button {
   text-decoration: none;
 }
 
+.brand-logo-container:hover .digiworq-logo-badge {
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(245, 184, 0, 0.45) !important;
+}
+
 .official-brand-logo-img {
   width: 42px;
   height: 42px;
@@ -240,19 +250,19 @@ button {
   width: 36px;
   height: 36px;
   object-fit: contain;
-  background-color: #FFFFFF;
-  padding: 3px;
-  border-radius: 10px;
-  border: 1px solid var(--primary-yellow);
+  background-color: transparent;
+  padding: 0;
+  border-radius: 8px;
+  border: none;
 }
 
 .official-brand-logo-img-footer {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  background-color: #FFFFFF;
-  padding: 4px;
-  border-radius: 14px;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 10px;
   border: 1.5px solid var(--primary-yellow);
   box-shadow: 0 6px 20px rgba(245, 184, 0, 0.35);
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function ElearningWidget() {
   const [activeModule, setActiveModule] = useState('Interactive Quiz Overlay');
@@ -159,7 +160,7 @@ export default function ElearningVideosPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <ElearningWidget />
+              <ServiceIllustrationCard serviceId="e-learning-videos" title="E-Learning Videos" />
             </div>
           </div>
 

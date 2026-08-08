@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function PhotoViewfinderWidget() {
   return (
@@ -168,7 +169,7 @@ export default function PhotographyPage({ subServiceId, onOpenContact, onBackHom
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <PhotoViewfinderWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

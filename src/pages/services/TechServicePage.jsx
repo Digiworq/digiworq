@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function TechTerminalWidget() {
   const [activeTab, setActiveTab] = useState('react');
@@ -231,7 +232,7 @@ export default function TechServicePage({ subServiceId, onOpenContact, onBackHom
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <TechTerminalWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

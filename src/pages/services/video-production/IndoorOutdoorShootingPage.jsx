@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function BroadcastCameraWidget() {
   const [activeCam, setActiveCam] = useState('CAM 1 (RED V-Raptor)');
@@ -156,7 +157,7 @@ export default function IndoorOutdoorShootingPage({ onOpenContact, onBackHome })
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <BroadcastCameraWidget />
+              <ServiceIllustrationCard serviceId="indoor-and-outdoor-shooting" title="Indoor & Outdoor Shooting" />
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function CollateralInspectorWidget() {
   const [activeFormat, setActiveFormat] = useState('Trifold Brochure');
@@ -232,7 +233,7 @@ export default function MarketingCollateralPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <CollateralInspectorWidget />
+              <ServiceIllustrationCard serviceId="infographic-design" title="Marketing Collateral" />
             </div>
           </div>
 

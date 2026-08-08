@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function CorporateIdentityWidget() {
   const [activeAsset, setActiveAsset] = useState('Executive Stationery');
@@ -235,7 +236,7 @@ export default function CorporateIdentityPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <CorporateIdentityWidget />
+              <ServiceIllustrationCard serviceId="ppt-design" title="Corporate Identity" />
             </div>
           </div>
 

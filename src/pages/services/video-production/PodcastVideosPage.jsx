@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function PodcastControlWidget() {
   const [activeCam, setActiveCam] = useState('Multi-Cam Auto-Switch');
@@ -159,7 +160,7 @@ export default function PodcastVideosPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <PodcastControlWidget />
+              <ServiceIllustrationCard serviceId="podcast-videos" title="Podcast Videos" />
             </div>
           </div>
 

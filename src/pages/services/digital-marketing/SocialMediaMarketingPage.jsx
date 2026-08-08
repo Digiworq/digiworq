@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function MarketingRoasWidget() {
   const [adSpend, setAdSpend] = useState(50000);
@@ -169,7 +170,7 @@ export default function SocialMediaMarketingPage({ onOpenContact, onBackHome }) 
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <MarketingRoasWidget />
+              <ServiceIllustrationCard serviceId="social-media-marketing" title="Social Media Marketing" />
             </div>
           </div>
 

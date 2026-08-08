@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function MotionCurveWidget() {
   return (
@@ -195,7 +196,7 @@ export default function Animation2DPage({ subServiceId, onOpenContact, onBackHom
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <MotionCurveWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

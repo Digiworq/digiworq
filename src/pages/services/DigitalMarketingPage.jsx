@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function MarketingRoiWidget() {
   const [budget, setBudget] = useState(50000);
@@ -214,7 +215,7 @@ export default function DigitalMarketingPage({ subServiceId, onOpenContact, onBa
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <MarketingRoiWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

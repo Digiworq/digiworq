@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function UiUxInspectorWidget() {
   const [activeScreen, setActiveScreen] = useState('Mobile App UI');
@@ -232,7 +233,7 @@ export default function UiUxDesignPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <UiUxInspectorWidget />
+              <ServiceIllustrationCard serviceId="ui-ux-design" title="UI/UX Design" />
             </div>
           </div>
 

@@ -11,7 +11,7 @@ import {
   Twitter, 
   Globe 
 } from 'lucide-react';
-const logoMark = '/digiworq-logo.png';
+import DigiworqLogoIcon from './DigiworqLogoIcon';
 
 export default function Footer({ onNavigateService, onGoHome, onOpenContact, onNavigatePage }) {
   const quickLinks = [
@@ -49,7 +49,7 @@ export default function Footer({ onNavigateService, onGoHome, onOpenContact, onN
           {/* Column 1: Brand Logo & Description */}
           <div className="footer-col brand-col">
             <div className="footer-logo-wrap">
-              <img src={logoMark} alt="Digiworq Official Logo" className="official-brand-logo-img-footer" />
+              <DigiworqLogoIcon size={46} />
               <div className="footer-wordmark">
                 <h2 className="footer-brand-title">
                   DIGIWOR<span className="accent-dot">Q</span>
@@ -121,19 +121,19 @@ export default function Footer({ onNavigateService, onGoHome, onOpenContact, onN
             <h3 className="footer-col-h3">FOLLOW US ON</h3>
             
             <div className="footer-social-box-grid">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-square-box" title="Facebook">
+              <a href="https://www.facebook.com/DigiworqMarketingandTechnologySolutions/" target="_blank" rel="noreferrer" className="social-square-box" title="Digiworq Facebook Page">
                 <Facebook size={14} />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-square-box" title="YouTube">
+              <a href="https://www.youtube.com/@digiworqmarketingtechnolog5334" target="_blank" rel="noreferrer" className="social-square-box" title="Digiworq YouTube Channel">
                 <Youtube size={14} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-square-box" title="LinkedIn">
+              <a href="https://in.linkedin.com/company/digiworq" target="_blank" rel="noreferrer" className="social-square-box" title="Digiworq LinkedIn Company Page">
                 <Linkedin size={14} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-square-box" title="X (Twitter)">
                 <Twitter size={14} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-square-box" title="Instagram">
+              <a href="https://www.instagram.com/digiworqsolutions/" target="_blank" rel="noreferrer" className="social-square-box" title="Digiworq Instagram">
                 <Instagram size={14} />
               </a>
               <a href="https://whatsapp.com" target="_blank" rel="noreferrer" className="social-square-box" title="WhatsApp">

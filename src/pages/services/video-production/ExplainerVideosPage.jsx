@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function ExplainerPreviewWidget() {
   const [activeStyle, setActiveStyle] = useState('2D Character Motion');
@@ -159,7 +160,7 @@ export default function ExplainerVideosPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <ExplainerPreviewWidget />
+              <ServiceIllustrationCard serviceId="explainer-videos" title="Explainer Videos" />
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../data/allServicesPageData';
+import ServiceIllustrationCard from './ServiceIllustrationCard';
 
 const ceoAvatarImg = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80';
 
@@ -481,7 +482,7 @@ export default function ServicePage({ categoryId = "creative", subServiceId, ini
 
             {/* Right Custom Unique Category & Sub-Service Interactive Widget */}
             <div className="service-hero-right custom-service-widget-column">
-              <RenderCategoryCustomWidget categoryId={categoryId} />
+              <ServiceIllustrationCard serviceId={subServiceId || categoryId} title={activeService.title} />
             </div>
           </div>
 

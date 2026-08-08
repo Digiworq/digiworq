@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function TechTerminalWidget() {
   const [activeTab, setActiveTab] = useState('react');
@@ -202,7 +203,7 @@ export default function WebsiteDevPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <TechTerminalWidget />
+              <ServiceIllustrationCard serviceId="website-development" title="Website Development" />
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function TestimonialWidget() {
   const [activeClient, setActiveClient] = useState('Enterprise SaaS Case Study');
@@ -159,7 +160,7 @@ export default function TestimonialsPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <TestimonialWidget />
+              <ServiceIllustrationCard serviceId="testimonials" title="Testimonials" />
             </div>
           </div>
 

@@ -21,16 +21,16 @@ export default function TopHeader({ onNavigatePage }) {
             <a href="https://whatsapp.com" target="_blank" rel="noreferrer" className="social-icon-link" title="WhatsApp">
               <MessageCircle size={15} />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-icon-link" title="Facebook">
+            <a href="https://www.facebook.com/DigiworqMarketingandTechnologySolutions/" target="_blank" rel="noreferrer" className="social-icon-link" title="Digiworq Facebook Page">
               <Facebook size={15} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon-link" title="LinkedIn">
+            <a href="https://in.linkedin.com/company/digiworq" target="_blank" rel="noreferrer" className="social-icon-link" title="Digiworq LinkedIn Company Page">
               <Linkedin size={15} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon-link" title="Instagram">
+            <a href="https://www.instagram.com/digiworqsolutions/" target="_blank" rel="noreferrer" className="social-icon-link" title="Digiworq Instagram">
               <Instagram size={15} />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-icon-link" title="YouTube">
+            <a href="https://www.youtube.com/@digiworqmarketingtechnolog5334" target="_blank" rel="noreferrer" className="social-icon-link" title="Digiworq YouTube Channel">
               <Youtube size={15} />
             </a>
           </div>

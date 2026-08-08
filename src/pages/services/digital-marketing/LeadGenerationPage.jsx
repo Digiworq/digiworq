@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function LeadGenWidget() {
   const [adSpend, setAdSpend] = useState(75000);
@@ -169,7 +170,7 @@ export default function LeadGenerationPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <LeadGenWidget />
+              <ServiceIllustrationCard serviceId="lead-generation" title="Lead Generation" />
             </div>
           </div>
 

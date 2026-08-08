@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function CreativeStudioWidget() {
   const [activeColor, setActiveColor] = useState('#A068FF');
@@ -215,7 +216,7 @@ export default function CreativeServicePage({ subServiceId, onOpenContact, onBac
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <CreativeStudioWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

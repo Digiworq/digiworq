@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
 function BrandFilmWidget() {
   const [activeMood, setActiveMood] = useState('Cinematic Legacy');
@@ -159,7 +160,7 @@ export default function BrandFilmsPage({ onOpenContact, onBackHome }) {
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <BrandFilmWidget />
+              <ServiceIllustrationCard serviceId="brand-films" title="Brand Films" />
             </div>
           </div>
 

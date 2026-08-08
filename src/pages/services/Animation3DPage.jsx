@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
+import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
 function Animation3DViewportWidget() {
   const [shader, setShader] = useState('Metallic Gold');
@@ -169,7 +170,7 @@ export default function Animation3DPage({ subServiceId, onOpenContact, onBackHom
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <Animation3DViewportWidget />
+              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
             </div>
           </div>
 

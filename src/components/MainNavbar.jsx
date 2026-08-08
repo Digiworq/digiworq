@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { menuCategories } from '../data/menuData';
 import MegaMenu from './MegaMenu';
-const logoMark = '/digiworq-logo.png';
+import DigiworqLogoIcon from './DigiworqLogoIcon';
 
 // Helper function to render sub-service icons matching Marketeam design system
 const getSubServiceIcon = (title) => {
@@ -81,7 +81,7 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome,
             onClick={onGoHome}
             aria-label="Go to Home"
           >
-            <img src={logoMark} alt="Digiworq Official Logo" className="official-brand-logo-img" />
+            <DigiworqLogoIcon size={42} />
             <div className="brand-wordmark">
               <h1 className="brand-title">
                 DIGIWOR<span className="accent-dot">Q</span>
