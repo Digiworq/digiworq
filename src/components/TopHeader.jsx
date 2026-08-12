@@ -9,6 +9,9 @@ import {
   MessageCircle 
 } from 'lucide-react';
 import { topNavLinks } from '../data/menuData';
+import WhatsAppIcon from './WhatsAppIcon';
+
+import { getSeoMetadata } from '../data/seoPageMetadata';
 
 export default function TopHeader({ onNavigatePage }) {
   return (
@@ -18,8 +21,8 @@ export default function TopHeader({ onNavigatePage }) {
         <div className="top-header-left">
           <span className="follow-us-label desktop-only">Follow Us On</span>
           <div className="social-icons desktop-only">
-            <a href="https://whatsapp.com" target="_blank" rel="noreferrer" className="social-icon-link" title="WhatsApp">
-              <MessageCircle size={15} />
+            <a href="https://wa.me/919611489001" target="_blank" rel="noreferrer" className="social-icon-link" title="Chat on WhatsApp">
+              <WhatsAppIcon size={14} color="currentColor" />
             </a>
             <a href="https://www.facebook.com/DigiworqMarketingandTechnologySolutions/" target="_blank" rel="noreferrer" className="social-icon-link" title="Digiworq Facebook Page">
               <Facebook size={15} />
@@ -45,16 +48,24 @@ export default function TopHeader({ onNavigatePage }) {
         {/* Right Side: Quick Links & Search */}
         <div className="top-header-right">
           <ul className="top-nav-links desktop-only">
-            {topNavLinks.map((link, idx) => (
-              <li key={idx}>
-                <button 
-                  className="top-nav-link-btn" 
-                  onClick={() => onNavigatePage && onNavigatePage(link.page)}
-                >
-                  {link.name}
-                </button>
-              </li>
-            ))}
+            {topNavLinks.map((link, idx) => {
+              const meta = getSeoMetadata({ activePage: link.page });
+              const href = meta?.path || `/${link.page}`;
+              return (
+                <li key={idx}>
+                  <a 
+                    href={href}
+                    className="top-nav-link-btn" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (onNavigatePage) onNavigatePage(link.page);
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="top-contact-phone desktop-only">

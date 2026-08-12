@@ -1,5 +1,6 @@
 import React from 'react';
-import { MessageCircle, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function FloatingWidgets({ onOpenContact, onOpenInfluencer }) {
   const scrollToTop = () => {
@@ -35,7 +36,7 @@ export default function FloatingWidgets({ onOpenContact, onOpenInfluencer }) {
         title="Chat on WhatsApp"
       >
         <div className="whatsapp-pulse"></div>
-        <MessageCircle size={28} />
+        <WhatsAppIcon size={26} color="#FFFFFF" />
       </a>
     </>
   );

@@ -276,6 +276,28 @@ export const allCategoriesData = {
     heroSubtext: "Data-driven Search Engine Optimization, social ads, lead generation, and performance marketing in Bangalore.",
     services: [
       {
+        id: "best-digital-marketing-services-in-bangalore",
+        title: "Best Digital Marketing Services in Bangalore",
+        tagline: "Top Digital Marketing Agency & Complete Growth Solutions",
+        badge: "MAIN KEYWORD",
+        icon: "TrendingUp",
+        overview: "Digiworq is one of the digital marketing agencies that helps businesses create a strong presence online. We do this by using strategies and digital solutions that really work. Our goal is to help businesses grow in a way that we can measure. We design marketing campaigns that are tailored to each business whether it is a startup, a brand or a business that is growing.",
+        deliverables: [
+          "Best Digital Marketing Services & Growth Strategy",
+          "Best SEO Companies Ranking & Technical SEO Audit",
+          "Social Media Marketing Services & Influencer Ads",
+          "Performance Google Ads Services & Remarketing",
+          "Website Design Services & Mobile Responsiveness",
+          "High-Intent Lead Generation Services & CRM Sync"
+        ],
+        process: [
+          { step: "01", title: "Best Digital Marketing", desc: "Crafting customized growth strategies for startups and enterprises." },
+          { step: "02", title: "Best SEO Companies", desc: "Researching keywords, technical SEO, local SEO, and content optimization." },
+          { step: "03", title: "Social Media & Ads", desc: "Managing campaigns, content, influencers, and Google Ads." },
+          { step: "04", title: "Lead Generation", desc: "Attracting and converting high-quality inbound leads." }
+        ]
+      },
+      {
         id: "seo-ranking",
         title: "SEO Ranking",
         tagline: "Dominate Google Page 1 Search Results",

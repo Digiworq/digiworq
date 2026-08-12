@@ -3,184 +3,194 @@ import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
 import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
-function VideographyBroadcastWidget() {
-  const [activeCam, setActiveCam] = useState('CAM 1');
-
-  return (
-    <div className="custom-widget-card videography-broadcast-box">
-      <div className="widget-header-row">
-        <Icons.Radio size={20} color="#EF4444" />
-        <span className="widget-title-text">4K Multi-Cam Broadcast Switcher Deck</span>
-      </div>
-
-      <div className="cam-feed-preview">
-        <div className="feed-status-tag">LIVE: {activeCam} OUTPUT</div>
-        <img 
-          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" 
-          alt="Broadcast Feed" 
-          className="feed-img"
-        />
-      </div>
-
-      <div className="cam-switcher-grid">
-        {['CAM 1 (Stage)', 'CAM 2 (Audience)', 'CAM 3 (4K Drone)'].map((cam) => (
-          <button key={cam} className={`cam-btn ${activeCam === cam ? 'active' : ''}`} onClick={() => setActiveCam(cam)}>
-            {cam}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function VideographyPage({ subServiceId, onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
 
-  const data = allCategoriesData.videography || { categoryTitle: "Videography", services: [] };
+  const data = allCategoriesData.videography || { categoryTitle: "Videography Services", services: [] };
   const activeSub = data.services.find(s => 
-    !subServiceId ||
-    s.id === subServiceId || 
-    s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
-    subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
-    s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
-  ) || data.services[0] || { title: "Videography", overview: "4K event, commercial & drone videography.", process: [] };
+    subServiceId && (
+      s.id === subServiceId || 
+      s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
+      subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
+      s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
+    )
+  );
 
-  const deliverables = activeSub.deliverables || [
-    "4K Cinema RAW & ProRes LOG Footage Masters",
-    "Multi-Cam Live Stage & Audience Coverage",
-    "4K Aerial Drone Filming with DGCA Permits",
-    "Studio Multi-Track Audio Recording & Wireless Mics",
-    "Social Media Cutdowns (16:9, 9:16 Vertical Reels)",
-    "Complete Hard Drive & Cloud Handoff"
+  const deliverables = activeSub?.deliverables || [
+    "Advertising Videography Services & Social Ads",
+    "Real Estate Videography & Drone Aerial Shoots",
+    "Business Videography Services & Corporate Brand Stories",
+    "Commercial Video Production & Color Grading",
+    "4K Master Video Output & Multi-Platform Cuts"
   ];
 
-  const pillars = [
+  const mainH2Sections = [
     {
-      step: "01",
-      icon: "Camera",
-      title: "4K Cinema Camera Rigging",
-      desc: "Filmed on RED V-Raptor and Sony FX6 cinema camera rigs with high-speed prime lenses."
+      title: "Advertising Videography Services",
+      icon: Icons.Tv,
+      color: "#F5B800",
+      desc: "We make videos that help brands promote their products and services which gets them noticed and gets customers excited. Our team makes videos that really make an impact, like ads and promotional videos that're perfect for social media and online platforms.",
+      thingsWeCanDo: [
+        "Make videos for ads",
+        "Make promotional videos for brands",
+        "Make videos for social media ads",
+        "Show off products in a way",
+        "Make high-quality commercials"
+      ]
     },
     {
-      step: "02",
-      icon: "Radio",
-      title: "Multi-Cam Live Switching",
-      desc: "Synchronized multi-angle camera recording for concerts, corporate conferences, and live galas."
+      title: "Real Estate Videography",
+      icon: Icons.Building,
+      color: "#3B82F6",
+      desc: "We help people show off their properties, like homes and buildings with videos that make them look amazing. We make videos that're like movies showing off the inside, outside and all the great things about the property to attract people who might want to buy or invest.",
+      thingsWeCanDo: [
+        "Make videos that take you through a property",
+        "Use drones to make videos of properties",
+        "Make videos of apartments and villas",
+        "Make videos of properties",
+        "Make promotional content for real estate"
+      ]
     },
     {
-      step: "03",
-      icon: "Compass",
-      title: "4K Aerial Drone Cinematography",
-      desc: "Licensed drone pilots capturing dramatic aerial landscape shots and venue establishing angles."
+      title: "Business Videography Services",
+      icon: Icons.Briefcase,
+      color: "#EC4899",
+      desc: "We help companies build trust and make their brand stronger with videos that really work. We make videos that are engaging and show off what the company is about, like their vision, services and culture.",
+      thingsWeCanDo: [
+        "Make videos",
+        "Tell the story of a brand",
+        "Make videos that show off a company",
+        "Take videos of offices and teams",
+        "Make videos of customers saying things"
+      ]
     },
     {
-      step: "04",
-      icon: "Mic",
-      title: "Broadcast Audio Recording",
-      desc: "Wireless Sennheiser & Rode lavalier microphones ensuring crystal-clear vocal capture."
-    },
-    {
-      step: "05",
-      icon: "Sliders",
-      title: "DaVinci Color Grading",
-      desc: "Professional colorists applying cinematic LUTs, HDR color balancing, and skin tone correction."
-    },
-    {
-      step: "06",
-      icon: "Zap",
-      title: "Fast 48-Hour Turnaround",
-      desc: "Rapid post-production editing for highlight reels and press releases within 48 hours."
+      title: "Commercial Video Production",
+      icon: Icons.Film,
+      color: "#A068FF",
+      desc: "We make videos that are really engaging and fun to watch for businesses and brands. We combine creativity, storytelling, and great editing to make videos that people will remember.",
+      thingsWeCanDo: [
+        "Make commercials",
+        "Make videos to market products",
+        "Make videos for campaigns",
+        "Edit and color videos to make them look great",
+        "Make videos that work on all platforms"
+      ]
     }
   ];
 
-  const genericCons = [
-    "Shaky handheld camera footage without professional stabilization",
-    "Muffled distorted audio from built-in camera microphones",
-    "Flat un-graded video with washed out colors",
-    "Zero storyboarding or shot list strategy",
-    "Delayed delivery taking weeks for basic event highlight reels"
-  ];
+  const whyChooseUs = {
+    title: "Why Choose Digiworq for Professional Videography?",
+    desc: "Digiworq is a choice because we are creative, strategic, and use the latest techniques to make videos that really work for businesses. Our team is. Focuses on making videos that are visually amazing and help brands get more engagement and be seen online.",
+    thingsWeCanDo: [
+      "Our team is experienced in videography",
+      "We tell stories in a way",
+      "We use high-quality equipment",
+      "We deliver projects quickly",
+      "We make videos"
+    ]
+  };
 
-  const digiworqPros = [
-    "4K RED & Sony FX Cinema Camera rigs with Ronin gimbals",
-    "Broadcast-grade multi-track wireless lavalier audio recording",
-    "DaVinci Resolve Studio color grading & HDR color mastering",
-    "Licensed 4K drone cinematography with official flight permits",
-    "Guaranteed 48-Hour Turnaround for Event Highlight Reels & Masters"
-  ];
+  const industriesWeServe = {
+    title: "Industries We Serve",
+    desc: "We make videos for all kinds of industries like real estate, retail, healthcare, education, hospitality, startups, and big companies.",
+    thingsWeCanDo: [
+      "Make videos for estate",
+      "Make videos for retail and online brands",
+      "Make videos for schools",
+      "Make videos for restaurants and hotels",
+      "Make videos for companies and startups"
+    ]
+  };
 
-  const processSteps = activeSub.process && activeSub.process.length >= 4 ? [
-    { step: "01", title: activeSub.process[0].title || "Location Recce", desc: "Location scouting, lighting strategy & shot list planning." },
-    { step: "02", title: activeSub.process[1].title || "Camera Rigging", desc: "Setting up multi-cam rigs, wireless mics & drone permits." },
-    { step: "03", title: activeSub.process[2].title || "Live Filming", desc: "Capturing 4K multi-angle cinematic footage & b-roll." },
-    { step: "04", title: activeSub.process[3].title || "Color Grade & Master", desc: "DaVinci color grading, audio mix & 4K master delivery." }
-  ] : [
-    { step: "01", title: "Location Recce", desc: "Location scouting, lighting strategy & shot list planning." },
-    { step: "02", title: "Camera Rigging", desc: "Setting up multi-cam rigs, wireless mics & drone permits." },
-    { step: "03", title: "Live Filming", desc: "Capturing 4K multi-angle cinematic footage & b-roll." },
-    { step: "04", title: "Color Grade & Master", desc: "DaVinci color grading, audio mix & 4K master delivery." }
+  const videographyProcess = [
+    {
+      step: "01",
+      title: "Planning & Concept Development",
+      desc: "We learn about your business goals and what you want the video to be about."
+    },
+    {
+      step: "02",
+      title: "Video Shoot & Production",
+      desc: "We use equipment and creative direction to make the video."
+    },
+    {
+      step: "03",
+      title: "Final Delivery",
+      desc: "We edit the video, add sound, and deliver the product, which is optimized and ready to go."
+    }
   ];
 
   const faqs = [
     {
-      q: `What is the equipment crew setup for ${activeSub.title}?`,
-      a: "Our crew includes Director of Photography (DP), Camera Operators, Audio Engineer, Gaffer (Lighting), DIT (Data Technician), and Licensed Drone Operator equipped with RED & Sony FX cameras."
+      q: "What types of videography services do you offer?",
+      a: "We make all kinds of videos like ads, corporate videos, real estate videos, promotional videos, and commercials."
     },
     {
-      q: "Do you handle indoor venue lighting and audio setup?",
-      a: "Yes! We bring full Aputure LED studio lighting packages, wireless mic kits, and multi-track audio recorders for any indoor venue or outdoor location."
+      q: "Do you provide drone videography services?",
+      a: "Yes, we use drones to make videos for estate, events, and commercial projects."
     },
     {
-      q: "How fast will we receive the final video edit?",
-      a: "We deliver event teasers and Reel cutdowns within 48 hours, and complete color-graded 4K master films within 5-7 business days."
+      q: "Can you create videos for media marketing?",
+      a: "Yes, we make videos that're perfect for Instagram, YouTube, Facebook, and other online platforms."
+    },
+    {
+      q: "How long does video production take?",
+      a: "It depends on the type of video, how long the shoot is, and how much editing is needed."
+    },
+    {
+      q: "Why is professional videography important for businesses?",
+      a: "Professional videos help businesses get noticed, engage with customers, and do better in marketing. Digiworq makes videos that really work for brands like advertising videography, real estate videography, and business videography services. Our team is. Focuses on making Digiworq videos that are visually amazing and help brands get more engagement and be seen online. We make videos for all kinds of industries and follow a step-by-step process to ensure every Digiworq project goes smoothly."
     }
   ];
 
   return (
     <div className="digiworq-service-page-root theme-videography">
-      {/* 1. Hero Section */}
-      <section className="service-landing-hero hero-theme-videography">
+      {/* Hero Section */}
+      <section className="service-landing-hero hero-theme-videography" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container">
-          <div className="service-breadcrumbs">
+          <div className="service-breadcrumbs" style={{ marginBottom: '20px' }}>
             <button className="bc-link" onClick={onBackHome}>Services</button>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-link-sub">Videography</span>
-            <span className="bc-sep">&gt;</span>
-            <span className="bc-current">{activeSub.title}</span>
+            <span className="bc-current">{activeSub ? activeSub.title : "Professional Videography Services in Bangalore"}</span>
           </div>
 
-          <div className="service-hero-grid marketeam-hero-grid">
-            <div className="service-hero-left marketeam-hero-left">
-              <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
-                <span className="eventura-badge-dot">●</span>
-                <span>Videography Studio · Bangalore</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(245, 184, 0, 0.12)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '30px', color: '#F5B800', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+                <Icons.Video size={16} /> 4K Aerial & Cinematic Videography
               </div>
-              <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">{activeSub.title}</span> <span className="part-gradient">in Bangalore</span>
+
+              <h1 style={{ fontSize: '2.8rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+                {activeSub ? activeSub.title : "Professional Videography Services in Bangalore"}
               </h1>
-              <p className="marketeam-hero-subtext">{activeSub.overview}</p>
-              <div className="marketeam-hero-cta-group">
-                <div className="btn-border-wrap">
-                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Schedule Shoot Crew</span>
-                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                  </button>
-                </div>
+
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '24px' }}>
+                <p>
+                  At Digiworq we help brands make videos that get peoples attention tell interesting stories and build a strong presence online. We make all kinds of videos from ads to videos about companies and properties that really connect with the people who watch them and make them want to engage.
+                </p>
+              </div>
+
+              <div className="btn-border-wrap inline-block">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Book Videography Shoot</span>
+                  <Icons.ArrowRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
+            <div>
+              <ServiceIllustrationCard subServiceId={subServiceId || 'videography'} categoryId="videography" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
-          <div className="subservice-deliverables-banner">
-            <h3>Videography Footage Specs & Deliverables:</h3>
-            <div className="deliverables-pills-wrap">
+          <div className="subservice-deliverables-banner" style={{ marginTop: '40px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '24px' }}>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.1rem', fontWeight: '800', marginBottom: '16px' }}>Videography Deliverables & Capabilities:</h3>
+            <div className="deliverables-pills-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               {deliverables.map((deliv, idx) => (
-                <div key={idx} className="deliv-pill-item">
-                  <Icons.Video size={16} color="#EF4444" />
+                <div key={idx} className="deliv-pill-item" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(245, 184, 0, 0.1)', border: '1px solid rgba(245, 184, 0, 0.3)', padding: '8px 16px', borderRadius: '12px', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: '600' }}>
+                  <Icons.CheckCircle2 size={16} color="#F5B800" />
                   <span>{deliv}</span>
                 </div>
               ))}
@@ -189,31 +199,37 @@ export default function VideographyPage({ subServiceId, onOpenContact, onBackHom
         </div>
       </section>
 
-      {/* 2. Modern Bento Grid for Core Videography Pillars */}
-      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+      {/* Main H2 Service Blocks */}
+      <section style={{ padding: '80px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
-            <h2 className="process-main-title">
-              Our 6 Core <span className="highlight-yellow-glow">Videography Pillars</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              4K RED camera rigging, multi-cam broadcast switching, and DaVinci color grading.
-            </p>
-          </div>
-
-          <div className="service-pillars-bento-grid">
-            {pillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.Video;
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {mainH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
               return (
-                <div key={idx} className="service-pillar-card-item">
-                  <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(239, 68, 68, 0.4)', color: '#EF4444', background: 'rgba(239, 68, 68, 0.12)' }}>
-                      <IconComp size={24} />
-                    </div>
-                    <span className="pillar-card-number">{pillar.step}</span>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '24px', padding: '36px', boxShadow: `0 12px 32px ${sec.color}15` }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={26} color={sec.color} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-desc">{pillar.desc}</p>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75', marginBottom: '20px' }}>
+                    {sec.desc}
+                  </p>
+
+                  <div style={{ background: 'rgba(255, 255, 255, 0.04)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', padding: '20px' }}>
+                    <div style={{ color: sec.color, fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '12px' }}>
+                      Things we can do:
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {sec.thingsWeCanDo.map((item, itemIdx) => (
+                        <div key={itemIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '600' }}>
+                          <Icons.CheckCircle2 size={16} color={sec.color} />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -221,164 +237,106 @@ export default function VideographyPage({ subServiceId, onOpenContact, onBackHom
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
+      {/* Why Choose Digiworq & Industries We Serve Twin Grid */}
+      <section style={{ padding: '80px 0', background: 'linear-gradient(180deg, #0B0E17 0%, #070913 100%)' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Amateur Videographers vs. <span className="highlight-yellow-glow">Digiworq Cinema Crew</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why corporate brands and event organizers trust Digiworq for broadcast video production.
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            
+            {/* Why Choose Us */}
+            <div style={{ background: 'rgba(245, 184, 0, 0.05)', border: '1px solid rgba(245, 184, 0, 0.25)', borderRadius: '24px', padding: '36px' }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px' }}>
+                {whyChooseUs.title}
+              </h2>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75', marginBottom: '20px' }}>
+                {whyChooseUs.desc}
+              </p>
+              <div style={{ color: '#F5B800', fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '12px' }}>
+                Things we can do:
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {whyChooseUs.thingsWeCanDo.map((item, iIdx) => (
+                  <div key={iIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '600' }}>
+                    <Icons.CheckCircle2 size={16} color="#F5B800" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Industries We Serve */}
+            <div style={{ background: 'rgba(59, 130, 246, 0.05)', border: '1px solid rgba(59, 130, 246, 0.25)', borderRadius: '24px', padding: '36px' }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px' }}>
+                {industriesWeServe.title}
+              </h2>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75', marginBottom: '20px' }}>
+                {industriesWeServe.desc}
+              </p>
+              <div style={{ color: '#3B82F6', fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '12px' }}>
+                Things we can do:
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {industriesWeServe.thingsWeCanDo.map((item, iIdx) => (
+                  <div key={iIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '600' }}>
+                    <Icons.CheckCircle2 size={16} color="#3B82F6" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Our Videography Process Section */}
+      <section style={{ padding: '80px 0', background: '#05070F' }}>
+        <div className="section-container">
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#FFFFFF' }}>Our Videography Process</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '1.05rem', marginTop: '8px' }}>
+              We follow a step-by-step process to make sure every project goes smoothly, and the video is great.
             </p>
           </div>
 
-          <div className="comparison-cards-grid">
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Amateur Videographers</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Unstabilized Handheld Videographers
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="comparison-card-winner" style={{ borderColor: '#EF4444' }}>
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner" style={{ borderColor: '#EF4444', color: '#EF4444', background: 'rgba(239, 68, 68, 0.15)' }}>
-                  ★ Digiworq Cinema Crew
-                </span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                4K Broadcast Videography Production
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Schedule Videography</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Process Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">Shoot Production Pipeline</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-            {processSteps.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(239, 68, 68, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#EF4444', color: '#FFFFFF', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+            {videographyProcess.map((stepItem, sIdx) => (
+              <div key={sIdx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '32px', textAlign: 'center' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(245, 184, 0, 0.18)', border: '1px solid #F5B800', color: '#F5B800', fontWeight: '900', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px auto' }}>
+                  {stepItem.step}
                 </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '10px' }}>
+                  {stepItem.title}
+                </h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                  {stepItem.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-14" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center', width: '100%' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EF4444' }}>300+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Video Shoots Filmed</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>4K RED</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Cinema Camera Rigs</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>48 hrs</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Highlight Reel Delivery</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Production Gear Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
-        <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By Broadcast Camera Gear & Post Production Suites
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['RED V-Raptor 8K', 'Sony FX6 Cinema', 'DaVinci Resolve 19', 'DJI Ronin 4D Gimbal', 'Sennheiser Wireless Mics', 'Aputure 600d Lights', 'Shure Broadcast Audio'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQs Accordion */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
+      {/* FAQs Section */}
+      <section style={{ padding: '80px 0', background: '#0A0E1A' }}>
+        <div className="section-container" style={{ maxWidth: '850px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h3 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#FFFFFF' }}>Frequently Asked Questions</h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {faqs.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', overflow: 'hidden' }}>
                   <button 
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
+                    style={{ width: '100%', padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.08rem', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
                   >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#EF4444' }} />
+                    <h4>{faq.q}</h4>
+                    {isOpen ? <Icons.ChevronUp size={20} color="#F5B800" /> : <Icons.ChevronDown size={20} color="#F5B800" />}
                   </button>
                   {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
+                    <div style={{ padding: '0 24px 20px 24px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.98rem', lineHeight: '1.7' }}>
                       {faq.a}
                     </div>
                   )}
@@ -389,20 +347,16 @@ export default function VideographyPage({ subServiceId, onOpenContact, onBackHom
         </div>
       </section>
 
-      {/* 8. Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
+      {/* Bottom CTA Banner */}
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Book Your <span style={{ color: '#EF4444' }}>{activeSub.title}?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Schedule your 4K video shoot crew and receive a custom estimate today.
-            </p>
+          <div className="services-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Ready to Create High-Impact Commercial Videos?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Talk with Digiworq videographers to plan your shoot and production roadmap.</p>
             <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Schedule Videography Crew</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                <span>Book Videography Shoot</span>
+                <Icons.ArrowRight size={18} />
               </button>
             </div>
           </div>

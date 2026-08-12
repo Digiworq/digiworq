@@ -89,7 +89,6 @@ const allNineServices = [
 ];
 
 export default function ServicesGrid({ onOpenContact }) {
-  const [imageStyle, setImageStyle] = useState('modern'); // 'official' | 'modern'
   const [activeCardId, setActiveCardId] = useState(null); // Track clicked/expanded card on mobile
 
   const handleCardClick = (id) => {
@@ -109,30 +108,10 @@ export default function ServicesGrid({ onOpenContact }) {
           </p>
         </div>
 
-          {/* Style Switcher Toggle */}
-          <div className="image-style-toggle-bar">
-            <button 
-              className={`toggle-style-btn ${imageStyle === 'modern' ? 'active' : ''}`}
-              onClick={() => setImageStyle('modern')}
-            >
-              <Sparkles size={16} />
-              <span>Modern 3D Studio Artwork</span>
-            </button>
-            <button 
-              className={`toggle-style-btn ${imageStyle === 'official' ? 'active' : ''}`}
-              onClick={() => setImageStyle('official')}
-            >
-              <ImageIcon size={16} />
-              <span>Official Digiworq 3D Logos</span>
-            </button>
-          </div>
-
         {/* Clean 3x3 Grid of All 9 Services (Velorah Container Box Style) */}
         <div className="services-3-grid velorah-cards-grid">
           {allNineServices.map((service) => {
-            const officialSrc = new URL(`../../services logo/${service.imageFile}`, import.meta.url).href;
-            const modernSrc = modernArtworks[service.id];
-            const activeSrc = imageStyle === 'modern' ? modernSrc : officialSrc;
+            const activeSrc = modernArtworks[service.id];
             const isExpanded = activeCardId === service.id;
 
             return (

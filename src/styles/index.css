@@ -13516,3 +13516,93 @@ html, body, #root, .app-root, main {
   border-bottom: none !important;
 }
 
+/* ==========================================================================
+   GLOBAL PREMIUM ACCORDION & FAQ STYLING FOR ALL SUB-SERVICE PAGES
+   ========================================================================== */
+.service-faq-section-wrap,
+.subservice-faq-section {
+  padding: 80px 0 !important;
+  background: #080C19;
+  position: relative;
+}
+
+.faq-list {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.faq-item {
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.faq-item:hover,
+.faq-item.active {
+  border-color: rgba(245, 184, 0, 0.4) !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  box-shadow: 0 8px 30px rgba(245, 184, 0, 0.08) !important;
+}
+
+.faq-question {
+  width: 100% !important;
+  padding: 22px 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: transparent !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-heading, inherit) !important;
+  font-size: 1.08rem !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  outline: none !important;
+  gap: 16px !important;
+  transition: color 0.2s ease !important;
+}
+
+.faq-question:hover {
+  color: #F5B800 !important;
+}
+
+.faq-question h4,
+.faq-question span {
+  margin: 0 !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  line-height: 1.4 !important;
+  flex-grow: 1 !important;
+}
+
+.faq-chevron {
+  color: #F5B800 !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.faq-chevron.rotated,
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg) !important;
+}
+
+.faq-answer {
+  padding: 0 26px 24px 26px !important;
+  color: #9CA3AF !important;
+  font-family: var(--font-body, inherit) !important;
+  font-size: 0.98rem !important;
+  line-height: 1.7 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding-top: 18px !important;
+  margin: 0 !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+

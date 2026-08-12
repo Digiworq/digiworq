@@ -46,10 +46,8 @@ function useCountUp(target, duration = 2000, delay = 1200) {
 function TypewriterHeading() {
   return (
     <h1 className="marketeam-typewriter-h1 hero-four-line-heading">
-      <span className="part-white">Unlock Top Digital Growth</span><br />
-      <span className="part-white">Talent & AI Strategy —</span><br />
-      <span className="part-gradient">Now Within Reach,</span><br />
-      <span className="part-gradient-gold">Just One Click Away!</span>
+      <span className="part-white">Best Digital Marketing & Web Agency</span><br />
+      <span className="part-gradient-gold">in Bangalore</span>
     </h1>
   );
 }
@@ -137,8 +135,6 @@ export default function Hero({ onOpenContact }) {
     };
   }, []);
 
-  const headlineText = "Unlock Top Digital Growth Talent & AI Strategy You Thought Was Out of Reach -- Now Just One Click Away!";
-
   return (
     <section ref={heroRef} className="eventura-hero-section marketeam-hero-root">
       {/* Moving Lights Canvas */}
@@ -152,7 +148,7 @@ export default function Hero({ onOpenContact }) {
         {/* Top Floating Pill Badge */}
         <div className="eventura-badge-pill">
           <span className="eventura-badge-dot">●</span>
-          <span>AI-Powered Marketing Talent Platform · Bangalore</span>
+          <span>Best Digital Marketing & Web Agency in Bangalore</span>
         </div>
 
         <div className="marketeam-hero-grid">
@@ -161,7 +157,7 @@ export default function Hero({ onOpenContact }) {
             <TypewriterHeading />
 
             <p className="marketeam-hero-subtext">
-              Digiworq pairs you with Bangalore's top digital marketing strategists, full-stack engineers, 3D animators, and video directors — fully managed in one platform.
+              Digiworq is the best digital marketing agency in Bangalore offering SEO, social media marketing, Google Ads, branding, website development, animation, and video production services for business growth.
             </p>
 
             {/* Rotating Conic-Gradient Border Action Buttons */}

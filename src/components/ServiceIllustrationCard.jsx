@@ -845,24 +845,173 @@ export const ALL_SERVICE_STYLES = {
   },
 };
 
+const SERVICE_ALIAS_MAP = {
+  // Creative
+  'ppt-design': 'ppt-design',
+  'ppt': 'ppt-design',
+  'powerpoint': 'ppt-design',
+  'pitch-deck': 'ppt-design',
+  'presentation': 'ppt-design',
+  'best-powerpoint-design-agency-in-bangalore': 'ppt-design',
+  'branding-solutions': 'branding-solutions',
+  'branding': 'branding-solutions',
+  'package-designing': 'package-designing',
+  'packaging': 'package-designing',
+  'packaging-design': 'package-designing',
+  'graphic-designing': 'graphic-designing',
+  'graphic-design': 'graphic-designing',
+  'ui-ux-design': 'ui-ux-design',
+  'ui-ux': 'ui-ux-design',
+  'uiux': 'ui-ux-design',
+  'mobile-app-design': 'mobile-app-design',
+  'app-design': 'mobile-app-design',
+  'brand-consultation': 'brand-consultation',
+  'brand-strategy': 'brand-consultation',
+  'infographic-design': 'infographic-design',
+  'infographics': 'infographic-design',
+  'social-media-content-creation': 'social-media-content-creation',
+  'social-content': 'social-media-content-creation',
+  'illustrations-and-recreation-services': 'illustrations-and-recreation-services',
+  'illustrations': 'illustrations-and-recreation-services',
+  'illustration': 'illustrations-and-recreation-services',
+  'rebranding': 'rebranding',
+  'rebrand': 'rebranding',
+  'logo-design': 'branding-solutions',
+  'corporate-identity': 'branding-solutions',
+  'marketing-collateral': 'graphic-designing',
+
+  // Technology
+  'website-development': 'website-development',
+  'web-development': 'website-development',
+  'web-dev': 'website-development',
+  'app-development': 'app-development',
+  'app-dev': 'app-development',
+  'e-commerce-website-development': 'e-commerce-website-development',
+  'ecommerce': 'e-commerce-website-development',
+  'e-learning-solutions': 'e-learning-solutions',
+  'elearning': 'e-learning-solutions',
+  'ar-vr-solutions': 'ar-vr-solutions',
+  'ar-vr': 'ar-vr-solutions',
+  'emailer-design-and-development': 'emailer-design-and-development',
+  'emailer': 'emailer-design-and-development',
+  'software-development': 'software-development',
+  'software-dev': 'software-development',
+  'artificial-intelligence': 'artificial-intelligence',
+  'ai-solutions': 'artificial-intelligence',
+  'ai': 'artificial-intelligence',
+
+  // Video Production
+  'indoor-and-outdoor-shooting': 'indoor-and-outdoor-shooting',
+  'indoor-outdoor': 'indoor-and-outdoor-shooting',
+  'video-editing': 'video-editing',
+  'explainer-videos': 'explainer-videos',
+  'testimonials': 'testimonials',
+  'testimonial': 'testimonials',
+  'social-media-videos': 'social-media-videos',
+  'ad-films': 'ad-films',
+  'ad-film': 'ad-films',
+  'ad-films-in-bangalore': 'ad-films',
+  'ad-film-in-bangalore': 'ad-films',
+  'podcast-videos': 'podcast-videos',
+  'brand-films': 'brand-films',
+  'corporate-shoot-videos': 'corporate-shoot-videos',
+  'e-learning-videos': 'e-learning-videos',
+  'voice-over-recordings': 'voice-over-recordings',
+
+  // Digital Marketing
+  'social-media-marketing': 'social-media-marketing',
+  'search-engine-optimization': 'search-engine-optimization',
+  'seo': 'search-engine-optimization',
+  'performance-marketing': 'performance-marketing',
+  'content-writing': 'content-writing',
+  'lead-generation': 'lead-generation',
+  'social-ads-management': 'social-ads-management',
+
+  // 2D & 3D Animation
+  '2d-character-animation': '2d-character-animation',
+  '2d-motion-graphics': '2d-motion-graphics',
+  '2d-logo-animation': '2d-logo-animation',
+  '3d-architecture-visualization': '3d-architecture-visualization',
+  '3d-motion-graphics': '3d-motion-graphics',
+  '3d-logo-animation': '3d-logo-animation',
+
+  // Printing Solutions
+  'digital-printing': 'digital-printing',
+  'offset-printing': 'offset-printing',
+  'screen-printing': 'screen-printing',
+  'large-format-printing': 'large-format-printing',
+  'embossing-and-debossing': 'embossing-and-debossing',
+  'embossing': 'embossing-and-debossing',
+  'letterpress-printing': 'letterpress-printing',
+  'letterpress': 'letterpress-printing',
+  'die-cutting': 'die-cutting',
+  'uv-printing': 'uv-printing',
+  'foil-stamping': 'foil-stamping',
+  'foil-standing': 'foil-stamping',
+  'binding-and-finishing': 'binding-and-finishing',
+  'binding-finishing': 'binding-and-finishing',
+  'vehicle-wraps': 'vehicle-wraps',
+
+  // Photography
+  'event-photography': 'event-photography',
+  'product-photography': 'product-photography',
+  'model-shoots': 'model-shoots',
+  'corporate-headshots-and-team-photography': 'corporate-headshots-and-team-photography',
+  'corporate-headshots': 'corporate-headshots-and-team-photography',
+  'real-estate-photography': 'real-estate-photography',
+  'lifestyle-and-brand-photography': 'lifestyle-and-brand-photography',
+
+  // Videography
+  'event-videography': 'event-videography',
+  'product-shoot': 'product-shoot',
+  'product-shoots': 'product-shoot',
+  'modelling': 'modelling',
+  'commercial-and-advertising-videography': 'commercial-and-advertising-videography',
+  'commercial-videography': 'commercial-and-advertising-videography',
+  'real-estate-videography': 'real-estate-videography',
+  'ariel-views': 'ariel-views',
+  'aerial-views': 'ariel-views',
+  'drone': 'ariel-views',
+  'educational-and-training-videography': 'educational-and-training-videography',
+  'educational-videography': 'educational-and-training-videography',
+};
+
 export function getServiceStyle(serviceId = '', title = '') {
-  if (serviceId && ALL_SERVICE_STYLES[serviceId]) {
-    return ALL_SERVICE_STYLES[serviceId];
+  const rawId = (serviceId || '').toLowerCase().trim();
+  if (rawId && ALL_SERVICE_STYLES[rawId]) {
+    return ALL_SERVICE_STYLES[rawId];
   }
-  const slug = (serviceId || title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  if (rawId && SERVICE_ALIAS_MAP[rawId] && ALL_SERVICE_STYLES[SERVICE_ALIAS_MAP[rawId]]) {
+    return ALL_SERVICE_STYLES[SERVICE_ALIAS_MAP[rawId]];
+  }
+
+  const slug = (serviceId || title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   if (ALL_SERVICE_STYLES[slug]) {
     return ALL_SERVICE_STYLES[slug];
   }
-  // Try partial key matching
+  if (SERVICE_ALIAS_MAP[slug] && ALL_SERVICE_STYLES[SERVICE_ALIAS_MAP[slug]]) {
+    return ALL_SERVICE_STYLES[SERVICE_ALIAS_MAP[slug]];
+  }
+
+  // Try alias key partial matches
+  for (const [aliasKey, targetKey] of Object.entries(SERVICE_ALIAS_MAP)) {
+    if (slug.includes(aliasKey) || aliasKey.includes(slug)) {
+      if (ALL_SERVICE_STYLES[targetKey]) return ALL_SERVICE_STYLES[targetKey];
+    }
+  }
+
+  // Try ALL_SERVICE_STYLES partial key matching
   const key = Object.keys(ALL_SERVICE_STYLES).find(k => k.includes(slug) || slug.includes(k));
   if (key) {
     return ALL_SERVICE_STYLES[key];
   }
+
   return ALL_SERVICE_STYLES['branding-solutions'];
 }
 
-export default function ServiceIllustrationCard({ serviceId, title }) {
-  const currentStyle = getServiceStyle(serviceId, title);
+export default function ServiceIllustrationCard({ serviceId, subServiceId, subService, categoryId, title }) {
+  const effectiveId = serviceId || subServiceId || subService || categoryId || '';
+  const currentStyle = getServiceStyle(effectiveId, title);
   const currentTitle = title || currentStyle.label || 'Service Preview';
   const accentColor = currentStyle.accent || '#F5B800';
   const borderColor = currentStyle.borderColor || `${accentColor}66`;

@@ -1,186 +1,98 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
 import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
-function Animation3DViewportWidget() {
-  const [shader, setShader] = useState('Metallic Gold');
-
-  return (
-    <div className="custom-widget-card anim3d-viewport-box">
-      <div className="viewport-3d-canvas">
-        <div className="cube-3d-wrapper">
-          <div className="cube-3d-shape">
-            <div className="face front">{shader}</div>
-            <div className="face back">PBR 4K</div>
-            <div className="face right">Raytrace</div>
-            <div className="face left">Studio</div>
-            <div className="face top">HDRI</div>
-            <div className="face bottom">Digiworq</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="shader-picker-row">
-        <span className="s-label">Material Shader:</span>
-        {['Metallic Gold', 'Frosted Glass', 'Cyber Chrome'].map((s) => (
-          <button key={s} className={`shader-btn ${shader === s ? 'active' : ''}`} onClick={() => setShader(s)}>
-            {s}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Animation3DPage({ subServiceId, onOpenContact, onBackHome }) {
-  const [activeFaq, setActiveFaq] = useState(null);
-
-  const data = allCategoriesData['3d-animation'] || { categoryTitle: "3D Animation", services: [] };
+  const data = allCategoriesData['3d-animation'] || { categoryTitle: "3D Animation Services", services: [] };
   const activeSub = data.services.find(s => 
-    !subServiceId ||
-    s.id === subServiceId || 
-    s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
-    subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
-    s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
-  ) || data.services[0] || { title: "3D Animation", overview: "Photorealistic 3D architectural renders and motion graphics.", process: [] };
+    subServiceId && (
+      s.id === subServiceId || 
+      s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
+      subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
+      s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
+    )
+  );
 
-  const deliverables = activeSub.deliverables || [
-    "4K UHD Photorealistic 3D Rendered Video Master Files",
-    "High-Polygon 3D Mesh Models & PBR Texture Maps",
-    "360-Degree Interactive Product Viewers & VR Assets",
-    "Turnkey 3D Storyboarding, Lighting & Rigging Setup",
-    "Social Media Cutdowns (16:9, 9:16 Vertical Reels)",
-    "100% Commercial Copyright & Source File Handoff"
+  const deliverables = activeSub?.deliverables || [
+    "3D Animation Company Photorealistic Renders",
+    "High-End 3D Visualization Services & Walkthroughs",
+    "Complete End-to-End 3D Animation & CGI Motion",
+    "Raytraced 4K Video Render Exports",
+    "Product Modeling & Architectural Masterplans"
   ];
 
-  const pillars = [
+  const animationH2Sections = [
     {
-      step: "01",
-      icon: "Box",
-      title: "High-Polygon 3D Mesh Modeling",
-      desc: "Subdivision surface modeling crafted with organic topology for products, vehicles, and architectural structures."
+      title: "3D Animation Company",
+      icon: Icons.Box,
+      color: "#F5B800",
+      desc: "Digiworq is an animation company that is growing. We specialize in making animations that look great for brands, ads, buildings, products and digital campaigns. Our goal is to make animations that move in a way tell a good story and communicate in a way that gets peoples attention. We want to help businesses achieve their goals."
     },
     {
-      step: "02",
-      icon: "Sparkles",
-      title: "4K PBR Material Texturing",
-      desc: "Physically-Based Rendering (PBR) metallic, glass, leather, and wood textures synced to studio HDRI lighting."
+      title: "3D Visualization Services",
+      icon: Icons.Eye,
+      color: "#3B82F6",
+      desc: "Our 3D visualization services help businesses turn their ideas into visuals that look real. We do this by making visuals, product pictures, walkthrough animations and digital experiences that people can interact with. We make sure the visuals are of quality so people can understand and engage with them."
     },
     {
-      step: "03",
-      icon: "Cpu",
-      title: "GPU Raytracing Render Engine",
-      desc: "Blazing fast GPU Octane & Redshift raytracing for hyper-realistic global illumination and reflections."
-    },
-    {
-      step: "04",
-      icon: "Layers",
-      title: "Exploded View Product Animations",
-      desc: "Technical exploded-view mechanical assembly animations showing internal components and features."
-    },
-    {
-      step: "05",
-      icon: "Compass",
-      title: "3D Architectural Walkthroughs",
-      desc: "Immersive interior and exterior architectural fly-through tours for real estate developers and architects."
-    },
-    {
-      step: "06",
-      icon: "Video",
-      title: "Multi-Format Render Exports",
-      desc: "Exported in 4K resolution formatted for TV ads, web 3D viewers, YouTube, and mobile Reels."
-    }
-  ];
-
-  const genericCons = [
-    "Low-poly jagged 3D meshes with artificial plastic textures",
-    "Dull flat lighting without realistic reflections or global illumination",
-    "Jerky keyframe animations lacking physical weight and inertia",
-    "Heavy un-optimized 3D assets that crash web browsers",
-    "Slow rendering timelines taking months for a short commercial cut"
-  ];
-
-  const digiworqPros = [
-    "Photorealistic subdivision 3D modeling & 4K PBR material texturing",
-    "Octane & Redshift GPU raytracing with studio HDRI global illumination",
-    "Exploded-view product feature callouts & technical motion physics",
-    "Interactive WebGL & 360-degree product viewer asset integration",
-    "Guaranteed Turnkey Delivery with Full 3D Source File Handoff"
-  ];
-
-  const processSteps = activeSub.process && activeSub.process.length >= 4 ? [
-    { step: "01", title: activeSub.process[0].title || "3D CAD Modeling", desc: "Building high-poly 3D meshes from CAD files or product specs." },
-    { step: "02", title: activeSub.process[1].title || "Texturing & Lighting", desc: "Applying 4K PBR materials, HDRI studio lighting & shaders." },
-    { step: "03", title: activeSub.process[2].title || "Animation & Rigging", desc: "Rigging mechanical components & rendering raytraced keyframes." },
-    { step: "04", title: activeSub.process[3].title || "4K Master Render", desc: "Post-processing color grade, audio mix & 4K video delivery." }
-  ] : [
-    { step: "01", title: "3D CAD Modeling", desc: "Building high-poly 3D meshes from CAD files or product specs." },
-    { step: "02", title: "Texturing & Lighting", desc: "Applying 4K PBR materials, HDRI studio lighting & shaders." },
-    { step: "03", title: "Animation & Rigging", desc: "Rigging mechanical components & rendering raytraced keyframes." },
-    { step: "04", title: "4K Master Render", desc: "Post-processing color grade, audio mix & 4K video delivery." }
-  ];
-
-  const faqs = [
-    {
-      q: `Can you create 3D animations from CAD files or physical product samples?`,
-      a: "Yes! We import STP, OBJ, FBX, or SolidWorks CAD files directly, or model your product from scratch using physical samples and dimensions."
-    },
-    {
-      q: "What render engines do you use for photorealistic 3D visuals?",
-      a: "We use Cinema 4D, Blender, Unreal Engine 5, Octane Render, and Redshift for GPU-accelerated raytracing."
-    },
-    {
-      q: "Will I receive the 3D source files and model assets?",
-      a: "Yes! Upon project completion, we hand over full copyright ownership, 4K video renders, and complete 3D project source files."
+      title: "3D Animation",
+      icon: Icons.Sparkles,
+      color: "#EC4899",
+      desc: "Digiworq does everything from start to finish when it comes to 3D animation. This includes making models adding textures making motion graphics, rendering, adding effects and making promotional content that moves. Our 3D animation services are for websites, ads, presentations, social media and telling brand stories on platforms. We make sure Digiworq 3D animation services are the best they can be, for our clients."
     }
   ];
 
   return (
-    <div className="digiworq-service-page-root theme-3d-animation">
-      {/* 1. Hero Section */}
-      <section className="service-landing-hero hero-theme-3d-animation">
+    <div className="digiworq-service-page-root theme-3d">
+      {/* Hero Section */}
+      <section className="service-landing-hero hero-theme-3d" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container">
-          <div className="service-breadcrumbs">
+          <div className="service-breadcrumbs" style={{ marginBottom: '20px' }}>
             <button className="bc-link" onClick={onBackHome}>Services</button>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-link-sub">3D Animation</span>
-            <span className="bc-sep">&gt;</span>
-            <span className="bc-current">{activeSub.title}</span>
+            <span className="bc-current">{activeSub ? activeSub.title : "3D Animation Services in Bangalore"}</span>
           </div>
 
-          <div className="service-hero-grid marketeam-hero-grid">
-            <div className="service-hero-left marketeam-hero-left">
-              <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
-                <span className="eventura-badge-dot">●</span>
-                <span>3D Animation Studio · Bangalore</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(245, 184, 0, 0.12)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '30px', color: '#F5B800', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+                <Icons.Sparkles size={16} /> Photorealistic 3D CGI & VFX Studio
               </div>
-              <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">{activeSub.title}</span> <span className="part-gradient">in Bangalore</span>
+
+              <h1 style={{ fontSize: '2.8rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+                {activeSub ? activeSub.title : "3D Animation Services in Bangalore"}
               </h1>
-              <p className="marketeam-hero-subtext">{activeSub.overview}</p>
-              <div className="marketeam-hero-cta-group">
-                <div className="btn-border-wrap">
-                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Request 3D Render Quote</span>
-                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                  </button>
-                </div>
+
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '24px' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  Digiworq helps brands show their ideas in a cool way with 3D animation services. We make sure the visuals are immersive and the animations are realistic.
+                </p>
+                <p style={{ fontWeight: '600', color: '#F5B800' }}>
+                  Our team is made up of people who are good at telling stories and using advanced techniques to make high quality visuals for businesses.
+                </p>
+              </div>
+
+              <div className="btn-border-wrap inline-block">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Request 3D Animation Quote</span>
+                  <Icons.ArrowRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
+            <div>
+              <ServiceIllustrationCard subServiceId={subServiceId || '3d-animation'} categoryId="3d-animation" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
-          <div className="subservice-deliverables-banner">
-            <h3>3D Render Specs & Deliverables:</h3>
-            <div className="deliverables-pills-wrap">
+          <div className="subservice-deliverables-banner" style={{ marginTop: '40px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '24px' }}>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.1rem', fontWeight: '800', marginBottom: '16px' }}>3D Animation Deliverables & Assets:</h3>
+            <div className="deliverables-pills-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               {deliverables.map((deliv, idx) => (
-                <div key={idx} className="deliv-pill-item">
-                  <Icons.Box size={16} color="#A068FF" />
+                <div key={idx} className="deliv-pill-item" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(245, 184, 0, 0.1)', border: '1px solid rgba(245, 184, 0, 0.3)', padding: '8px 16px', borderRadius: '12px', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: '600' }}>
+                  <Icons.CheckCircle2 size={16} color="#F5B800" />
                   <span>{deliv}</span>
                 </div>
               ))}
@@ -189,31 +101,23 @@ export default function Animation3DPage({ subServiceId, onOpenContact, onBackHom
         </div>
       </section>
 
-      {/* 2. Modern Bento Grid for Core 3D Pillars */}
-      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+      {/* Structured SEO H2 Blocks Section */}
+      <section style={{ padding: '80px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
-            <h2 className="process-main-title">
-              Our 6 Core <span className="highlight-yellow-glow">3D Animation Pillars</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              Photorealistic PBR texturing, GPU raytracing engines, and technical exploded animations.
-            </p>
-          </div>
-
-          <div className="service-pillars-bento-grid">
-            {pillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.Box;
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {animationH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
               return (
-                <div key={idx} className="service-pillar-card-item">
-                  <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(160, 104, 255, 0.4)', color: '#A068FF', background: 'rgba(160, 104, 255, 0.12)' }}>
-                      <IconComp size={24} />
-                    </div>
-                    <span className="pillar-card-number">{pillar.step}</span>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '24px', padding: '36px', boxShadow: `0 12px 32px ${sec.color}15` }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={26} color={sec.color} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-desc">{pillar.desc}</p>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75' }}>
+                    {sec.desc}
+                  </p>
                 </div>
               );
             })}
@@ -221,188 +125,16 @@ export default function Animation3DPage({ subServiceId, onOpenContact, onBackHom
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Low-Poly CAD Renders vs. <span className="highlight-yellow-glow">Digiworq Photorealistic 3D</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why hardware and industrial brands choose Digiworq for high-end 3D visual production.
-            </p>
-          </div>
-
-          <div className="comparison-cards-grid">
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Low-Poly CAD Renders</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Basic CAD Renders
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="comparison-card-winner" style={{ borderColor: '#A068FF' }}>
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner" style={{ borderColor: '#A068FF', color: '#A068FF', background: 'rgba(160, 104, 255, 0.15)' }}>
-                  ★ Digiworq 3D Studio
-                </span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#A068FF' }}>
-                Hyper-Realistic 4K 3D Animation
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Request 3D Render Quote</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Process Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">3D Render Pipeline</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-            {processSteps.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(160, 104, 255, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#A068FF', color: '#111827', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
-                </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-14" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center', width: '100%' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>150+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>3D Renders Completed</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>4K PBR</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Photorealistic Texturing</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34D399' }}>100%</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Source Files Ownership</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. 3D Engine Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
+      {/* Bottom CTA Banner */}
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By Cinema 3D Raytracing & GPU Render Engines
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['Cinema 4D R26', 'Blender 4.0', 'Unreal Engine 5', 'Octane Render GPU', 'Redshift Raytracer', 'Substance Painter', 'ZBrush Sculpting'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQs Accordion */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
-                  <button 
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#A068FF' }} />
-                  </button>
-                  {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
-        <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Render Your <span style={{ color: '#A068FF' }}>{activeSub.title}?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Get a custom 3D modeling estimate and raytracing preview today.
-            </p>
+          <div className="services-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Ready to Create Immersive 3D Product & CGI Videos?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Work with Digiworq 3D artists to model and render your product vision.</p>
             <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Request 3D Render Quote</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                <span>Book 3D Visualization Call</span>
+                <Icons.ArrowRight size={18} />
               </button>
             </div>
           </div>

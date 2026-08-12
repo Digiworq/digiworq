@@ -3,229 +3,126 @@ import * as Icons from 'lucide-react';
 import { allCategoriesData } from '../../data/allServicesPageData';
 import ServiceIllustrationCard from '../../components/ServiceIllustrationCard';
 
-function CreativeStudioWidget() {
-  const [activeColor, setActiveColor] = useState('#A068FF');
-  const colors = ['#A068FF', '#F5B800', '#10B981', '#3B82F6', '#EC4899'];
-
-  return (
-    <div className="custom-widget-card creative-widget-box">
-      <div className="widget-header-row">
-        <Icons.Palette size={20} color="#F5B800" />
-        <span className="widget-title-text">Interactive Brand Identity Studio</span>
-      </div>
-      <p className="widget-subdesc">Test dynamic brand color palettes & atmospheric container themes live:</p>
-      
-      <div className="palette-color-picker-row">
-        {colors.map((c, idx) => (
-          <button 
-            key={idx} 
-            className={`palette-circle ${activeColor === c ? 'active' : ''}`} 
-            style={{ backgroundColor: c }}
-            onClick={() => setActiveColor(c)}
-          />
-        ))}
-      </div>
-
-      <div className="brand-preview-canvas" style={{ borderColor: `${activeColor}66`, boxShadow: `0 10px 30px ${activeColor}33` }}>
-        <div className="canvas-logo-mark" style={{ backgroundColor: `${activeColor}22`, color: activeColor }}>
-          <Icons.Sparkles size={28} />
-        </div>
-        <div className="canvas-text-group">
-          <h4 style={{ color: '#FFFFFF' }}>DIGIWORQ CREATIVE</h4>
-          <span style={{ color: activeColor, fontWeight: 700, fontSize: '0.85rem' }}>Atmospheric 3D Design System</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function CreativeServicePage({ subServiceId, onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
 
   const data = allCategoriesData.creative || { categoryTitle: "Creative Services", services: [] };
   const activeSub = data.services.find(s => 
-    !subServiceId ||
-    s.id === subServiceId || 
-    s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
-    subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
-    s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
-  ) || data.services[0] || { title: "Creative Services", overview: "Creative design & branding solutions.", process: [] };
+    subServiceId && (
+      s.id === subServiceId || 
+      s.id.toLowerCase().includes(subServiceId.toLowerCase()) ||
+      subServiceId.toLowerCase().includes(s.id.toLowerCase()) ||
+      s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(subServiceId.toLowerCase())
+    )
+  );
 
-  const deliverables = activeSub.deliverables || [
-    "Custom Logo Mark & Logotype Design",
-    "Comprehensive Brand Guidelines Manual",
-    "Color Palette & Typography System",
-    "Corporate Identity Suite (Business Cards, Letterheads)",
-    "Brand Voice & Messaging Framework",
+  const deliverables = activeSub?.deliverables || [
+    "Social Media Content Creation & Visuals",
+    "Comprehensive Branding Solutions & Guidelines",
+    "Infographic Design & Data Visualization",
+    "Corporate Identity Suite & Packaging",
     "100% Vector Master Source Files (AI, EPS, SVG, PNG, PDF)"
   ];
 
-  const brandPillars = [
+  const creativeH2Sections = [
     {
-      step: "01",
-      icon: "Target",
-      title: "Precision Grid Geometry",
-      desc: "Engineered on golden-ratio grid systems for pixel-perfect scalability across mobile devices, desktop screens, and print billboards."
+      title: "Social Media Content Creation",
+      icon: Icons.Share2,
+      color: "#A068FF",
+      desc: "We help brands create media content that engages their audience.",
+      listHeader: "Our content creation services include:",
+      listItems: [
+        "Visuals",
+        "Videos",
+        "Reels",
+        "Ad creatives",
+        "Content strategies, for social platforms"
+      ],
+      footerDesc: "Our social media content helps brands be more visible interact with their audience and increase digital engagement."
     },
     {
-      step: "02",
-      icon: "Palette",
-      title: "Psychological Color Systems",
-      desc: "Scientifically selected PANTONE® and digital color palettes engineered to evoke emotional resonance and trust in your specific market."
+      title: "Branding Solutions",
+      icon: Icons.Palette,
+      color: "#F5B800",
+      desc: "We offer branding solutions that help businesses build an identity.",
+      listHeader: "Our branding services include:",
+      listItems: [
+        "Logo design",
+        "Brand strategy",
+        "communication",
+        "Digital branding"
+      ],
+      footerDesc: "Our creative team develops branding experiences that show what your business values and stands for."
     },
     {
-      step: "03",
-      icon: "Type",
-      title: "Bespoke Typography Hierarchy",
-      desc: "Curated type pairings, custom display header fonts, body text specifications, and web font loading optimization."
-    },
-    {
-      step: "04",
-      icon: "MessageSquare",
-      title: "Strategic Verbal Positioning",
-      desc: "Defining your brand's verbal personality, key value propositions, elevator pitches, and tone-of-voice frameworks."
-    },
-    {
-      step: "05",
-      icon: "FileText",
-      title: "Corporate Identity & Print Suites",
-      desc: "Production-ready files for business cards, letterheads, presentation pitch decks, packaging, and marketing collateral."
-    },
-    {
-      step: "06",
-      icon: "BookOpen",
-      title: "Master Style Guidelines Book",
-      desc: "Comprehensive style guide detailing clear space rules, improper usage examples, background contrast ratios, and co-branding guidelines."
-    }
-  ];
-
-  const genericCons = [
-    "Generic stock clip-art & AI template generators used by hundreds of competitors",
-    "Basic single-page PDF summary with no clear space rules or brand guidelines",
-    "Low-resolution raster JPG / PNG files that become pixelated & blurry when printed",
-    "Shared template licensing rights (zero legal protection against copycats)",
-    "Looks identical to competitors, eroding brand equity and customer trust"
-  ];
-
-  const digiworqPros = [
-    "100% Custom Golden-Ratio Vector Art engineered uniquely for your business",
-    "Comprehensive 50+ Page Master Brand Style & Usage Manual",
-    "100% Vector Master Files (.AI, .EPS, .SVG, .PDF, CMYK Print Ready)",
-    "100% Full Legal Copyright & Trademark Ownership Transfer",
-    "Iconic Visual Distinction that commands market authority & higher pricing power"
-  ];
-
-  const processSteps = activeSub.process && activeSub.process.length >= 4 ? [
-    {
-      step: "01",
-      title: activeSub.process[0].title || "Discovery & Strategy",
-      desc: "We perform deep market research, competitive analysis, and stakeholder interviews to uncover your target audience personas, brand positioning, and visual goals."
-    },
-    {
-      step: "02",
-      title: activeSub.process[1].title || "Concept Exploration",
-      desc: "Our senior creative team develops 3 distinct visual directions, color palettes, and typographic moodboards, presenting detailed real-world mockups of your assets."
-    },
-    {
-      step: "03",
-      title: activeSub.process[2].title || "Refinement & Precision",
-      desc: "Once your preferred direction is chosen, we mathematically refine vector paths, build responsive lockups, select PANTONE® color codes, and compile the design files."
-    },
-    {
-      step: "04",
-      title: activeSub.process[3].title || "Master Asset Delivery",
-      desc: "We deliver full vector master source files (AI, EPS, SVG, PDF), print-ready CMYK files, digital web packages, and transfer 100% legal copyright ownership."
-    }
-  ] : [
-    {
-      step: "01",
-      title: "Discovery & Strategy",
-      desc: "We perform deep market research, competitive analysis, and stakeholder interviews to uncover your target audience personas, brand positioning, and visual goals."
-    },
-    {
-      step: "02",
-      title: "Concept Exploration",
-      desc: "Our senior creative team develops 3 distinct visual directions, color palettes, and typographic moodboards, presenting detailed real-world mockups of your assets."
-    },
-    {
-      step: "03",
-      title: "Refinement & Precision",
-      desc: "Once your preferred direction is chosen, we mathematically refine vector paths, build responsive lockups, select PANTONE® color codes, and compile the design files."
-    },
-    {
-      step: "04",
-      title: "Master Asset Delivery",
-      desc: "We deliver full vector master source files (AI, EPS, SVG, PDF), print-ready CMYK files, digital web packages, and transfer 100% legal copyright ownership."
-    }
-  ];
-
-  const faqs = activeSub.faqs && activeSub.faqs.length >= 3 ? activeSub.faqs : [
-    {
-      q: `What is included in Digiworq's ${activeSub.title} service?`,
-      a: `Our ${activeSub.title} package includes initial strategy sessions, creative direction concepts, unlimited refinements, and final production-ready vector and digital master files.`
-    },
-    {
-      q: "Will I receive vector source files that can be scaled infinitely?",
-      a: "Yes! You receive 100% vector master files in Adobe Illustrator (.AI), EPS, SVG, and high-res PDF and PNG formats. They can be scaled from a mobile icon to a billboard with zero quality loss."
-    },
-    {
-      q: "Do I get full legal ownership and copyright of the creative assets?",
-      a: "Absolutely. Upon final approval and project completion, 100% of all intellectual property, copyright, and trademark rights are transferred completely to your business."
-    },
-    {
-      q: "What is the typical turnaround time for this service?",
-      a: "Standard projects take 1 to 2 weeks from initial kick-off to final master asset handoff."
-    },
-    {
-      q: "Can you customize designs to match our existing brand guidelines?",
-      a: "Yes! We strictly adhere to your existing brand guidelines or build new ones from scratch if you are undergoing a rebranding phase."
+      title: "Infographic Design",
+      icon: Icons.FileText,
+      color: "#10B981",
+      desc: "Our infographic design services turn information into easy-to-understand graphics.",
+      listHeader: "We design infographics for:",
+      listItems: [
+        "Marketing campaigns",
+        "Presentations",
+        "media",
+        "Websites",
+        "Business communication"
+      ],
+      footerDesc: "Our infographics help improve audience engagement and make information clearer."
     }
   ];
 
   return (
     <div className="digiworq-service-page-root theme-creative">
-      {/* 1. Hero Section */}
-      <section className="service-landing-hero hero-theme-creative">
+      {/* Hero Section */}
+      <section className="service-landing-hero hero-theme-creative" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container">
-          <div className="service-breadcrumbs">
+          <div className="service-breadcrumbs" style={{ marginBottom: '20px' }}>
             <button className="bc-link" onClick={onBackHome}>Services</button>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-link-sub">Creative Services</span>
-            <span className="bc-sep">&gt;</span>
-            <span className="bc-current">{activeSub.title}</span>
+            <span className="bc-current">{activeSub ? activeSub.title : "Creative Digital Agency"}</span>
           </div>
 
-          <div className="service-hero-grid marketeam-hero-grid">
-            <div className="service-hero-left marketeam-hero-left">
-              <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
-                <span className="eventura-badge-dot">●</span>
-                <span>Creative Design Studio · Bangalore</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(245, 184, 0, 0.12)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '30px', color: '#F5B800', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+                <Icons.Sparkles size={16} /> Creative Branding & Design Agency
               </div>
-              <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">{activeSub.title}</span> <span className="part-gradient">in Bangalore</span>
+
+              <h1 style={{ fontSize: '2.8rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+                {activeSub ? activeSub.title : "Creative Digital Agency"}
               </h1>
-              <p className="marketeam-hero-subtext">{activeSub.overview}</p>
-              <div className="marketeam-hero-cta-group">
-                <div className="btn-border-wrap">
-                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Request Creative Quote</span>
-                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                  </button>
-                </div>
+
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '24px' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  Digiworq is a digital agency that helps businesses build strong online brands. We focus on making experiences that have a big impact.
+                </p>
+                <p style={{ marginBottom: '12px' }}>
+                  We use design, storytelling and smart marketing to help businesses connect with their target audience.
+                </p>
+                <p style={{ fontWeight: '700', color: '#F5B800' }}>
+                  Our goal is to help businesses strengthen their presence.
+                </p>
+              </div>
+
+              <div className="btn-border-wrap inline-block">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Request Creative Quote</span>
+                  <Icons.ArrowRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId={activeSub.id || subServiceId} title={activeSub.title} />
+            <div>
+              <ServiceIllustrationCard subServiceId={subServiceId || 'creative'} categoryId="creative" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
-          <div className="subservice-deliverables-banner">
-            <h3>{activeSub.title} Deliverables & Master Assets:</h3>
-            <div className="deliverables-pills-wrap">
+          <div className="subservice-deliverables-banner" style={{ marginTop: '40px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '24px' }}>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.1rem', fontWeight: '800', marginBottom: '16px' }}>Creative Deliverables & Master Assets:</h3>
+            <div className="deliverables-pills-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               {deliverables.map((deliv, idx) => (
-                <div key={idx} className="deliv-pill-item">
+                <div key={idx} className="deliv-pill-item" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(245, 184, 0, 0.1)', border: '1px solid rgba(245, 184, 0, 0.3)', padding: '8px 16px', borderRadius: '12px', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: '600' }}>
                   <Icons.CheckCircle2 size={16} color="#F5B800" />
                   <span>{deliv}</span>
                 </div>
@@ -235,31 +132,41 @@ export default function CreativeServicePage({ subServiceId, onOpenContact, onBac
         </div>
       </section>
 
-      {/* 2. Modern Interactive Bento Grid for Core Pillars */}
-      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+      {/* Structured SEO H2 Blocks Section */}
+      <section style={{ padding: '80px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
-            <h2 className="process-main-title">
-              Our 6 Core <span className="highlight-yellow-glow">Design Pillars</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              We engineer comprehensive, cohesive visual systems built for long-term commercial impact.
-            </p>
-          </div>
-
-          <div className="service-pillars-bento-grid">
-            {brandPillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.Sparkles;
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {creativeH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
               return (
-                <div key={idx} className="service-pillar-card-item">
-                  <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge">
-                      <IconComp size={24} />
-                    </div>
-                    <span className="pillar-card-number">{pillar.step}</span>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '24px', padding: '36px', boxShadow: `0 12px 32px ${sec.color}15` }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={26} color={sec.color} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-desc">{pillar.desc}</p>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75', marginBottom: '16px' }}>
+                    {sec.desc}
+                  </p>
+
+                  <div style={{ background: 'rgba(255, 255, 255, 0.04)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', padding: '20px', marginBottom: '16px' }}>
+                    <div style={{ color: sec.color, fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '12px' }}>
+                      {sec.listHeader}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {sec.listItems.map((item, itemIdx) => (
+                        <div key={itemIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '600' }}>
+                          <Icons.CheckCircle2 size={16} color={sec.color} />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.95rem', lineHeight: '1.6', fontStyle: 'italic' }}>
+                    {sec.footerDesc}
+                  </p>
                 </div>
               );
             })}
@@ -267,192 +174,16 @@ export default function CreativeServicePage({ subServiceId, onOpenContact, onBac
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Generic Templates vs. <span className="highlight-yellow-glow">Digiworq Bespoke Design</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why leading brands choose custom visual engineering over generic templates.
-            </p>
-          </div>
-
-          <div className="comparison-cards-grid">
-            {/* Left Card: Generic */}
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Conventional DIY Approach</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Generic Templates & Freelancers
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Card: Digiworq Winner */}
-            <div className="comparison-card-winner">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner">★ Digiworq Enterprise Strategy</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#F5B800' }}>
-                Bespoke Design Engineering
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Choose Digiworq Engineering</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Detailed Process Pipeline Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">Execution Roadmap</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              A disciplined, transparent design methodology delivering guaranteed visual excellence.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            {processSteps.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(245, 184, 0, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px',
-                  position: 'relative'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#F5B800', color: '#111827', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
-                </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-12" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>300+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Projects Delivered</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>1,500+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Vector Assets Created</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34D399' }}>99.8%</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>On-Time Delivery</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Design Tools & Software Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
+      {/* Bottom CTA Banner */}
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By Industry-Standard Design Tools & Software Suites
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['Adobe Illustrator CC', 'Adobe Photoshop CC', 'Figma Pro', 'Adobe InDesign', 'PANTONE® Color Match', 'Cinema 4D', 'Vector Geometry'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Frequently Asked Questions Accordion Section */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
-                  <button 
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#A068FF' }} />
-                  </button>
-                  {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. High-Converting Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
-        <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Transform Your <span style={{ color: '#A068FF' }}>{activeSub.title}?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Get a custom creative proposal and visual asset breakdown for your business in Bangalore or global markets.
-            </p>
+          <div className="services-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Ready to Transform Your Brand's Visual Identity?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Collaborate with Digiworq senior art directors to elevate your brand story.</p>
             <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Request Creative Proposal</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                <span>Book Creative Consultation</span>
+                <Icons.ArrowRight size={18} />
               </button>
             </div>
           </div>

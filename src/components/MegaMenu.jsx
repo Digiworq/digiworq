@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { ALL_SERVICE_STYLES } from './ServiceIllustrationCard';
+import { getSeoMetadata } from '../data/seoPageMetadata';
 
 export default function MegaMenu({ category, onClose, onNavigateService }) {
   if (!category) return null;
@@ -8,6 +9,12 @@ export default function MegaMenu({ category, onClose, onNavigateService }) {
   const allItems = category.columns.flatMap(col => col.items);
   const defaultId = allItems.length > 0 ? allItems[0].id : null;
   const [hoveredId, setHoveredId] = useState(defaultId);
+
+  const getItemHref = (catId, itemId, itemTitle) => {
+    const slug = itemId || itemTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const meta = getSeoMetadata({ activePage: 'service', activeCategoryId: catId, activeSubServiceId: slug });
+    return meta?.path || `/services/${catId}/${slug}`;
+  };
 
   const handleItemClick = (e, itemTitle, itemId) => {
     e.preventDefault();
@@ -47,7 +54,7 @@ export default function MegaMenu({ category, onClose, onNavigateService }) {
                   const itemAccent = ALL_SERVICE_STYLES[item.id]?.accent || '#F5B800';
                   return (
                     <a
-                      href={`#${item.id}`}
+                      href={getItemHref(category.id, item.id, item.title)}
                       className="mega-item-link"
                       key={iIdx}
                       onClick={(e) => handleItemClick(e, item.title, item.id)}

@@ -2,138 +2,83 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
-function ContentInspectorWidget() {
-  const [activeType, setActiveType] = useState('SEO Website Copy');
-
-  return (
-    <div className="custom-widget-card marketing-calculator-box">
-      <div className="widget-header-row">
-        <Icons.FileText size={20} color="#10B981" />
-        <span className="widget-title-text">SEO Copywriting & Content Inspector</span>
-      </div>
-      <p className="widget-subdesc">Select content type to preview keyword optimization and readability specs:</p>
-
-      <div className="budget-slider-row" style={{ marginTop: '16px' }}>
-        <div className="slider-label-flex">
-          <span>Readability Score:</span>
-          <strong>Flesch-Kincaid 78 (High Conversion)</strong>
-        </div>
-      </div>
-
-      <div className="roas-metrics-card">
-        <div className="roas-stat">
-          <span className="roas-title">SEO Keyword Density</span>
-          <span className="roas-val green-glow">1.8% Optimized</span>
-        </div>
-        <div className="roas-stat">
-          <span className="roas-title">Format Type</span>
-          <span className="roas-val yellow-glow">{activeType}</span>
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
-        {['SEO Website Copy', 'Thought Leadership Blog', 'Email Sales Funnel'].map((t) => (
-          <button key={t} className={`res-pill ${activeType === t ? 'active' : ''}`} onClick={() => setActiveType(t)}>
-            {t}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function ContentWritingServicesPage({ onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
 
   const deliverables = [
-    "High-Converting SEO Landing Page & Website Copywriting",
-    "Long-Form Technical Blog Articles & Thought Leadership",
-    "Persuasive Email Marketing Sequence Copy (Nurture & Sales)",
-    "Product Descriptions & E-Commerce Catalog Storytelling",
-    "100% Original Plagiarism-Free Content with SurferSEO Score",
-    "Complete Commercial Rights & Native Document Handoff"
+    "Website Content & Landing Pages",
+    "SEO Blog & Article Writing",
+    "Product Descriptions & E-commerce Copy",
+    "Social Media & Marketing Content",
+    "Corporate Profiles & Business Copy",
+    "Monthly Content Calendar & Strategy"
   ];
 
   const pillars = [
     {
       step: "01",
-      icon: "FileText",
-      title: "Conversion Copywriting",
-      desc: "Persuasive sales copy built around customer pain points, value propositions, and CTA triggers."
+      icon: "PenTool",
+      title: "Content Writing Services",
+      desc: "Our content writing services help businesses communicate effectively — from website copy and blog posts to product descriptions and corporate content that converts."
     },
     {
       step: "02",
-      icon: "Search",
-      title: "SurferSEO Keyword Clustering",
-      desc: "Writing content optimized with exact search intent, NLP entity keywords, and LSI terms for Google Rank 1."
+      icon: "Globe",
+      title: "Website Content Writing",
+      desc: "We write website content that improves the user experience, builds trust and supports search engine performance for your business."
     },
     {
       step: "03",
-      icon: "Edit3",
-      title: "Technical Thought Leadership",
-      desc: "In-depth B2B whitepapers, SaaS guides, and executive opinion pieces written by specialized domain writers."
+      icon: "Search",
+      title: "SEO Content Writing",
+      desc: "We write keyword-focused content that ranks on search engines while remaining easy to read and genuinely valuable to your audience."
     },
     {
       step: "04",
-      icon: "Mail",
-      title: "Email Nurture & Sales Sequences",
-      desc: "Cold outreach emails, drip welcome funnels, and promotional newsletter copy that boost open rates."
+      icon: "FileText",
+      title: "Blog & Article Writing",
+      desc: "We write informative and engaging blog posts and articles to drive organic traffic and establish your brand as an industry authority."
     },
     {
       step: "05",
-      icon: "CheckCircle",
-      title: "Zero Plagiarism & AI Checks",
-      desc: "100% human-crafted content verified through Copyscape and Originality.ai detectors."
+      icon: "Layout",
+      title: "Landing Page Content",
+      desc: "We write conversion-focused landing page copy that encourages visitors to take action and generate quality leads for your business."
     },
     {
       step: "06",
-      icon: "Zap",
-      title: "Turnkey Formatting & Uploads",
-      desc: "Formatted with H2/H3 headers, meta titles, descriptions, and WordPress/Webflow Gutenberg uploading."
+      icon: "Megaphone",
+      title: "Marketing & Corporate Content",
+      desc: "We write high-quality content for email campaigns, social media, brochures, company profiles and business communications."
     }
-  ];
-
-  const genericCons = [
-    "Fluffy AI-generated text filled with repetitive buzzwords and factual errors",
-    "Boring, uninspired writing without clear value propositions or calls-to-action",
-    "Unoptimized text missing critical SEO search intent keywords",
-    "Plagiarized content risks penalizing Google search engine rankings",
-    "Slow submission times taking weeks for simple blog posts"
-  ];
-
-  const digiworqPros = [
-    "Persuasive conversion copywriting crafted by human senior copywriters",
-    "SurferSEO & Clearscope NLP keyword optimization for Top 3 Google ranks",
-    "100% Human-verified zero plagiarism & zero AI penalty guarantees",
-    "Turnkey WordPress/Webflow publishing with SEO meta tags & headers",
-    "Guaranteed 48-Hour Fast Turnaround for Articles & Landing Pages"
-  ];
-
-  const process = [
-    { step: "01", title: "Brief & Keyword Audit", desc: "Analyzing brand tone, target audience & SEO keyword clusters." },
-    { step: "02", title: "Outline & Copywriting", desc: "Crafting structured conversion copy & SurferSEO optimization." },
-    { step: "03", title: "Proofing & Editing", desc: "Copyscape plagiarism checks, grammar polish & fact verification." },
-    { step: "04", title: "Formatted Handoff", desc: "Delivering DOCX/HTML, SEO meta descriptions & WordPress upload." }
   ];
 
   const faqs = [
     {
-      q: "Is your content written by real human copywriters or generated by AI?",
-      a: "100% human-written! Every piece is crafted by experienced industry copywriters and passes strict Copyscape and Originality.ai quality checks."
+      q: 'What content writing services does Digiworq provide?',
+      a: 'Digiworq provides website content writing, SEO content writing, blog writing, article writing, landing page content, product descriptions and marketing content services.'
     },
     {
-      q: "Do you include SEO keyword optimization in all writing packages?",
-      a: "Yes! We optimize articles and website copy using SurferSEO, SEMrush NLP terms, meta titles, descriptions, and proper H2/H3 heading hierarchy."
+      q: 'Why is professional content writing important for businesses?',
+      a: 'Professional content writing helps improve search engine rankings, engage audiences, build brand credibility and generate quality leads.'
     },
     {
-      q: "Can you publish articles directly to our WordPress or Webflow blog?",
-      a: "Yes! We can format, upload, tag, and publish approved articles directly to your CMS platform."
+      q: 'Do you provide SEO content writing services?',
+      a: 'Yes Digiworq creates SEO-optimized content that targets keywords while maintaining high-quality and user-focused writing.'
+    },
+    {
+      q: 'Can Digiworq create content for different industries?',
+      a: 'Yes Digiworq develops customized content for industries including technology, healthcare, education, real estate, e-commerce and professional services.'
+    },
+    {
+      q: 'How does content writing support marketing?',
+      a: 'Content writing supports SEO, social media marketing, email campaigns, lead generation and overall brand visibility by delivering useful information to the right audience.'
     }
   ];
 
   return (
-    <div className="digiworq-service-page-root theme-digital-marketing">
-      {/* 1. Hero Section */}
+    <div className="service-page-root">
+      {/* Hero Section */}
       <section className="service-landing-hero hero-theme-digital-marketing">
         <div className="section-container">
           <div className="service-breadcrumbs">
@@ -141,25 +86,25 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
             <span className="bc-sep">&gt;</span>
             <span className="bc-link-sub">Digital Marketing</span>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-current">Content Writing Services</span>
+            <span className="bc-current">Content Writing</span>
           </div>
 
           <div className="service-hero-grid marketeam-hero-grid">
             <div className="service-hero-left marketeam-hero-left">
               <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
                 <span className="eventura-badge-dot">●</span>
-                <span>SEO Copywriting Studio · Bangalore</span>
+                <span>Content Agency · Bangalore</span>
               </div>
               <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">Content Writing Services</span> <span className="part-gradient">in Bangalore</span>
+                <span className="part-white">Content Writing Company</span> <span className="part-gradient">in Bangalore</span>
               </h1>
               <p className="marketeam-hero-subtext">
-                Drive organic organic traffic and convert readers into buyers with persuasive, SEO-optimized content writing. Digiworq delivers landing page copy, technical B2B blogs, email funnels, and press releases.
+                Digiworq is a trusted content writing company in Bangalore. We write SEO-friendly, engaging content — from website copy and blogs to landing pages and marketing materials — that helps businesses grow their online presence and attract the right audience.
               </p>
               <div className="marketeam-hero-cta-group">
                 <div className="btn-border-wrap">
                   <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Request Copywriting Quote</span>
+                    <span>Get Content Writing Quote</span>
                     <Icons.ArrowRight size={18} className="btn-arrow-icon" />
                   </button>
                 </div>
@@ -167,17 +112,17 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
             </div>
 
             <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId="content-writing-services" title="Content Writing Services" />
+              <ServiceIllustrationCard serviceId="content-writing-services" title="Content Writing" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
           <div className="subservice-deliverables-banner">
-            <h3>Content Specs & Master Deliverables:</h3>
+            <h3>Content Writing Services & Key Deliverables:</h3>
             <div className="deliverables-pills-wrap">
               {deliverables.map((deliv, idx) => (
                 <div key={idx} className="deliv-pill-item">
-                  <Icons.FileText size={16} color="#10B981" />
+                  <Icons.FileText size={16} color="#64748B" />
                   <span>{deliv}</span>
                 </div>
               ))}
@@ -186,7 +131,7 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
         </div>
       </section>
 
-      {/* 2. Modern Bento Grid for Core Content Pillars */}
+      {/* Core Pillars Bento Grid */}
       <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
         <div className="section-container">
           <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
@@ -194,17 +139,17 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
               Our 6 Core <span className="highlight-yellow-glow">Content Writing Pillars</span>
             </h2>
             <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              Conversion copywriting, SurferSEO keyword clustering, and 100% human-verified accuracy.
+              SEO-optimized writing, conversion copywriting and strategic content planning that supports long-term brand growth.
             </p>
           </div>
 
           <div className="service-pillars-bento-grid">
             {pillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.FileText;
+              const IconComp = Icons[pillar.icon] || Icons.PenTool;
               return (
                 <div key={idx} className="service-pillar-card-item">
                   <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(16, 185, 129, 0.4)', color: '#10B981', background: 'rgba(16, 185, 129, 0.12)' }}>
+                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(100,116,139,0.4)', color: '#94A3B8', background: 'rgba(100,116,139,0.12)' }}>
                       <IconComp size={24} />
                     </div>
                     <span className="pillar-card-number">{pillar.step}</span>
@@ -218,190 +163,38 @@ export default function ContentWritingServicesPage({ onOpenContact, onBackHome }
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
+      {/* FAQ Section */}
+      <section className="service-bento-section-wrap" style={{ background: '#05070F' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Generic AI Fluff vs. <span className="highlight-yellow-glow">Digiworq SEO Copywriting</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why leading brands choose Digiworq human conversion copy over generic AI generators.
-            </p>
+          <div className="process-header-box text-center" style={{ marginBottom: '40px' }}>
+            <h2 className="process-main-title">Frequently Asked <span className="highlight-yellow-glow">Questions</span></h2>
           </div>
-
-          <div className="comparison-cards-grid">
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Generic AI Generators</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Unoptimized Text Fluff
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="comparison-card-winner" style={{ borderColor: '#10B981' }}>
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner" style={{ borderColor: '#10B981', color: '#10B981', background: 'rgba(16, 185, 129, 0.15)' }}>
-                  ★ Digiworq Copy Studio
-                </span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#10B981' }}>
-                SEO Conversion Copywriting
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Request Copywriting Quote</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+          <div className="faq-list" style={{ maxWidth: '800px', margin: '0 auto' }}>
+            {faqs.map((faq, i) => (
+              <div key={i} className={`faq-item ${activeFaq === i ? 'active' : ''}`}>
+                <button className="faq-question" onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
+                  <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 600 }}>{faq.q}</h4>
+                  <Icons.ChevronDown size={18} className={`faq-chevron ${activeFaq === i ? 'rotated' : ''}`} />
                 </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Process Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">Copywriting Pipeline</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-            {process.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(16, 185, 129, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#10B981', color: '#111827', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
-                </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
+                {activeFaq === i && <p className="faq-answer">{faq.a}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-14" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center', width: '100%' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#10B981' }}>500K+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Words Published</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>100%</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Human Copywriting Guarantee</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>SurferSEO</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>NLP Keyword Scoring</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Agency Tools Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
-        <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By SEO Keyword Tools & Plagiarism Checking Suites
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['SurferSEO NLP', 'SEMrush Keyword Research', 'Copyscape Premium', 'Grammarly Business', 'Hemingway Editor', 'Clearscope'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQs Accordion */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
-                  <button 
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#10B981' }} />
-                  </button>
-                  {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
-        <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Order Your <span style={{ color: '#10B981' }}>SEO Copywriting?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Get a custom content strategy, keyword breakdown, and pricing proposal today.
-            </p>
-            <div className="btn-border-wrap inline-block">
-              <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Request Copywriting Quote</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-              </button>
-            </div>
+      {/* Bottom CTA */}
+      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+        <div className="section-container" style={{ textAlign: 'center', padding: '60px 24px' }}>
+          <h2 className="process-main-title">Tell Your Story with <span className="highlight-yellow-glow">Powerful Content</span></h2>
+          <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', marginBottom: '32px' }}>
+            Let our content writing team create SEO-optimized, engaging content that builds your brand, drives traffic, and converts visitors into customers.
+          </p>
+          <div className="btn-border-wrap" style={{ display: 'inline-block' }}>
+            <button className="marketeam-primary-btn" onClick={onOpenContact}>
+              <span>Start Content Writing</span>
+              <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+            </button>
           </div>
         </div>
       </section>

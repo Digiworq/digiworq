@@ -2,175 +2,140 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
-function ExplainerPreviewWidget() {
-  const [activeStyle, setActiveStyle] = useState('2D Character Motion');
-
-  return (
-    <div className="custom-widget-card video-theater-box">
-      <div className="theater-screen-mockup">
-        <div className="screen-play-overlay">
-          <div className="play-button-pulse">
-            <Icons.Play size={32} color="#111827" fill="#111827" />
-          </div>
-          <span className="video-time-badge">00:45 / 01:30 — Style: {activeStyle}</span>
-        </div>
-        <img 
-          src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" 
-          alt="Explainer Video Production" 
-          className="video-poster-img"
-        />
-      </div>
-
-      <div className="theater-controls-bar">
-        <div className="res-picker-row">
-          <span className="res-label">Animation Style:</span>
-          {['2D Character Motion', 'Isometric 3D SaaS', 'Screencast UI Walkthrough'].map((style) => (
-            <button key={style} className={`res-pill ${activeStyle === style ? 'active' : ''}`} onClick={() => setActiveStyle(style)}>
-              {style}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function ExplainerVideosPage({ onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
 
   const deliverables = [
-    "Turnkey Creative Scriptwriting & Concept Hook",
-    "Full-Vector Storyboard & Character Rigging Illustrations",
-    "Professional Studio Voice-Over Audio (English & Regional)",
-    "2D/3D Kinetic Motion Graphics & UI Screen Mockups",
-    "Multi-Aspect Exports (16:9 4K YouTube, 9:16 Vertical Reels)",
-    "100% Commercial Copyright & Source File Handoff"
+    "Explainer Video Services for Startups, Brands & Enterprises",
+    "Animated Explainer Videos 2D/3D Product Motion",
+    "Product Explainer Videos Feature & Benefit Demos",
+    "Corporate & Training Videos Internal & Employee Content",
+    "Scriptwriting, Storyboarding, Voice-over & Post-Production"
   ];
 
-  const pillars = [
+  const mainH2Sections = [
     {
-      step: "01",
-      icon: "Sparkles",
-      title: "60-Second Conversion Hook",
-      desc: "Scripts engineered around problem-solution-action narrative structures that double landing page signups."
+      title: "Explainer Video Services",
+      icon: Icons.Video,
+      color: "#3B82F6",
+      desc: "Our explainer video services include videos, product explainers, corporate videos, training videos, promotional content and marketing videos that are tailored to your business goals and target audience."
     },
     {
-      step: "02",
-      icon: "Box",
-      title: "Custom Character Rigging",
-      desc: "Original vector illustrations built from scratch with skeletal limb rigging for fluid humanistic movement."
+      title: "Animated Explainer Videos",
+      icon: Icons.Sparkles,
+      color: "#10B981",
+      desc: "We create animated videos that explain products, services and business concepts in an creative way. These animated explainer videos are really good at explaining things."
     },
     {
-      step: "03",
-      icon: "Monitor",
-      title: "SaaS App UI Re-creation",
-      desc: "Pixel-perfect vector re-creations of software dashboards, mobile apps, and product workflows."
+      title: "Product Explainer Videos",
+      icon: Icons.Box,
+      color: "#F5B800",
+      desc: "We make explainer videos that show product features, benefits and functionality. This helps customers understand products better."
     },
     {
-      step: "04",
-      icon: "Mic",
-      title: "Studio Voice-Over Recording",
-      desc: "Recorded by professional voice artists in multi-language accents (US English, UK, Indian English, Hindi)."
-    },
-    {
-      step: "05",
-      icon: "Zap",
-      title: "60fps Vector Physics",
-      desc: "Butter-smooth vector physics, custom Bezier easing curves, and kinetic typography motion graphics."
-    },
-    {
-      step: "06",
-      icon: "Video",
-      title: "Multi-Platform Export Suite",
-      desc: "Exported in 4K resolution formatted for YouTube ads, website landing pages, Instagram Reels, and pitch decks."
+      title: "Corporate & Training Videos",
+      icon: Icons.Building2,
+      color: "#A068FF",
+      desc: "We develop corporate videos and employee training content with good storytelling and visual communication. This helps businesses train their employees and communicate with them."
     }
   ];
 
-  const genericCons = [
-    "Repetitive template animations used by thousands of other companies",
-    "Robotic AI voice-overs that sound artificial and unengaging",
-    "Confusing scripts without a clear problem-solution conversion hook",
-    "Stock asset licensing restrictions preventing commercial use",
-    "Zero storyboarding or narrative strategy"
-  ];
-
-  const digiworqPros = [
-    "100% Original custom vector character designs & SaaS UI art",
-    "Professional human studio voice artists in global and regional accents",
-    "High-converting 60-second script hooks crafted by marketing strategists",
-    "Turnkey storyboarding, 4K rendering & audio sound mix",
-    "100% Full Commercial Copyright Handoff & 4K Master Exports"
-  ];
-
-  const process = [
-    { step: "01", title: "Script & Hook", desc: "Writing a compelling 60s/90s problem-solution conversion script." },
-    { step: "02", title: "Storyboard & VO", desc: "Designing visual frame sketches and recording studio voice-overs." },
-    { step: "03", title: "Animation & SFX", desc: "Rendering character motion keyframes & mixing audio tracks." },
-    { step: "04", title: "4K Master Delivery", desc: "Delivering 4K master files, social cutdowns & source files." }
+  const h4Sections = [
+    {
+      title: "Top Explainer Video Services",
+      icon: Icons.Award,
+      color: "#EC4899",
+      desc: "Digiworq delivers customized explainer video solutions with scriptwriting, storyboarding, animation, voice-over and post-production services to create digital content for brands and businesses. We make sure our explainer videos are really good."
+    },
+    {
+      title: "Explainer Video Company in Bangalore",
+      icon: Icons.Building,
+      color: "#8B5CF6",
+      desc: "Digiworq is a trusted explainer video company in Bangalore. We focus on producing engaging videos that improve brand communication, marketing campaigns, customer engagement and business presentations. Our explainer videos are made to engage audiences."
+    },
+    {
+      title: "Explainer Video Company Near Me",
+      icon: Icons.MapPin,
+      color: "#F59E0B",
+      desc: "Looking for an explainer video company near you? Digiworq provides video production services with modern animation techniques, high quality editing and customized storytelling solutions for businesses across industries. We are an explainer video company that can help you."
+    }
   ];
 
   const faqs = [
     {
-      q: "What is the turnaround time for a 60-second explainer video?",
-      a: "Standard production turnaround is 10 to 14 business days, including scriptwriting, storyboarding, voice-over, and final 4K animation render."
+      q: "What are explainer videos?",
+      a: "Explainer videos are short and engaging videos that explain products, services, business ideas or processes in an visually appealing format. Explainer videos are really useful."
     },
     {
-      q: "Do you write the animation script and record voice-overs?",
-      a: "Yes! Our package is 100% turnkey: concept scriptwriting, storyboard illustration, voice-over recording, sound effects mixing, and 4K video rendering."
+      q: "What explainer video services does Digiworq offer?",
+      a: "We provide animated explainer videos, product videos, corporate videos, training videos, promotional videos and marketing video production services. Our explainer video services are many."
     },
     {
-      q: "Will I get full commercial copyright ownership of the video?",
-      a: "Yes, 100%! Upon project completion, full legal ownership, copyright, and source files belong entirely to your company."
+      q: "Why are explainer videos important for businesses?",
+      a: "Explainer videos help improve audience engagement, simplify information increase brand awareness and enhance marketing performance. Explainer videos are important for businesses because they help businesses communicate better."
+    },
+    {
+      q: "Do you provide custom explainer video solutions?",
+      a: "Yes we create customized explainer videos based on your business goals, target audience and branding requirements. We make custom explainer videos for our clients."
+    },
+    {
+      q: "Can Digiworq handle video production?",
+      a: "Yes we provide end-, to-end explainer video production including scripting, animation, voice-over, editing and post-production services. We can handle all your explainer video needs."
     }
   ];
 
   return (
-    <div className="digiworq-service-page-root theme-video-production">
-      {/* 1. Hero Section */}
-      <section className="service-landing-hero hero-theme-video-production">
+    <div className="digiworq-service-page-root theme-explainervideos">
+      {/* Hero Section */}
+      <section className="service-landing-hero hero-theme-explainervideos" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container">
-          <div className="service-breadcrumbs">
+          <div className="service-breadcrumbs" style={{ marginBottom: '20px' }}>
             <button className="bc-link" onClick={onBackHome}>Services</button>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-link-sub">Video Production</span>
+            <span className="bc-link-sub" onClick={onBackHome}>Video Production Services</span>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-current">Explainer Videos</span>
+            <span className="bc-current">Best Explainer Video Services in Bangalore</span>
           </div>
 
-          <div className="service-hero-grid marketeam-hero-grid">
-            <div className="service-hero-left marketeam-hero-left">
-              <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
-                <span className="eventura-badge-dot">●</span>
-                <span>Explainer Video Studio · Bangalore</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '30px', color: '#3B82F6', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+                <Icons.Video size={16} /> 2D/3D Animated Explainer & SaaS Demo Studio
               </div>
-              <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">Explainer Videos</span> <span className="part-gradient">in Bangalore</span>
+
+              <h1 style={{ fontSize: '2.8rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+                Best Explainer Video Services in Bangalore
               </h1>
-              <p className="marketeam-hero-subtext">
-                Simplify complex software, SaaS products, and financial services into engaging 60-second animated explainer videos designed to convert website traffic into paying customers.
-              </p>
-              <div className="marketeam-hero-cta-group">
-                <div className="btn-border-wrap">
-                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Create Explainer Video</span>
-                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                  </button>
-                </div>
+
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '24px' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  Digiworq is a company that makes creative and engaging explainer videos in Bangalore for startups, businesses, brands and enterprises.
+                </p>
+                <p style={{ fontWeight: '600', color: '#3B82F6' }}>
+                  We make high quality explainer videos that make complex ideas easy to understand improve audience engagement and help businesses communicate their message effectively through storytelling that's easy to watch.
+                </p>
+              </div>
+
+              <div className="btn-border-wrap inline-block">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Book Explainer Video Consultation</span>
+                  <Icons.ArrowRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId="explainer-videos" title="Explainer Videos" />
+            <div>
+              <ServiceIllustrationCard subServiceId="explainer-videos" categoryId="video-production" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
-          <div className="subservice-deliverables-banner">
-            <h3>Explainer Specs & Master Deliverables:</h3>
-            <div className="deliverables-pills-wrap">
+          <div className="subservice-deliverables-banner" style={{ marginTop: '40px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '24px' }}>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.1rem', fontWeight: '800', marginBottom: '16px' }}>Explainer Video Deliverables & Capabilities:</h3>
+            <div className="deliverables-pills-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               {deliverables.map((deliv, idx) => (
-                <div key={idx} className="deliv-pill-item">
-                  <Icons.Film size={16} color="#EC4899" />
+                <div key={idx} className="deliv-pill-item" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', padding: '8px 16px', borderRadius: '12px', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: '600' }}>
+                  <Icons.CheckCircle2 size={16} color="#3B82F6" />
                   <span>{deliv}</span>
                 </div>
               ))}
@@ -179,31 +144,23 @@ export default function ExplainerVideosPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 2. Modern Bento Grid for Core Explainer Pillars */}
-      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+      {/* Main H2 Service Blocks */}
+      <section style={{ padding: '80px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
-            <h2 className="process-main-title">
-              Our 6 Core <span className="highlight-yellow-glow">Explainer Pillars</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              High-converting script hooks, custom vector rigging, and 60fps motion physics.
-            </p>
-          </div>
-
-          <div className="service-pillars-bento-grid">
-            {pillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.Sparkles;
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {mainH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
               return (
-                <div key={idx} className="service-pillar-card-item">
-                  <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(236, 72, 153, 0.4)', color: '#EC4899', background: 'rgba(236, 72, 153, 0.12)' }}>
-                      <IconComp size={24} />
-                    </div>
-                    <span className="pillar-card-number">{pillar.step}</span>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '24px', padding: '36px', boxShadow: `0 12px 32px ${sec.color}15` }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={26} color={sec.color} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-desc">{pillar.desc}</p>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75' }}>
+                    {sec.desc}
+                  </p>
                 </div>
               );
             })}
@@ -211,164 +168,51 @@ export default function ExplainerVideosPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
+      {/* H4 Features Section */}
+      <section style={{ padding: '80px 0', background: '#05070F' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Generic Templates vs. <span className="highlight-yellow-glow">Digiworq Custom Explainer</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why tech startups choose Digiworq custom animated storytelling over generic DIY templates.
-            </p>
-          </div>
-
-          <div className="comparison-cards-grid">
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Generic DIY Templates</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Stock Template Creators
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
+            {h4Sections.map((h4Item, hIdx) => {
+              const IconComp = h4Item.icon;
+              return (
+                <div key={hIdx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${h4Item.color}44`, borderRadius: '20px', padding: '32px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: `${h4Item.color}18`, border: `1px solid ${h4Item.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+                    <IconComp size={24} color={h4Item.color} />
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="comparison-card-winner" style={{ borderColor: '#EC4899' }}>
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner" style={{ borderColor: '#EC4899', color: '#EC4899', background: 'rgba(236, 72, 153, 0.15)' }}>
-                  ★ Digiworq Studio House
-                </span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EC4899' }}>
-                Custom 4K Animated Explainer
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Create Explainer Video</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Process Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">Explainer Pipeline</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-            {process.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(236, 72, 153, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#EC4899', color: '#FFFFFF', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
+                  <h4 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '10px' }}>
+                    {h4Item.title}
+                  </h4>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1rem', lineHeight: '1.65' }}>
+                    {h4Item.desc}
+                  </p>
                 </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-14" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center', width: '100%' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>200+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Explainer Videos Produced</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>2x</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Conversion Rate Lift</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>100%</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Custom Vector Artwork</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34D399' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Software Gear Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
-        <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By Motion Graphics & Studio Audio Suites
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['Adobe After Effects', 'Adobe Illustrator', 'Cinema 4D', 'Duik Bassel Rigging', 'Pro Tools Audio', 'Lottie Web'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQs Accordion */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
+      {/* FAQs Section */}
+      <section style={{ padding: '80px 0', background: '#0A0E1A' }}>
+        <div className="section-container" style={{ maxWidth: '850px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h3 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#FFFFFF' }}>FAQs</h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {faqs.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', overflow: 'hidden' }}>
                   <button 
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
+                    style={{ width: '100%', padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.08rem', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
                   >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#EC4899' }} />
+                    <h4>{faq.q}</h4>
+                    {isOpen ? <Icons.ChevronUp size={20} color="#3B82F6" /> : <Icons.ChevronDown size={20} color="#3B82F6" />}
                   </button>
                   {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
+                    <div style={{ padding: '0 24px 20px 24px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.98rem', lineHeight: '1.7' }}>
                       {faq.a}
                     </div>
                   )}
@@ -379,20 +223,16 @@ export default function ExplainerVideosPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 8. Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
+      {/* Bottom CTA Banner */}
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Create Your <span style={{ color: '#EC4899' }}>Explainer Video?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Get a custom animation script breakdown and 60-second pricing proposal today.
-            </p>
+          <div className="services-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Ready to Create Engaging Explainer Videos with Digiworq?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Talk with our explainer video animators and scriptwriters to turn complex business ideas into high-converting videos.</p>
             <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Request Explainer Quote</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                <span>Book Explainer Video Strategy Call</span>
+                <Icons.ArrowRight size={18} />
               </button>
             </div>
           </div>

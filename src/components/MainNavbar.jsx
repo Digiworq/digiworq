@@ -166,7 +166,7 @@ export default function MainNavbar({ onOpenContact, onNavigateService, onGoHome,
         <div className="mobile-nav-full-overlay">
           {/* Top Bar inside Drawer */}
           <div className="mobile-drawer-top-yellow-bar marketeam-drawer-top-bar">
-            <img src={logoMark} alt="Digiworq Official Logo" className="official-brand-logo-img-sm" />
+            <DigiworqLogoIcon size={32} />
             <button 
               className="mobile-drawer-close-btn" 
               onClick={() => setIsMobileMenuOpen(false)}

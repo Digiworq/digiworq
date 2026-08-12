@@ -5,57 +5,52 @@ const faqItems = [
   {
     num: "1.",
     question: "The finest digital marketing agency in Bangalore — Digiworq",
-    answer: "Digiworq is a premier full-service digital marketing and web development agency in Bangalore. We specialize in SEO, social media marketing, Google Ads, creative branding, custom web application development, 2D/3D animation, and high-end video production."
+    answer: "Digiworq is a result-driven digital marketing solutions provider offering services in SEO, social media marketing, Google Ads, branding and website development to accelerate your business growth."
   },
   {
     num: "2.",
     question: "How your digital marketing agency in bangalore works.",
-    answer: "Our workflow begins with deep market research and competitor analysis. We define clear KPIs, craft tailored creative assets, execute multi-channel digital campaigns across Search and Social, and provide transparent performance analytics to drive scalable growth."
+    answer: "Place of Us provides you SEO, social media marketing, Google Ads, website development, branding, content marketing, performance marketing and lead generation services."
   },
   {
     num: "3.",
     question: "What are your website development services in Bangalore?",
-    answer: "We offer comprehensive web engineering solutions including custom static & dynamic websites, e-commerce platforms (Shopify, WooCommerce, custom React), e-learning portals, custom web applications, and API integrations optimized for high speed and SEO."
+    answer: "Yes, we offer reliable web development services in Bangalore such as business website, e-commerce website, responsive web design and SEO-friendly development."
   },
   {
     num: "4.",
     question: "How is Digiworq a top digital marketing agency?",
-    answer: "With 25+ years of industry experience, 350+ satisfied global clients, and over 500 completed projects, Digiworq combines creative storytelling with data-driven performance marketing to consistently deliver industry-leading results."
+    answer: "Our Team works with custom marketing strategies, performance-driven campaigns, transparent reporting, and sustainable growth of our client's business."
   },
   {
     num: "5.",
-    question: "The importance of digital marketing in business growth?",
-    answer: "Digital marketing enables businesses to reach target demographics cost-effectively, establish brand authority, generate verified leads, and achieve higher conversion rates compared to traditional marketing channels."
+    question: "The importance of digital marketing in business growth.",
+    answer: "The most important things what digital marketing does it enhances the online presence on all possible platforms including potential customers in targeted markets and creates leads followed runs to the sales with robust brand awareness."
   },
   {
     num: "6.",
-    question: "Can i supply SEO services for a local city business",
-    answer: "Absolutely! Local SEO optimizes your digital presence for location-specific searches. We enhance your Google Business Profile, target localized search keywords, build authoritative local citations, and drive foot traffic directly to your business."
+    question: "BASIC QUESTIONS: CAN I SUPPLY SEO SERVICES FOR A LOCAL CITY BUSINESS?",
+    answer: "Our local SEO services will help businesses improve their Google ranking and reach potential customers nearby."
   },
   {
     num: "7.",
     question: "Why is your website development company in Bangalore different?",
-    answer: "We don't build generic templates. Every Digiworq website is crafted from scratch using modern web standards, ultra-responsive design systems, native security protocols, and conversion-focused UI/UX aesthetics."
+    answer: "We build websites that are modern and SEO-friendly with fast-loading web pages customized for mobile-responsive to offer a better user experience and business engagement."
   },
   {
     num: "8.",
     question: "Provides social media marketing services?",
-    answer: "Yes, we manage full-cycle social media campaigns across Instagram, Facebook, LinkedIn, YouTube, Twitter, and Snapchat — including high-converting ad copy, graphic design, video reels, influencer partnerships, and community management."
+    answer: "YES, we design custom social media marketing campaigns on Facebook, Instagram, LinkedIn & YouTube to optimize engagement and brand awareness."
   },
   {
     num: "9.",
-    question: "What makes Digiworq different from other digital marketing agencies?",
-    answer: "Our rare multi-disciplinary expertise — combining 3D product animations, cinematic video shoots, custom web software engineering, and performance marketing under one unified roof — ensures seamless brand consistency and maximum ROI."
+    question: "When do you see the results of SEO?",
+    answer: "SEO is a long game, but the effects of good work can begin in 2 to 6 months, since SEO works best after marketing begins, depending largely on competition and website quality."
   },
   {
     num: "10.",
-    question: "When do you see the results of SEO?",
-    answer: "Initial SEO improvements like indexing and organic impression growth typically appear within 4 to 8 weeks, with substantial Page 1 rankings and sustained traffic conversions achieved within 3 to 6 months."
-  },
-  {
-    num: "11.",
-    question: "Businesses must invest in online marketing services?",
-    answer: "Yes, in today's digital-first economy, over 90% of consumers research products and services online before purchasing. Investing in digital marketing ensures your business captures intent-driven leads and outpaces competitors."
+    question: "Businesses must invest in online marketing services.",
+    answer: "Digital Marketing enables businesses to engage with their targeted audiences, build brand awareness, generate leads, and achieve substantial business growth in the digital market."
   }
 ];
 

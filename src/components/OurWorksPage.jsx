@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ExternalLink, ArrowRight, Filter, Award, TrendingUp } from 'lucide-react';
-const agencyWorkspace = '/agency-3d-workspace.jpg';
-const creativeBanner = '/creative-3d-banner.jpg';
-const ceoAvatar = '/ceo-rk-3d-avatar.png';
+import { Sparkles, ExternalLink, ArrowRight, Filter, Award, TrendingUp, Globe, Search, Target } from 'lucide-react';
 
 export default function OurWorksPage({ onOpenContact }) {
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -76,26 +73,73 @@ export default function OurWorksPage({ onOpenContact }) {
     ? projects 
     : projects.filter(p => p.category === selectedFilter);
 
+  const seoH2Sections = [
+    {
+      title: "Digital Marketing Services Near Me",
+      icon: Sparkles,
+      color: "#F5B800",
+      desc: "If you are looking for a digital marketing service near you Digiworq can help with everything you need to market your business online including SEO, social media marketing, paid ads, branding and creating content. We help brands reach the people and build a strong online presence that lasts."
+    },
+    {
+      title: "Website Development Company Bangalore",
+      icon: Globe,
+      color: "#3B82F6",
+      desc: "Digiworq is a trusted website development company in Bangalore. We make websites that work well on all devices are easy to find on search engines and are designed with the user in mind. Our websites are built to handle traffic load fast and help businesses get more sales."
+    },
+    {
+      title: "Search Engine Optimization Services",
+      icon: Search,
+      color: "#EC4899",
+      desc: "Our search engine optimization services help businesses get search rankings more people visiting their site and high-quality leads. We do everything from making sure the technical side of your website is sound to optimizing your content and local search all to help your business grow in a way."
+    },
+    {
+      title: "Lead Generation Services",
+      icon: Target,
+      color: "#10B981",
+      desc: "Digiworq offers lead generation services that help businesses get and convert customers into sales through SEO, Google Ads, landing pages, and performance marketing strategies. We focus on getting high-quality leads that will help your business grow in the run. Digiworq provides these lead generation services to support long-term business growth, for Digiworqs clients."
+    }
+  ];
+
   return (
     <div className="works-page-wrapper">
       {/* Works Page Hero Banner */}
-      <section className="works-hero-section">
+      <section className="works-hero-section" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container text-center">
-          <h1 className="works-hero-h1">
-            Crafting Digital Stories that <span className="purple-gold-gradient-text">Dominate Markets</span>
+          <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(245, 184, 0, 0.12)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '30px', color: '#F5B800', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+            <Award size={16} /> Client Success Showcase
+          </div>
+
+          <h1 className="works-hero-h1" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+            Best Digital Marketing Agency for Business Growth
           </h1>
 
-          <p className="works-hero-p">
-            Explore our curated portfolio of award-winning brand identity designs, custom web platforms, 3D animated films, and high-ROI digital campaigns.
-          </p>
+          <div style={{ maxWidth: '850px', margin: '0 auto', color: 'rgba(255, 255, 255, 0.82)', fontSize: '1.08rem', lineHeight: '1.8' }}>
+            <p style={{ marginBottom: '14px' }}>
+              Digiworq is a digital marketing agency partner for businesses that want to build a strong online presence and see real growth. We use a mix of creativity, strategy and technology to create solutions that work for every brand.
+            </p>
+            <p>
+              Digiworq is one of the digital marketing companies and we help businesses of all sizes. From startups to big companies. Get seen, attract customers and get more sales through marketing solutions that really work. Our team makes sure to create plans that fit your business goals.
+            </p>
+          </div>
 
           {/* Filter Pills */}
-          <div className="works-filter-pills-row">
+          <div className="works-filter-pills-row" style={{ marginTop: '36px', display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
             {categories.map((cat, idx) => (
               <button 
                 key={idx}
                 className={`works-filter-btn ${selectedFilter === cat ? 'active' : ''}`}
                 onClick={() => setSelectedFilter(cat)}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '24px',
+                  border: selectedFilter === cat ? '1.5px solid #F5B800' : '1px solid rgba(255,255,255,0.15)',
+                  background: selectedFilter === cat ? 'rgba(245, 184, 0, 0.18)' : 'rgba(255,255,255,0.04)',
+                  color: selectedFilter === cat ? '#F5B800' : '#FFFFFF',
+                  fontWeight: '700',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
               >
                 {cat}
               </button>
@@ -104,36 +148,31 @@ export default function OurWorksPage({ onOpenContact }) {
         </div>
       </section>
 
-      {/* Projects Showcase Grid */}
-      <section className="works-grid-section">
+      {/* Portfolio Grid Section */}
+      <section className="works-grid-section" style={{ padding: '70px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="works-projects-grid">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="work-project-card">
-                <div className="project-img-container">
-                  <img src={project.img} alt={project.title} className="project-card-img" />
-                  <div className="project-category-badge">{project.category}</div>
-                  <div className="project-metric-overlay">
-                    <TrendingUp size={14} className="metric-icon" />
-                    <span>{project.metric}</span>
+          <div className="portfolio-projects-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+            {filteredProjects.map((p) => (
+              <div key={p.id} className="portfolio-card-item" style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', overflow: 'hidden', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}>
+                <div className="card-thumb-wrapper" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <img src={p.img} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(245, 184, 0, 0.4)', padding: '4px 12px', borderRadius: '12px', color: '#F5B800', fontWeight: '800', fontSize: '0.8rem' }}>
+                    {p.metric}
                   </div>
                 </div>
 
-                <div className="project-card-body">
-                  <span className="project-client-name">{project.client}</span>
-                  <h3 className="project-card-title">{project.title}</h3>
-                  <p className="project-card-desc">{project.desc}</p>
-
-                  <div className="project-tags-row">
-                    {project.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="project-tag-pill">{tag}</span>
+                <div className="card-content-body" style={{ padding: '24px' }}>
+                  <div style={{ color: '#A068FF', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '6px' }}>{p.category} · {p.client}</div>
+                  <h3 style={{ color: '#FFFFFF', fontSize: '1.3rem', fontWeight: '800', marginBottom: '10px' }}>{p.title}</h3>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '16px' }}>{p.desc}</p>
+                  
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                    {p.tags.map((tag, tIdx) => (
+                      <span key={tIdx} style={{ background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '3px 10px', borderRadius: '8px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.78rem', fontWeight: '600' }}>
+                        {tag}
+                      </span>
                     ))}
                   </div>
-
-                  <button className="project-case-study-btn" onClick={onOpenContact}>
-                    <span>Request Case Study</span>
-                    <ArrowRight size={14} />
-                  </button>
                 </div>
               </div>
             ))}
@@ -141,13 +180,37 @@ export default function OurWorksPage({ onOpenContact }) {
         </div>
       </section>
 
+      {/* Structured SEO H2 Services Sections */}
+      <section style={{ padding: '80px 0', background: 'linear-gradient(180deg, #0B0E17 0%, #05070F 100%)' }}>
+        <div className="section-container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+            {seoH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
+              return (
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '20px', padding: '32px' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={24} color={sec.color} />
+                  </div>
+                  <h2 style={{ fontSize: '1.45rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.98rem', lineHeight: '1.75' }}>
+                    {sec.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA Banner */}
-      <section className="works-cta-section">
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <div className="works-cta-glass-box">
-            <h2>Have a Breakthrough Project in Mind?</h2>
-            <p>Let's build something extraordinary together. Schedule a strategy session with our creative directors.</p>
-            <div className="btn-border-wrap inline-block mt-6">
+          <div className="works-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(245, 184, 0, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Have a High-Impact Project in Mind?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Let Digiworq build your brand presence, website, and digital ad strategy for maximum ROI.</p>
+            <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
                 <span>Start Your Project</span>
                 <ArrowRight size={18} />

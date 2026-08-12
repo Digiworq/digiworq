@@ -12,6 +12,7 @@ import {
   Globe 
 } from 'lucide-react';
 import DigiworqLogoIcon from './DigiworqLogoIcon';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer({ onNavigateService, onGoHome, onOpenContact, onNavigatePage }) {
   const quickLinks = [
@@ -19,14 +20,15 @@ export default function Footer({ onNavigateService, onGoHome, onOpenContact, onN
     { name: "About", action: () => onNavigatePage ? onNavigatePage('about') : onGoHome() },
     { name: "Services", action: () => onNavigatePage ? onNavigatePage('services') : onGoHome() },
     { name: "Portfolio", action: () => onNavigatePage ? onNavigatePage('works') : onGoHome() },
+    { name: "E-Commerce", action: () => onNavigatePage ? onNavigatePage('ecommerce') : onGoHome() },
     { name: "Blog", action: () => onNavigatePage ? onNavigatePage('blog') : onGoHome() },
-    { name: "Career", action: onOpenContact },
-    { name: "Contact", action: onOpenContact },
-    { name: "FAQ", action: onGoHome },
-    { name: "Privacy Policy", action: onGoHome },
-    { name: "Terms & Conditions", action: onGoHome },
-    { name: "Refund and Cancellation Policy", action: onGoHome },
-    { name: "Shipping and Delivery Policy", action: onGoHome }
+    { name: "Career", action: () => onNavigatePage ? onNavigatePage('career') : onOpenContact() },
+    { name: "Contact", action: () => onNavigatePage ? onNavigatePage('contact') : onOpenContact() },
+    { name: "Privacy Policy", action: () => onNavigatePage ? onNavigatePage('privacy') : onGoHome() },
+    { name: "Refund and Cancellation Policy", action: () => onNavigatePage ? onNavigatePage('refund') : onGoHome() },
+    { name: "Shipping and Delivery Policy", action: () => onNavigatePage ? onNavigatePage('delivery') : onGoHome() },
+    { name: "Disclaimer", action: () => onNavigatePage ? onNavigatePage('disclaimer') : onGoHome() },
+    { name: "Cookie Policy", action: () => onNavigatePage ? onNavigatePage('cookie') : onGoHome() }
   ];
 
   const serviceLinks = [
@@ -136,8 +138,8 @@ export default function Footer({ onNavigateService, onGoHome, onOpenContact, onN
               <a href="https://www.instagram.com/digiworqsolutions/" target="_blank" rel="noreferrer" className="social-square-box" title="Digiworq Instagram">
                 <Instagram size={14} />
               </a>
-              <a href="https://whatsapp.com" target="_blank" rel="noreferrer" className="social-square-box" title="WhatsApp">
-                <MessageCircle size={14} />
+              <a href="https://wa.me/919611489001" target="_blank" rel="noreferrer" className="social-square-box" title="Chat on WhatsApp">
+                <WhatsAppIcon size={14} color="currentColor" />
               </a>
               <a href="https://digiworq.com" target="_blank" rel="noreferrer" className="social-square-box" title="Global Web">
                 <Globe size={14} />

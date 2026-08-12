@@ -195,7 +195,7 @@ export const menuCategories = [
             title: "Ad Films",
             desc: "Creative advertisements",
             icon: "Tv",
-            id: "ad-films"
+            id: "ad-film"
           },
           {
             title: "Podcast Videos",
@@ -244,7 +244,7 @@ export const menuCategories = [
         items: [
           {
             title: "Social Media Marketing",
-            desc: "Grow your brand",
+            desc: "Grow your brand online",
             icon: "Share2",
             id: "social-media-marketing"
           },
@@ -259,7 +259,11 @@ export const menuCategories = [
             desc: "Targeted ad campaigns",
             icon: "Target",
             id: "social-ads-management"
-          },
+          }
+        ]
+      },
+      {
+        items: [
           {
             title: "Lead Generation",
             desc: "Generate quality leads",
@@ -271,11 +275,7 @@ export const menuCategories = [
             desc: "Data-driven campaigns",
             icon: "BarChart3",
             id: "performance-marketing"
-          }
-        ]
-      },
-      {
-        items: [
+          },
           {
             title: "Content Writing Services",
             desc: "Engaging content creation",

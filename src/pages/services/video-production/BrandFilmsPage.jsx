@@ -2,175 +2,155 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import ServiceIllustrationCard from '../../../components/ServiceIllustrationCard';
 
-function BrandFilmWidget() {
-  const [activeMood, setActiveMood] = useState('Cinematic Legacy');
-
-  return (
-    <div className="custom-widget-card video-theater-box">
-      <div className="theater-screen-mockup">
-        <div className="screen-play-overlay">
-          <div className="play-button-pulse">
-            <Icons.Play size={32} color="#111827" fill="#111827" />
-          </div>
-          <span className="video-time-badge">Brand Anthem — Mood: {activeMood}</span>
-        </div>
-        <img 
-          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" 
-          alt="Brand Film Production" 
-          className="video-poster-img"
-        />
-      </div>
-
-      <div className="theater-controls-bar">
-        <div className="res-picker-row">
-          <span className="res-label">Cinematic Mood:</span>
-          {['Cinematic Legacy', 'High-Energy Tech', 'Documentary Heritage'].map((mood) => (
-            <button key={mood} className={`res-pill ${activeMood === mood ? 'active' : ''}`} onClick={() => setActiveMood(mood)}>
-              {mood}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function BrandFilmsPage({ onOpenContact, onBackHome }) {
   const [activeFaq, setActiveFaq] = useState(null);
 
   const deliverables = [
-    "Turnkey Creative Direction, Concept Narrative & Scriptwriting",
-    "4K RED V-Raptor 8K Multi-Location Cinema Production",
-    "Founder & Executive Interview Filming with Professional Lighting",
-    "Original Orchestral / Acoustic Audio Score & Sound Design",
-    "DaVinci Resolve Studio Color Grading & Master Output",
-    "100% Commercial Copyright & Broadcast Master Files"
+    "Film Branding Agencies Bangalore Creative Storytelling",
+    "Brand Storytelling Films & Promotional Brand Videos",
+    "In-Film Branding Agencies & Product Placement Videos",
+    "Creative Advertising Films & Premium Film Branding Agencies",
+    "Corporate Brand Films, Digital Brand Campaigns & Full Production"
   ];
 
-  const pillars = [
+  const mainH2Sections = [
     {
-      step: "01",
-      icon: "Award",
-      title: "Emotional Brand Storytelling",
-      desc: "Documentary-style brand anthems highlighting founder origin, corporate mission, and customer impact."
+      title: "Film Branding Agencies Bangalore",
+      icon: Icons.Film,
+      color: "#3B82F6",
+      desc: "Our film branding services help businesses tell their story through visuals and creative concepts. We use high-quality production techniques to make sure our films look great and help businesses promote their brand."
     },
     {
-      step: "02",
-      icon: "Camera",
-      title: "4K RED Cinema Camera Rigs",
-      desc: "Filmed on RED V-Raptor 8K and anamorphic cinema prime lenses for rich cinematic bokeh and color depth."
+      title: "Brand Storytelling Films",
+      icon: Icons.BookOpen,
+      color: "#10B981",
+      desc: "We create films that tell a story about a brand and help people connect with it on a level. This helps businesses become more visible and well-known."
     },
     {
-      step: "03",
-      icon: "Users",
-      title: "Executive & Founder Coaching",
-      desc: "Professional director interview coaching ensuring authentic, passionate, and articulate on-camera delivery."
+      title: "Promotional Brand Videos",
+      icon: Icons.Sparkles,
+      color: "#F5B800",
+      desc: "We make videos that businesses can use on their websites, social media and in advertising campaigns."
     },
     {
-      step: "04",
-      icon: "Sun",
-      title: "Studio Lighting Aesthetics",
-      desc: "Multi-point Aputure & Arri Skypanel lighting setups tuned to complement company color palettes."
+      title: "In-Film Branding Agencies",
+      icon: Icons.Award,
+      color: "#A068FF",
+      desc: "Digiworq helps businesses put their message into films in a way that feels natural and helps people remember the brand. This creates an experience for the audience and helps businesses build a stronger brand."
     },
     {
-      step: "05",
-      icon: "Music",
-      title: "Custom Orchestral Sound Score",
-      desc: "Licensed or custom-composed cinematic music scores built around natural emotional swells."
+      title: "Product Placement Videos",
+      icon: Icons.Box,
+      color: "#EC4899",
+      desc: "We showcase products and services in a way in our videos and marketing campaigns."
     },
     {
-      step: "06",
-      icon: "Video",
-      title: "Multi-Format Brand Cutdowns",
-      desc: "Delivering full 3-minute brand film masters, 60s website headers, and 30s social video cuts."
+      title: "Creative Advertising Films",
+      icon: Icons.Tv,
+      color: "#8B5CF6",
+      desc: "We make advertising films that tell a story and are visually stunning. This helps businesses connect with their audience and promote their brand."
+    },
+    {
+      title: "Premium Film Branding Agencies",
+      icon: Icons.Crown,
+      color: "#F59E0B",
+      desc: "As a premium film branding agency Digiworq focuses on making high-quality videos with visuals and a strong story. This helps businesses create premium brand films that stand out."
+    },
+    {
+      title: "Corporate Brand Films",
+      icon: Icons.Building2,
+      color: "#10B981",
+      desc: "We make corporate films that help businesses communicate better and build trust with their audience."
+    },
+    {
+      title: "Digital Brand Campaigns",
+      icon: Icons.Share2,
+      color: "#3B82F6",
+      desc: "We create digital brand campaigns that are optimized for YouTube, Instagram, LinkedIn and other social media platforms."
+    },
+    {
+      title: "Brand Film Production Bangalore",
+      icon: Icons.Camera,
+      color: "#A068FF",
+      desc: "We provide brand film production services, including scripting, concept development, shooting, editing and post-production support. This helps businesses communicate their message in a way."
     }
-  ];
-
-  const genericCons = [
-    "Dry corporate slideshows with monotonous voiceover recitations",
-    "Flat, un-graded camera video that feels like a low-budget internal video",
-    "Superficial buzzwords without emotional connection or storytelling",
-    "Cheap stock footage clips that don't match actual company operations",
-    "Inflexible video cutdowns that don't fit website heroes or social feeds"
-  ];
-
-  const digiworqPros = [
-    "Emotional documentary-style brand storytelling led by agency film directors",
-    "4K RED V-Raptor 8K cinema production with anamorphic optics",
-    "On-camera founder coaching & high-end studio lighting setups",
-    "Custom composed music score & DaVinci Resolve color grading",
-    "Complete 16:9 master, website hero cutdowns & social media reels"
-  ];
-
-  const process = [
-    { step: "01", title: "Narrative & Recce", desc: "Crafting the brand story arc, founder interview questions & location scouting." },
-    { step: "02", title: "Cinema Production", desc: "4K RED multi-location shoot, founder interviews & cinematic b-roll capture." },
-    { step: "03", title: "Color & Music Score", desc: "DaVinci color grading, orchestral sound design & motion title graphics." },
-    { step: "04", title: "Master Delivery", desc: "Delivering 4K master brand film, website cutdowns & broadcast files." }
   ];
 
   const faqs = [
     {
-      q: "What is the difference between a Brand Film and a Corporate Shoot?",
-      a: "A Brand Film focuses on emotional storytelling, founder legacy, and brand vision designed for public audiences, whereas Corporate Shoots focus on internal communications and facility showcases."
+      q: "What brand film production services does Digiworq provide?",
+      a: "We provide films, promotional videos, advertising films, brand storytelling videos and digital campaign production services. Digiworq is a film branding agency that helps businesses tell their story through film."
     },
     {
-      q: "How long does it take to produce a custom Brand Film?",
-      a: "Typical production takes 3 to 4 weeks, including narrative development, location filming, custom score composition, color grading, and final delivery."
+      q: "Why are brand films important for businesses?",
+      a: "Brand films are important because they help businesses become more well-known connect with their audience and create a connection, through visual storytelling. This is what Digiworq does as a film branding agency."
     },
     {
-      q: "Will you interview our founders and executive leadership on camera?",
-      a: "Yes! Our director conducts comfortable, guided interview sessions with founders, executives, and key team members to elicit authentic storytelling."
+      q: "Do you provide film production services?",
+      a: "Yes we provide production services, including scripting, shooting, editing and final video delivery. Digiworq is a film branding agency that takes care of everything."
+    },
+    {
+      q: "Can Digiworq create brand films?",
+      a: "Yes, we create brand films based on business goals, target audience and marketing strategies. This is what we do as a film branding agency."
+    },
+    {
+      q: "Which platforms are brand films optimized for?",
+      a: "Our brand films are optimized for websites YouTube Instagram, LinkedIn, Facebook and digital advertising campaigns. Digiworq makes sure that our films work well on all these platforms."
     }
   ];
 
   return (
-    <div className="digiworq-service-page-root theme-video-production">
-      {/* 1. Hero Section */}
-      <section className="service-landing-hero hero-theme-video-production">
+    <div className="digiworq-service-page-root theme-brandfilms">
+      {/* Hero Section */}
+      <section className="service-landing-hero hero-theme-brandfilms" style={{ padding: '80px 0 50px 0', background: 'linear-gradient(180deg, #0A0E1A 0%, #0F172A 100%)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="section-container">
-          <div className="service-breadcrumbs">
+          <div className="service-breadcrumbs" style={{ marginBottom: '20px' }}>
             <button className="bc-link" onClick={onBackHome}>Services</button>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-link-sub">Video Production</span>
+            <span className="bc-link-sub" onClick={onBackHome}>Video Production Services</span>
             <span className="bc-sep">&gt;</span>
-            <span className="bc-current">Brand Films</span>
+            <span className="bc-current">Top Film Branding Agencies in Bangalore</span>
           </div>
 
-          <div className="service-hero-grid marketeam-hero-grid">
-            <div className="service-hero-left marketeam-hero-left">
-              <div className="eventura-badge-pill" style={{ marginBottom: '16px' }}>
-                <span className="eventura-badge-dot">●</span>
-                <span>Cinema Brand Studio · Bangalore</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <div className="eventura-badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '30px', color: '#3B82F6', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>
+                <Icons.Award size={16} /> Cinematic Brand Storytelling & Premium In-Film Branding Studio
               </div>
-              <h1 className="marketeam-typewriter-h1">
-                <span className="part-white">Brand Film Production</span> <span className="part-gradient">in Bangalore</span>
+
+              <h1 style={{ fontSize: '2.8rem', fontWeight: '900', color: '#FFFFFF', marginBottom: '20px', lineHeight: '1.2' }}>
+                Top Film Branding Agencies in Bangalore
               </h1>
-              <p className="marketeam-hero-subtext">
-                Tell your company's authentic story with 4K cinematic brand films. Digiworq combines documentary-style storytelling, founder interviews, and custom orchestral scores to build lasting brand equity.
-              </p>
-              <div className="marketeam-hero-cta-group">
-                <div className="btn-border-wrap">
-                  <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                    <span>Request Brand Film Proposal</span>
-                    <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                  </button>
-                </div>
+
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1.08rem', lineHeight: '1.8', marginBottom: '24px' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  Digiworq is one of the film branding agencies in Bangalore. We make brand films for businesses, startups and big companies. Our films are visually engaging.
+                </p>
+                <p style={{ fontWeight: '600', color: '#3B82F6' }}>
+                  Help companies tell their story in a way that people remember. We create brand films, corporate videos and promotional content that helps businesses connect with their audience and tell their story in a way.
+                </p>
+              </div>
+
+              <div className="btn-border-wrap inline-block">
+                <button className="marketeam-primary-btn" onClick={onOpenContact}>
+                  <span>Book Brand Film Consultation</span>
+                  <Icons.ArrowRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="service-hero-right custom-service-widget-column">
-              <ServiceIllustrationCard serviceId="brand-films" title="Brand Films" />
+            <div>
+              <ServiceIllustrationCard subServiceId="brand-films" categoryId="video-production" />
             </div>
           </div>
 
           {/* Deliverables Banner */}
-          <div className="subservice-deliverables-banner">
-            <h3>Brand Specs & Master Deliverables:</h3>
-            <div className="deliverables-pills-wrap">
+          <div className="subservice-deliverables-banner" style={{ marginTop: '40px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '24px' }}>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.1rem', fontWeight: '800', marginBottom: '16px' }}>Film Branding Deliverables & Capabilities:</h3>
+            <div className="deliverables-pills-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               {deliverables.map((deliv, idx) => (
-                <div key={idx} className="deliv-pill-item">
-                  <Icons.Award size={16} color="#EC4899" />
+                <div key={idx} className="deliv-pill-item" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', padding: '8px 16px', borderRadius: '12px', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: '600' }}>
+                  <Icons.CheckCircle2 size={16} color="#3B82F6" />
                   <span>{deliv}</span>
                 </div>
               ))}
@@ -179,31 +159,23 @@ export default function BrandFilmsPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 2. Modern Bento Grid for Core Brand Film Pillars */}
-      <section className="service-bento-section-wrap" style={{ background: '#080C19' }}>
+      {/* Main H2 Service Blocks */}
+      <section style={{ padding: '80px 0', background: '#0B0E17' }}>
         <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '56px' }}>
-            <h2 className="process-main-title">
-              Our 6 Core <span className="highlight-yellow-glow">Brand Story Pillars</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem', maxWidth: '750px', margin: '12px auto 0 auto' }}>
-              Documentary storytelling, 4K RED cinema optics, and custom orchestral sound scores.
-            </p>
-          </div>
-
-          <div className="service-pillars-bento-grid">
-            {pillars.map((pillar, idx) => {
-              const IconComp = Icons[pillar.icon] || Icons.Award;
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {mainH2Sections.map((sec, idx) => {
+              const IconComp = sec.icon;
               return (
-                <div key={idx} className="service-pillar-card-item">
-                  <div className="pillar-top-header-row">
-                    <div className="pillar-icon-badge" style={{ borderColor: 'rgba(236, 72, 153, 0.4)', color: '#EC4899', background: 'rgba(236, 72, 153, 0.12)' }}>
-                      <IconComp size={24} />
-                    </div>
-                    <span className="pillar-card-number">{pillar.step}</span>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: `1px solid ${sec.color}44`, borderRadius: '24px', padding: '36px', boxShadow: `0 12px 32px ${sec.color}15` }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `${sec.color}18`, border: `1px solid ${sec.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <IconComp size={26} color={sec.color} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-desc">{pillar.desc}</p>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '14px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h2>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.02rem', lineHeight: '1.75' }}>
+                    {sec.desc}
+                  </p>
                 </div>
               );
             })}
@@ -211,164 +183,27 @@ export default function BrandFilmsPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 3. Modern Split Comparison Showcase Deck */}
-      <section className="service-comparison-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '52px' }}>
-            <h2 className="process-main-title">
-              Generic Corporate Videos vs. <span className="highlight-yellow-glow">Digiworq Cinematic Brand Films</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', marginTop: '12px', fontSize: '1.05rem' }}>
-              Why category leaders choose Digiworq documentary storytelling to define their brand identity.
-            </p>
-          </div>
-
-          <div className="comparison-cards-grid">
-            <div className="comparison-card-danger">
-              <div className="comparison-card-header">
-                <span className="comparison-badge-danger">✕ Standard Corporate Videos</span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EF4444' }}>
-                Monotonous Corporate Clips
-              </h3>
-              <div className="comparison-items-list">
-                {genericCons.map((con, idx) => (
-                  <div key={idx} className="comparison-list-item danger">
-                    <div className="icon-box-danger">✕</div>
-                    <span>{con}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="comparison-card-winner" style={{ borderColor: '#EC4899' }}>
-              <div className="comparison-card-header">
-                <span className="comparison-badge-winner" style={{ borderColor: '#EC4899', color: '#EC4899', background: 'rgba(236, 72, 153, 0.15)' }}>
-                  ★ Digiworq Cinema Studio
-                </span>
-              </div>
-              <h3 className="comparison-card-title" style={{ marginBottom: '20px', color: '#EC4899' }}>
-                4K Documentary Brand Anthem
-              </h3>
-              <div className="comparison-items-list" style={{ marginBottom: '28px' }}>
-                {digiworqPros.map((pro, idx) => (
-                  <div key={idx} className="comparison-list-item winner">
-                    <div className="icon-box-winner">✓</div>
-                    <span>{pro}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="btn-border-wrap inline-block">
-                <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                  <span>Request Brand Film Proposal</span>
-                  <Icons.ArrowRight size={18} className="btn-arrow-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Process Section */}
-      <section className="digiworq-process-section py-20">
-        <div className="section-container">
-          <div className="process-header-box text-center" style={{ marginBottom: '48px' }}>
-            <h2 className="process-main-title">
-              Our 4-Phase <span className="highlight-yellow-glow">Brand Film Pipeline</span>
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-            {process.map((p, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)', 
-                  border: '1px solid rgba(236, 72, 153, 0.3)', 
-                  borderRadius: '20px', 
-                  padding: '32px 28px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <span style={{ background: '#EC4899', color: '#FFFFFF', fontWeight: 900, fontSize: '0.9rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{p.title}</h3>
-                </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Client Impact Stats Bar */}
-      <section className="py-14" style={{ background: 'linear-gradient(180deg, #0B0F19 0%, #05070F 100%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="section-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '24px', textAlign: 'center', width: '100%' }}>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#EC4899' }}>80+</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Brand Films Produced</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#F5B800' }}>4K RED</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Anamorphic Cinema Optics</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#A068FF' }}>100%</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Custom Score & Master Rights</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34D399' }}>4.9/5</div>
-              <div style={{ color: '#9CA3AF', fontSize: '0.9rem', marginTop: '4px' }}>Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Production Gear Suite */}
-      <section className="py-16" style={{ background: '#080C19' }}>
-        <div className="section-container text-center">
-          <h3 style={{ color: '#9CA3AF', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '24px', fontWeight: 700 }}>
-            Powered By Cinema Camera Optics & Orchestral Audio Suites
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            {['RED V-Raptor 8K', 'Cooke Anamorphic Lenses', 'Aputure 600d Lighting', 'DaVinci Resolve 19', 'Logic Pro X Score Mix'].map((tool, idx) => (
-              <span key={idx} style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)', color: '#D1D5DB', padding: '8px 18px', borderRadius: '20px', fontSize: '0.88rem', fontWeight: 600 }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQs Accordion */}
-      <section className="service-faq-section-wrap" style={{ background: '#05070F' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <div className="process-header-box text-center" style={{ marginBottom: '44px' }}>
-            <h2 className="process-main-title">
-              Frequently Asked <span className="highlight-yellow-glow">Questions</span>
-            </h2>
+      {/* FAQs Section */}
+      <section style={{ padding: '80px 0', background: '#0A0E1A' }}>
+        <div className="section-container" style={{ maxWidth: '850px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h3 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#FFFFFF' }}>FAQs</h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {faqs.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div 
-                  key={idx} 
-                  style={{ background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}
-                >
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', overflow: 'hidden' }}>
                   <button 
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    style={{ width: '100%', padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.1rem', fontWeight: 700, textAlign: 'left', cursor: 'pointer' }}
+                    style={{ width: '100%', padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'transparent', border: 'none', color: '#FFFFFF', fontSize: '1.08rem', fontWeight: '700', cursor: 'pointer', textAlign: 'left' }}
                   >
-                    <span>{faq.q}</span>
-                    <Icons.ChevronDown size={22} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', color: '#EC4899' }} />
+                    <h4>{faq.q}</h4>
+                    {isOpen ? <Icons.ChevronUp size={20} color="#3B82F6" /> : <Icons.ChevronDown size={20} color="#3B82F6" />}
                   </button>
                   {isOpen && (
-                    <div style={{ padding: '0 26px 24px 26px', color: '#9CA3AF', fontSize: '0.98rem', lineHeight: 1.7, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '18px' }}>
+                    <div style={{ padding: '0 24px 20px 24px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.98rem', lineHeight: '1.7' }}>
                       {faq.a}
                     </div>
                   )}
@@ -379,20 +214,16 @@ export default function BrandFilmsPage({ onOpenContact, onBackHome }) {
         </div>
       </section>
 
-      {/* 8. Bottom CTA Banner */}
-      <section className="service-cta-banner-wrap" style={{ background: 'linear-gradient(135deg, #111827 0%, #0B0F19 100%)' }}>
+      {/* Bottom CTA Banner */}
+      <section style={{ padding: '60px 0 80px 0', background: '#05070F' }}>
         <div className="section-container text-center">
-          <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', marginBottom: '16px' }}>
-              Ready to Produce Your <span style={{ color: '#EC4899' }}>Brand Film?</span>
-            </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '1.1rem', marginBottom: '32px', lineHeight: 1.65 }}>
-              Get a custom documentary concept proposal and cinematic budget estimate today.
-            </p>
+          <div className="services-cta-glass-box" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '24px', padding: '50px 30px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '12px' }}>Ready to Create a Premium Brand Film with Digiworq Bangalore?</h2>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 24px auto' }}>Talk with Digiworq brand directors to craft storytelling films, in-film branding, and digital ad campaigns.</p>
             <div className="btn-border-wrap inline-block">
               <button className="marketeam-primary-btn" onClick={onOpenContact}>
-                <span>Request Brand Film Proposal</span>
-                <Icons.ArrowRight size={18} className="btn-arrow-icon" />
+                <span>Book Brand Film Strategy Call</span>
+                <Icons.ArrowRight size={18} />
               </button>
             </div>
           </div>
