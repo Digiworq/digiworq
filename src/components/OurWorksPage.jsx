@@ -34,7 +34,7 @@ export default function OurWorksPage({ onOpenContact }) {
       client: "OmniPay Financial",
       metric: "1.2M+ App Downloads",
       desc: "Engineered an end-to-end mobile financial app featuring bio-metric authentication, instant transfer rails, and dark-mode glassmorphism UI.",
-      img: "https://images.unsplash.com/photo-1556742049-0a67568d049f?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=800&q=80",
       tags: ["Flutter", "Fintech Security", "Design System"]
     },
     {
@@ -155,7 +155,16 @@ export default function OurWorksPage({ onOpenContact }) {
             {filteredProjects.map((p) => (
               <div key={p.id} className="portfolio-card-item" style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', overflow: 'hidden', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}>
                 <div className="card-thumb-wrapper" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                  <img src={p.img} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img 
+                    src={p.img} 
+                    alt={p.title} 
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
                   <div style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(245, 184, 0, 0.4)', padding: '4px 12px', borderRadius: '12px', color: '#F5B800', fontWeight: '800', fontSize: '0.8rem' }}>
                     {p.metric}
                   </div>

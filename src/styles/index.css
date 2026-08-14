@@ -13743,3 +13743,143 @@ html, body, #root, .app-root, main {
   background: rgba(0, 0, 0, 0.15) !important;
 }
 
+/* ==========================================================================
+   UNIVERSAL DOWN-TO-UP POP-UP REVEAL ANIMATION (ALL PAGES & SUB-SERVICES)
+   ========================================================================== */
+
+@keyframes popUpFromDown {
+  0% {
+    opacity: 0;
+    transform: translateY(38px) scale(0.985);
+  }
+  65% {
+    opacity: 0.92;
+    transform: translateY(-2px) scale(1.003);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pagePopUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page Level Root Container Animation */
+.page-transition-pop-up {
+  animation: pagePopUpFade 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Smooth Pop-Up for all Page Heroes and Major Structural Sections */
+.subservice-hero-section,
+.service-landing-hero,
+.creative-hero-banner,
+.contact-hero-section,
+.about-hero-section,
+.our-works-hero,
+.ecommerce-hero,
+.blog-hero-section,
+.career-hero-section,
+.policy-page-container,
+.agency-intro-section,
+.services-section,
+.services-section-v2,
+.services-section-v3,
+.why-choose-us-section,
+.home-process-section-v2,
+.eventura-process-section,
+.testimonials-section,
+.faq-section,
+.service-details-section-v2 {
+  animation: popUpFromDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered cascades for internal cards, grids, and pillars */
+.subservice-hero-grid,
+.service-pillars-bento-grid,
+.service-three-cards-grid,
+.dark-cards-outer-container,
+.services-3-grid,
+.client-grid-2x4,
+.futuristic-timeline-grid,
+.marketeam-process-grid,
+.why-choose-content-grid,
+.holographic-spheres-grid,
+.infinite-marquee-container,
+.faq-list-container,
+.faq-list,
+.service-comparison-section-wrap,
+.service-details-card-v2,
+.service-faq-section-wrap,
+.subservice-faq-section,
+.service-cta-banner-wrap {
+  animation: popUpFromDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered Delays for Natural Smooth Ascending Flow */
+.subservice-hero-section,
+.service-landing-hero,
+.creative-hero-banner,
+.contact-hero-section,
+.about-hero-section,
+.our-works-hero,
+.ecommerce-hero,
+.blog-hero-section,
+.career-hero-section,
+.policy-page-container {
+  animation-delay: 0.04s;
+}
+
+.service-pillars-bento-grid,
+.service-three-cards-grid,
+.dark-cards-outer-container,
+.services-3-grid,
+.client-grid-2x4 {
+  animation-delay: 0.16s;
+}
+
+.service-comparison-section-wrap,
+.service-details-card-v2,
+.why-choose-content-grid,
+.futuristic-timeline-grid,
+.marketeam-process-grid {
+  animation-delay: 0.28s;
+}
+
+.service-faq-section-wrap,
+.subservice-faq-section,
+.faq-list-container,
+.faq-list {
+  animation-delay: 0.4s;
+}
+
+.service-cta-banner-wrap {
+  animation-delay: 0.52s;
+}
+
+/* Micro Pop-Up on Individual Cards & Pill Nodes */
+.service-feature-card,
+.hover-service-card,
+.client-card-box,
+.marketeam-process-card,
+.organic-process-node,
+.why-pillar-open-node,
+.metric-glass-sphere,
+.testimonial-glass-capsule,
+.bento-card-pillar,
+.tech-spec-capsule,
+.deliverable-card-item,
+.faq-item,
+.faq-card-item {
+  animation: popUpFromDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+

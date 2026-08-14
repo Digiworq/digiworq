@@ -227,8 +227,8 @@ export default function App() {
         onNavigatePage={handleNavigatePage}
       />
 
-      {/* Main Content Sections / Router */}
-      <main>
+      {/* Main Content Sections / Router with Universal Smooth Pop-Up Animation */}
+      <main key={`${activePage}-${activeCategoryId || ''}-${activeSubServiceId || ''}`} className="page-transition-pop-up">
         {renderMainContent()}
       </main>
 

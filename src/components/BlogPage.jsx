@@ -28,7 +28,7 @@ export default function BlogPage({ onOpenContact }) {
       date: "July 28, 2026",
       readTime: "5 min read",
       snippet: "Why modern consumer brands are ditching flat 2D visuals in favor of dynamic 3D studio environments and immersive glassmorphic design languages.",
-      img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 3,
@@ -48,7 +48,7 @@ export default function BlogPage({ onOpenContact }) {
       date: "July 11, 2026",
       readTime: "7 min read",
       snippet: "How pairing Next.js with Shopify Storefront API delivers 99+ Lighthouse performance scores and 34% higher checkout conversion rates.",
-      img: "https://images.unsplash.com/photo-1556742049-0a67568d049f?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 5,
@@ -58,7 +58,7 @@ export default function BlogPage({ onOpenContact }) {
       date: "June 30, 2026",
       readTime: "4 min read",
       snippet: "Explore how subtle scroll reveals, hover parallax effects, and smooth spring physics enhance user engagement without sacrificing site speed.",
-      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 6,
@@ -68,7 +68,27 @@ export default function BlogPage({ onOpenContact }) {
       date: "June 22, 2026",
       readTime: "6 min read",
       snippet: "How to structure video scripts, visual hooks, and audio design to capture audience attention in the first 3 seconds.",
-      img: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 7,
+      title: "Dominating Local & National SERPs: The 2026 Semantic SEO Playbook",
+      category: "Growth Marketing",
+      author: "SEO Guild Bangalore",
+      date: "June 14, 2026",
+      readTime: "9 min read",
+      snippet: "Mastering topical authority, structured schema entities, and zero-click search intent to rank #1 across competitive search verticals.",
+      img: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 8,
+      title: "How 3D Product Visualizations Are Replacing Traditional Commercial Shoots",
+      category: "AI & Future",
+      author: "3D VFX Studio",
+      date: "June 05, 2026",
+      readTime: "5 min read",
+      snippet: "CGI rendering and real-time WebGL product configurators are cutting production costs by 60% while dramatically elevating e-commerce conversions.",
+      img: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -125,7 +145,16 @@ export default function BlogPage({ onOpenContact }) {
           <div className="section-container">
             <div className="featured-post-card">
               <div className="featured-img-col">
-                <img src={blogPosts[0].img} alt={blogPosts[0].title} className="featured-post-img" />
+                <img 
+                  src={blogPosts[0].img} 
+                  alt={blogPosts[0].title} 
+                  className="featured-post-img"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
                 <span className="featured-cat-tag">{blogPosts[0].category}</span>
               </div>
 
@@ -156,7 +185,16 @@ export default function BlogPage({ onOpenContact }) {
             {filteredPosts.map((post) => (
               <div key={post.id} className="blog-card-item">
                 <div className="blog-card-img-wrap">
-                  <img src={post.img} alt={post.title} className="blog-card-img" />
+                  <img 
+                    src={post.img} 
+                    alt={post.title} 
+                    className="blog-card-img" 
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
                   <span className="blog-card-cat-badge">{post.category}</span>
                 </div>
 
