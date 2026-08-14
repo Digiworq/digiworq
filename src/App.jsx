@@ -244,6 +244,7 @@ export default function App() {
       <FloatingWidgets 
         onOpenContact={() => setIsContactOpen(true)}
         onOpenInfluencer={() => setIsInfluencerOpen(true)}
+        isHomePage={activePage === 'home' || !activePage}
       />
 
       {/* Contact Inquiry Modal */}

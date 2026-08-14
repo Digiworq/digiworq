@@ -2,21 +2,23 @@ import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 
-export default function FloatingWidgets({ onOpenContact, onOpenInfluencer }) {
+export default function FloatingWidgets({ onOpenContact, onOpenInfluencer, isHomePage }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      {/* Left side fixed tab matching screenshots */}
-      <button 
-        className="floating-influencer-tab"
-        onClick={onOpenInfluencer}
-        title="Enroll as an Influencer"
-      >
-        Enroll as an Influencer
-      </button>
+      {/* Left side fixed tab: Only visible on the Main (Home) Page */}
+      {isHomePage && (
+        <button 
+          className="floating-influencer-tab"
+          onClick={onOpenInfluencer}
+          title="Enroll as an Influencer"
+        >
+          Enroll as an Influencer
+        </button>
+      )}
 
       {/* Scroll to Top Button matching screenshot 6 */}
       <button 
