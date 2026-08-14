@@ -109,7 +109,15 @@ export default function Footer({ onNavigateService, onGoHome, onOpenContact, onN
 
             <div className="footer-contact-item">
               <Mail size={16} className="contact-gold-icon" />
-              <a href="mailto:info@digiworq.com" className="footer-contact-link">info@digiworq.com</a>
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@digiworq.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="footer-contact-link"
+                title="Send email via Gmail"
+              >
+                info@digiworq.com
+              </a>
             </div>
 
             <div className="footer-contact-item">

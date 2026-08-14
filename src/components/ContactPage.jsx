@@ -116,7 +116,15 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.82rem', fontWeight: '700', textTransform: 'uppercase' }}>Email Inquiry</div>
-                    <div style={{ color: '#FFFFFF', fontWeight: '700', fontSize: '1.05rem', marginTop: '2px' }}>contact@digiworq.com</div>
+                    <a 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=info@digiworq.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      style={{ color: '#FFFFFF', fontWeight: '700', fontSize: '1.05rem', marginTop: '2px', display: 'block', textDecoration: 'none' }}
+                      title="Send email via Gmail"
+                    >
+                      info@digiworq.com
+                    </a>
                     <div style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem', marginTop: '2px' }}>24-Hour Response Guaranteed</div>
                   </div>
                 </div>
