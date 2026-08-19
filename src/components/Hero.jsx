@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, ChevronDown, MousePointer, Play, X, Film } from 'lucide-react';
 import bannerVideo from '../../video/bannervideo.25ef476f25d8f1c2cbe9.mp4';
 import logoMark from '../../logomark 1.png';
@@ -58,6 +59,18 @@ export default function Hero({ onOpenContact }) {
   const [typingFinished, setTypingFinished] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const counterVal = useCountUp(500, 2000, 1200);
+
+  // Prevent background page scrolling when video modal is open
+  useEffect(() => {
+    if (isVideoModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isVideoModalOpen]);
 
   // High-Density Moving Gold Lights Canvas
   useEffect(() => {
@@ -191,8 +204,8 @@ export default function Hero({ onOpenContact }) {
             </div>
           </div>
 
-          {/* Modal Popup Video Player */}
-          {isVideoModalOpen && (
+          {/* Modal Popup Video Player — Rendered directly to document.body via Portal to prevent any stacking context / scroll displacement */}
+          {isVideoModalOpen && typeof document !== 'undefined' && createPortal(
             <div className="video-modal-overlay" onClick={() => setIsVideoModalOpen(false)}>
               <div className="video-modal-container" onClick={(e) => e.stopPropagation()}>
                 <button className="video-modal-close-btn" onClick={() => setIsVideoModalOpen(false)} aria-label="Close video player">
@@ -206,6 +219,7 @@ export default function Hero({ onOpenContact }) {
                   <video 
                     controls 
                     autoPlay 
+                    playsInline
                     className="showreel-video-element"
                   >
                     <source src={bannerVideo} type="video/mp4" />
@@ -215,7 +229,8 @@ export default function Hero({ onOpenContact }) {
                   </video>
                 </div>
               </div>
-            </div>
+            </div>,
+            document.body
           )}
 
           {/* Hero Right Column: Concentric Orbital Circles Visualization */}

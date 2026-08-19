@@ -6178,7 +6178,7 @@ html, body, #root, .app-root {
   stroke: #111827 !important;
 }
 
-/* 2. 100vw Dark Obsidian & Gold Glassmorphism Mega Menu */
+/* 2. 100vw Dark Obsidian & Gold Glassmorphism Mega Menu with Slow Down-to-Up Pop Animation */
 .mega-dropdown-overlay {
   position: absolute !important;
   top: 100% !important;
@@ -6191,12 +6191,39 @@ html, body, #root, .app-root {
   margin-right: calc(-50vw + 50%) !important;
   z-index: 99999 !important;
   padding-top: 0 !important;
-  animation: megaMenuSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: megaMenuPopUp 0.52s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  will-change: transform, opacity !important;
 }
 
-@keyframes megaMenuSlideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes megaMenuPopUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+  }
+  65% {
+    opacity: 0.95;
+    transform: translateY(-2px) scale(1.002);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Individual Dropdown Service Links Pop-Up Animation */
+@keyframes dropdownServicePopUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(-1px) scale(1.002);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .mega-menu-content {
@@ -6233,6 +6260,8 @@ html, body, #root, .app-root {
   border-bottom: 3px solid #F5B800 !important;
   padding-bottom: 6px !important;
   width: fit-content !important;
+  animation: dropdownServicePopUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: 0.02s !important;
 }
 
 .mega-category-header span {
@@ -6263,8 +6292,28 @@ html, body, #root, .app-root {
   border-radius: 16px !important;
   border: 1px solid transparent !important;
   text-decoration: none !important;
-  transition: all 0.25s ease !important;
+  animation: dropdownServicePopUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
+
+/* Staggered progressive delays across columns so service items pop up in waves from down */
+.mega-column:nth-child(1) .mega-item-link:nth-child(1) { animation-delay: 0.04s !important; }
+.mega-column:nth-child(1) .mega-item-link:nth-child(2) { animation-delay: 0.08s !important; }
+.mega-column:nth-child(1) .mega-item-link:nth-child(3) { animation-delay: 0.12s !important; }
+.mega-column:nth-child(1) .mega-item-link:nth-child(4) { animation-delay: 0.16s !important; }
+.mega-column:nth-child(1) .mega-item-link:nth-child(5) { animation-delay: 0.20s !important; }
+
+.mega-column:nth-child(2) .mega-item-link:nth-child(1) { animation-delay: 0.08s !important; }
+.mega-column:nth-child(2) .mega-item-link:nth-child(2) { animation-delay: 0.12s !important; }
+.mega-column:nth-child(2) .mega-item-link:nth-child(3) { animation-delay: 0.16s !important; }
+.mega-column:nth-child(2) .mega-item-link:nth-child(4) { animation-delay: 0.20s !important; }
+.mega-column:nth-child(2) .mega-item-link:nth-child(5) { animation-delay: 0.24s !important; }
+
+.mega-column:nth-child(3) .mega-item-link:nth-child(1) { animation-delay: 0.12s !important; }
+.mega-column:nth-child(3) .mega-item-link:nth-child(2) { animation-delay: 0.16s !important; }
+.mega-column:nth-child(3) .mega-item-link:nth-child(3) { animation-delay: 0.20s !important; }
+.mega-column:nth-child(3) .mega-item-link:nth-child(4) { animation-delay: 0.24s !important; }
+.mega-column:nth-child(3) .mega-item-link:nth-child(5) { animation-delay: 0.28s !important; }
 
 /* Service Item Hover -> Glowing Gold Highlight */
 .mega-item-link:hover {
@@ -6342,6 +6391,8 @@ html, body, #root, .app-root {
   text-align: center !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
   width: 100% !important;
+  animation: dropdownServicePopUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: 0.15s !important;
 }
 
 .feature-title {
@@ -13105,44 +13156,70 @@ html, body, #root, .app-root, main {
   font-weight: 600 !important;
 }
 
-/* Modal Popup Video Player — Cinema Expanded Dimensions */
+/* Modal Popup Video Player — Perfect Center Viewport Cinema Player */
 .video-modal-overlay {
   position: fixed !important;
-  inset: 0 !important;
-  z-index: 9999 !important;
-  background: rgba(5, 7, 15, 0.92) !important;
-  backdrop-filter: blur(16px) !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999999 !important;
+  background: rgba(3, 5, 12, 0.94) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 16px !important;
-  animation: fadeIn 0.25s ease forwards !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  animation: videoModalOverlayFade 0.25s ease forwards !important;
+}
+
+@keyframes videoModalOverlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .video-modal-container {
   position: relative !important;
-  width: 95vw !important;
-  max-width: 1280px !important;
-  height: 85vh !important;
-  max-height: 820px !important;
+  width: 88vw !important;
+  max-width: 980px !important;
+  max-height: 82vh !important;
+  margin: auto !important;
   background: #0B0F19 !important;
-  border: 2px solid rgba(245, 184, 0, 0.5) !important;
+  border: 2px solid rgba(245, 184, 0, 0.6) !important;
   border-radius: 20px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(245, 184, 0, 0.3) !important;
+  box-shadow: 0 0 60px rgba(245, 184, 0, 0.35), 0 30px 90px rgba(0, 0, 0, 0.95) !important;
+  animation: videoModalEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+@keyframes videoModalEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .video-modal-close-btn {
   position: absolute !important;
-  top: 14px !important;
-  right: 18px !important;
-  z-index: 20 !important;
-  background: rgba(255, 255, 255, 0.2) !important;
-  border: none !important;
-  width: 42px !important;
-  height: 42px !important;
+  top: 10px !important;
+  right: 14px !important;
+  z-index: 30 !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  width: 36px !important;
+  height: 36px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
@@ -13153,19 +13230,20 @@ html, body, #root, .app-root, main {
 
 .video-modal-close-btn:hover {
   background: #EF4444 !important;
+  border-color: #EF4444 !important;
   transform: scale(1.1) rotate(90deg) !important;
 }
 
 .video-modal-header {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  padding: 16px 24px !important;
-  background: rgba(15, 23, 42, 0.95) !important;
-  border-bottom: 1px solid rgba(245, 184, 0, 0.2) !important;
+  gap: 10px !important;
+  padding: 12px 20px !important;
+  background: #101426 !important;
+  border-bottom: 1px solid rgba(245, 184, 0, 0.3) !important;
   font-family: var(--font-heading) !important;
   font-weight: 800 !important;
-  font-size: 1.1rem !important;
+  font-size: 0.98rem !important;
   color: #FFFFFF !important;
   flex-shrink: 0 !important;
 }
@@ -13173,13 +13251,47 @@ html, body, #root, .app-root, main {
 .video-player-wrapper {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  max-height: calc(82vh - 56px) !important;
   flex: 1 !important;
   background: #000000 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
+}
+
+.showreel-video-element {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  background: #000000 !important;
+  display: block !important;
+  border: none !important;
+  outline: none !important;
+}
+
+@media (max-width: 768px) {
+  .video-modal-overlay {
+    padding: 12px !important;
+  }
+  .video-modal-container {
+    width: 96vw !important;
+    max-height: 85vh !important;
+    border-radius: 14px !important;
+  }
+  .video-modal-header {
+    padding: 10px 14px !important;
+    font-size: 0.85rem !important;
+  }
+  .video-modal-close-btn {
+    width: 32px !important;
+    height: 32px !important;
+    top: 8px !important;
+    right: 10px !important;
+  }
 }
 
 /* Mobile Hamburger Toggle Button Visibility Rule */
@@ -13779,7 +13891,17 @@ html, body, #root, .app-root, main {
   will-change: transform, opacity;
 }
 
-/* Smooth Pop-Up for all Page Heroes and Major Structural Sections */
+/* Smooth Pop-Up for all Page Heroes, Dropdown Sub-Service Pages, and Major Structural Sections */
+.digiworq-service-page-root,
+.creative-service-page,
+.tech-service-page,
+.video-production-page,
+.digital-marketing-page,
+.animation-2d-page,
+.animation-3d-page,
+.printing-solutions-page,
+.photography-page,
+.videography-page,
 .subservice-hero-section,
 .service-landing-hero,
 .creative-hero-banner,
@@ -13803,8 +13925,9 @@ html, body, #root, .app-root, main {
   animation: popUpFromDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Staggered cascades for internal cards, grids, and pillars */
+/* Staggered cascades for internal cards, grids, deliverables, and pillars in Dropdown Pages */
 .subservice-hero-grid,
+.subservice-deliverables-banner,
 .service-pillars-bento-grid,
 .service-three-cards-grid,
 .dark-cards-outer-container,
@@ -13819,6 +13942,7 @@ html, body, #root, .app-root, main {
 .faq-list,
 .service-comparison-section-wrap,
 .service-details-card-v2,
+.service-detail-block,
 .service-faq-section-wrap,
 .subservice-faq-section,
 .service-cta-banner-wrap {
@@ -13839,6 +13963,7 @@ html, body, #root, .app-root, main {
   animation-delay: 0.04s;
 }
 
+.subservice-deliverables-banner,
 .service-pillars-bento-grid,
 .service-three-cards-grid,
 .dark-cards-outer-container,
@@ -13849,6 +13974,7 @@ html, body, #root, .app-root, main {
 
 .service-comparison-section-wrap,
 .service-details-card-v2,
+.service-detail-block,
 .why-choose-content-grid,
 .futuristic-timeline-grid,
 .marketeam-process-grid {
@@ -13866,7 +13992,7 @@ html, body, #root, .app-root, main {
   animation-delay: 0.52s;
 }
 
-/* Micro Pop-Up on Individual Cards & Pill Nodes */
+/* Micro Pop-Up on Individual Cards, Deliverable Pills & Nodes */
 .service-feature-card,
 .hover-service-card,
 .client-card-box,
@@ -13878,8 +14004,189 @@ html, body, #root, .app-root, main {
 .bento-card-pillar,
 .tech-spec-capsule,
 .deliverable-card-item,
+.deliv-pill-item,
 .faq-item,
 .faq-card-item {
   animation: popUpFromDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* ==========================================================================
+   DROPDOWN SERVICES SLOW DOWN-TO-UP POP ANIMATION SUITE
+   ========================================================================== */
+
+.mega-dropdown-overlay {
+  animation: megaMenuPopUp 0.52s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+.mega-category-header {
+  animation: dropdownServicePopUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: 0.03s !important;
+}
+
+.mega-item-link {
+  animation: dropdownServicePopUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+.mega-feature-banner {
+  animation: dropdownServicePopUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: 0.14s !important;
+}
+
+/* Mobile Drawer Accordion Sub-Services Pop-Up */
+.mobile-sub-tiles-grid-v53,
+.mobile-sub-tile-card,
+.mobile-sub-option-btn,
+.mobile-category-block-v53.is-expanded .mobile-sub-tile-card {
+  animation: dropdownServicePopUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+/* ==========================================================================
+   DROPDOWN SERVICE PAGES - DISTINCT SLOW POPPING FROM DOWN-TO-UP ANIMATION
+   ========================================================================== */
+
+@keyframes slowPopUpFromDown {
+  0% {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  65% {
+    opacity: 0.92;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 1. All Sub-Service Dropdown Page Wrappers & Roots */
+.service-page-pop-wrapper,
+.digiworq-service-page-root,
+.creative-service-page,
+.tech-service-page,
+.video-production-page,
+.digital-marketing-page,
+.animation-2d-page,
+.animation-3d-page,
+.printing-solutions-page,
+.photography-page,
+.videography-page {
+  animation: slowPopUpFromDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  will-change: transform, opacity !important;
+}
+
+/* 2. All Sections Inside Dropdown Service Pages */
+.service-page-pop-wrapper section,
+.digiworq-service-page-root section,
+.creative-service-page section,
+.tech-service-page section,
+.video-production-page section,
+.digital-marketing-page section,
+.animation-2d-page section,
+.animation-3d-page section,
+.printing-solutions-page section,
+.photography-page section,
+.videography-page section,
+.service-landing-hero,
+.subservice-hero-section,
+.service-details-section-v2,
+.service-comparison-section-wrap,
+.service-faq-section-wrap,
+.subservice-faq-section,
+.service-cta-banner-wrap {
+  animation: slowPopUpFromDown 0.78s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  will-change: transform, opacity !important;
+}
+
+/* Section Staggering */
+.service-page-pop-wrapper section:nth-of-type(1),
+.digiworq-service-page-root section:nth-of-type(1) {
+  animation-delay: 0.04s !important;
+}
+
+.service-page-pop-wrapper section:nth-of-type(2),
+.digiworq-service-page-root section:nth-of-type(2) {
+  animation-delay: 0.16s !important;
+}
+
+.service-page-pop-wrapper section:nth-of-type(3),
+.digiworq-service-page-root section:nth-of-type(3) {
+  animation-delay: 0.28s !important;
+}
+
+.service-page-pop-wrapper section:nth-of-type(4),
+.digiworq-service-page-root section:nth-of-type(4) {
+  animation-delay: 0.40s !important;
+}
+
+.service-page-pop-wrapper section:nth-of-type(5),
+.digiworq-service-page-root section:nth-of-type(5) {
+  animation-delay: 0.52s !important;
+}
+
+/* 3. All Cards, Grid Items, Deliverable Pills, and Accordions Inside Dropdown Pages */
+.service-page-pop-wrapper .deliv-pill-item,
+.service-page-pop-wrapper .deliverables-pills-wrap > div,
+.service-page-pop-wrapper .service-feature-card,
+.service-page-pop-wrapper .service-details-card-v2,
+.service-page-pop-wrapper .service-detail-block,
+.service-page-pop-wrapper .bento-card-pillar,
+.service-page-pop-wrapper .service-pillar-card,
+.service-page-pop-wrapper .faq-item,
+.service-page-pop-wrapper .faq-card-item,
+.service-page-pop-wrapper .services-cta-glass-box,
+.service-page-pop-wrapper section div[style*="grid"] > div,
+.digiworq-service-page-root .deliv-pill-item,
+.digiworq-service-page-root .deliverables-pills-wrap > div,
+.digiworq-service-page-root .service-feature-card,
+.digiworq-service-page-root .service-details-card-v2,
+.digiworq-service-page-root .service-detail-block,
+.digiworq-service-page-root .bento-card-pillar,
+.digiworq-service-page-root .service-pillar-card,
+.digiworq-service-page-root .faq-item,
+.digiworq-service-page-root .faq-card-item,
+.digiworq-service-page-root .services-cta-glass-box,
+.digiworq-service-page-root section div[style*="grid"] > div {
+  animation: slowPopUpFromDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  will-change: transform, opacity !important;
+}
+
+/* Micro Delays for Grid Children inside Dropdown Pages */
+.service-page-pop-wrapper .deliv-pill-item:nth-child(1),
+.digiworq-service-page-root .deliv-pill-item:nth-child(1) { animation-delay: 0.10s !important; }
+
+.service-page-pop-wrapper .deliv-pill-item:nth-child(2),
+.digiworq-service-page-root .deliv-pill-item:nth-child(2) { animation-delay: 0.15s !important; }
+
+.service-page-pop-wrapper .deliv-pill-item:nth-child(3),
+.digiworq-service-page-root .deliv-pill-item:nth-child(3) { animation-delay: 0.20s !important; }
+
+.service-page-pop-wrapper .deliv-pill-item:nth-child(4),
+.digiworq-service-page-root .deliv-pill-item:nth-child(4) { animation-delay: 0.25s !important; }
+
+.service-page-pop-wrapper .deliv-pill-item:nth-child(5),
+.digiworq-service-page-root .deliv-pill-item:nth-child(5) { animation-delay: 0.30s !important; }
+
+.service-page-pop-wrapper .deliv-pill-item:nth-child(6),
+.digiworq-service-page-root .deliv-pill-item:nth-child(6) { animation-delay: 0.35s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(1),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(1) { animation-delay: 0.20s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(2),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(2) { animation-delay: 0.26s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(3),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(3) { animation-delay: 0.32s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(4),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(4) { animation-delay: 0.38s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(5),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(5) { animation-delay: 0.44s !important; }
+
+.service-page-pop-wrapper section div[style*="grid"] > div:nth-child(6),
+.digiworq-service-page-root section div[style*="grid"] > div:nth-child(6) { animation-delay: 0.50s !important; }
+
+
 

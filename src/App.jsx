@@ -91,7 +91,15 @@ export default function App() {
       '.work-project-card',
       '.capability-glass-card',
       '.blog-card-item',
-      '.capability-overview-card'
+      '.capability-overview-card',
+      '.subservice-deliverables-banner',
+      '.deliv-pill-item',
+      '.service-details-card-v2',
+      '.service-detail-block',
+      '.bento-card-pillar',
+      '.service-feature-card',
+      '.faq-item',
+      '.service-cta-banner-wrap'
     ];
 
     const timer = setTimeout(() => {

@@ -150,14 +150,15 @@ export {
 };
 
 export default function ServiceDispatcher({ categoryId = "creative", subServiceId = "", onOpenContact, onBackHome }) {
-  // Direct Dedicated Sub-Service Component Routing
-  if (subServiceId === 'branding-solutions') {
-    return <BrandingSolutionsPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
-  }
-  if (subServiceId === 'graphic-designing') {
-    return <GraphicDesigningPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
-  }
-  if (subServiceId === 'logo-design') {
+  const renderPageContent = () => {
+    // Direct Dedicated Sub-Service Component Routing
+    if (subServiceId === 'branding-solutions') {
+      return <BrandingSolutionsPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+    }
+    if (subServiceId === 'graphic-designing') {
+      return <GraphicDesigningPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
+    }
+    if (subServiceId === 'logo-design') {
     return <LogoDesignPage onOpenContact={onOpenContact} onBackHome={onBackHome} />;
   }
   if (subServiceId === 'packaging-design') {
@@ -390,4 +391,11 @@ export default function ServiceDispatcher({ categoryId = "creative", subServiceI
     default:
       return <CreativeServicePage subServiceId={subServiceId} onOpenContact={onOpenContact} onBackHome={onBackHome} />;
   }
+};
+
+return (
+  <div key={`service-dispatch-${categoryId}-${subServiceId}`} className="service-page-pop-wrapper">
+    {renderPageContent()}
+  </div>
+);
 }
